@@ -19,7 +19,6 @@ binaryListArray = []
 gammaRate = ""
 epsilonRate = ""
 
-
 def Main():
     # First we want to read out binary numbers from fileName
     binaryListArray = getListFromFile("Day3.PZL")
@@ -80,4 +79,32 @@ def binaryToDecimal (rateInput):
             answer += exponent(len(rateInput) - 1 - i)
     return answer
 
+def getOxygenGeneratorValue():
+
+    def filterListAtBit(bitAddress, listToFilter):
+        if (len(listToFilter) == 1):
+            return listToFilter
+        revisedList = []
+        signifigantBitCounter = 0
+        for i in range(len(listToFilter)):
+            if listToFilter[i][bitAddress] == "1":
+                signifigantBitCounter+=1
+        oneIsMostSignifigantBit = (signifigantBitCounter >= (len(listToFilter) / 2))
+        for i in range(len(listToFilter)):
+            if oneIsMostSignifigantBit:
+                if listToFilter[i][bitAddress] == "1":
+                    revisedList.append(listToFilter[i])
+            else:
+                if listToFilter[i][bitAddress] == "0":
+                    revisedList.append(listToFilter[i])
+        print revisedList
+        return revisedList
+
+    oxygenList = getListFromFile("Day3.PZL")
+    for u in range(len(oxygenList[0])):
+        oxygenList = filterListAtBit( u, oxygenList)
+    print ("Oxygen List is now : " + str(oxygenList))
+
+
 Main()
+getOxygenGeneratorValue()
