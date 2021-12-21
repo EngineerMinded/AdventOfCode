@@ -13,6 +13,8 @@ https://adventofcode.com/2021/day/3
 
 ACHIEVEMENT: FIRST GOLD STAR:
 
+ACHIEVMENT: OBTAINED SECOND GOLD STAR
+
 '''
 mostCommonArray = []
 binaryListArray = []
@@ -78,6 +80,7 @@ def binaryToDecimal (rateInput):
         if rateInput[i] == "1":
             answer += exponent(len(rateInput) - 1 - i)
     return answer
+# This function works with the part two part of this Program
 
 def filterListToSpecificValue(lookingForSignifigantValue):
 
@@ -107,7 +110,7 @@ def filterListToSpecificValue(lookingForSignifigantValue):
         returnThisList = filterListAtBit( u, returnThisList)
         if len(returnThisList) < 2:
             break
-    return returnThisList
+    return returnThisList[0]
 
 def PartTwo():
     oxygenGeneratorValue = str(filterListToSpecificValue(True))
