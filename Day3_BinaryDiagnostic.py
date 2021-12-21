@@ -11,7 +11,8 @@ Advent of Code
 https://adventofcode.com/2021/day/3
 ------------------------------------------
 
-ACHIEVEMENT: FIRST GOLD STAR
+ACHIEVEMENT: FIRST GOLD STAR:
+
 '''
 mostCommonArray = []
 binaryListArray = []
