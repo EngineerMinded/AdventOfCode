@@ -1,5 +1,5 @@
 '''
-Wayne Alexander Mack Jr.
+Wayne Mack
 
 (c)2021 EngineerMinded
 
