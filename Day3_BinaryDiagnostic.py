@@ -79,37 +79,39 @@ def binaryToDecimal (rateInput):
             answer += exponent(len(rateInput) - 1 - i)
     return answer
 
-def filterListToSignifigantValue(signifigantValue):
+def filterListToSpecificValue(lookingForSignifigantValue):
 
     def filterListAtBit(bitAddress, listToFilter):
-        if (len(listToFilter) == 1):
-            return listToFilter[0]
-        notSignifigantValue = "1"
-        if signifigantValue == "1":
-            notSignifigantValue = "0"
+        # create an empty revisedList
         revisedList = []
+        # signifigantBitCounter tallies to count sought out bits
         signifigantBitCounter = 0
         for i in range(len(listToFilter)):
-            if listToFilter[i][bitAddress] == signifigantValue:
+            if listToFilter[i][bitAddress] == "1":
                 signifigantBitCounter+=1
-        oneIsMostSignifigantBit = (signifigantBitCounter >= (len(listToFilter) / 2))
+        if (lookingForSignifigantValue):
+            signifigantBitCriteria = (signifigantBitCounter >= (len(listToFilter) / 2))
+        else :
+            signifigantBitCriteria = (signifigantBitCounter < (len(listToFilter) / 2))
         for i in range(len(listToFilter)):
-            if oneIsMostSignifigantBit:
-                if listToFilter[i][bitAddress] == signifigantValue:
+            if signifigantBitCriteria:
+                if listToFilter[i][bitAddress] == "1":
                     revisedList.append(listToFilter[i])
             else:
-                if listToFilter[i][bitAddress] == notSignifigantValue:
+                if listToFilter[i][bitAddress] == "0":
                     revisedList.append(listToFilter[i])
         return revisedList
 
     returnThisList = getListFromFile("Day3.PZL")
     for u in range(len(returnThisList[0])):
         returnThisList = filterListAtBit( u, returnThisList)
+        if len(returnThisList) < 2:
+            break
     return returnThisList
 
 def PartTwo():
-    oxygenGeneratorValue = str(filterListToSignifigantValue("1"))
-    cO2GeneratorValue = str (filterListToSignifigantValue("0"))
+    oxygenGeneratorValue = str(filterListToSpecificValue(True))
+    cO2GeneratorValue = str (filterListToSpecificValue(False))
     o2GeneratorDecimal = binaryToDecimal(oxygenGeneratorValue)
     cO2GeneratorDecimal = binaryToDecimal(cO2GeneratorValue)
     print ("The Oxygen generator Value is : " + oxygenGeneratorValue + " with a decimal value of " + str(o2GeneratorDecimal))
