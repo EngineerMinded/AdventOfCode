@@ -22,14 +22,14 @@ epsilonRate = ""
 
 def Main():
     # First we want to read out binary numbers from fileName
-    binaryListArray = readFile("Day3.PZL")
+    binaryListArray = getListFromFile("Day3.PZL")
     gammaRate = gammaRateDetermination(binaryListArray)
     epsilonRate = epsilonRateDetermination(gammaRate)
     print ("The gamma rate is : " + gammaRate + " or decimal " + str(binaryToDecimal(gammaRate)) + "!")
     print ("The epsilon rate is :"+ epsilonRate + " or decimal " + str(binaryToDecimal(epsilonRate))+ "!")
     print ("Multiplied, that is : " + str ( binaryToDecimal(gammaRate) * binaryToDecimal(epsilonRate)))
 
-def readFile(fileName):
+def getListFromFile(fileName):
     file = open (fileName)
     listing = file.read().splitlines()
     file.close()
