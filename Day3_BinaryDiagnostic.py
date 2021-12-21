@@ -19,7 +19,7 @@ binaryListArray = []
 gammaRate = ""
 epsilonRate = ""
 
-def Main():
+def PartOne():
     # First we want to read out binary numbers from fileName
     binaryListArray = getListFromFile("Day3.PZL")
     gammaRate = gammaRateDetermination(binaryListArray)
@@ -79,32 +79,43 @@ def binaryToDecimal (rateInput):
             answer += exponent(len(rateInput) - 1 - i)
     return answer
 
-def getOxygenGeneratorValue():
+def filterListToSignifigantValue(signifigantValue):
 
     def filterListAtBit(bitAddress, listToFilter):
         if (len(listToFilter) == 1):
-            return listToFilter
+            return listToFilter[0]
+        notSignifigantValue = "1"
+        if signifigantValue == "1":
+            notSignifigantValue = "0"
         revisedList = []
         signifigantBitCounter = 0
         for i in range(len(listToFilter)):
-            if listToFilter[i][bitAddress] == "1":
+            if listToFilter[i][bitAddress] == signifigantValue:
                 signifigantBitCounter+=1
         oneIsMostSignifigantBit = (signifigantBitCounter >= (len(listToFilter) / 2))
         for i in range(len(listToFilter)):
             if oneIsMostSignifigantBit:
-                if listToFilter[i][bitAddress] == "1":
+                if listToFilter[i][bitAddress] == signifigantValue:
                     revisedList.append(listToFilter[i])
             else:
-                if listToFilter[i][bitAddress] == "0":
+                if listToFilter[i][bitAddress] == notSignifigantValue:
                     revisedList.append(listToFilter[i])
-        print revisedList
         return revisedList
 
-    oxygenList = getListFromFile("Day3.PZL")
-    for u in range(len(oxygenList[0])):
-        oxygenList = filterListAtBit( u, oxygenList)
-    print ("Oxygen List is now : " + str(oxygenList))
+    returnThisList = getListFromFile("Day3.PZL")
+    for u in range(len(returnThisList[0])):
+        returnThisList = filterListAtBit( u, returnThisList)
+    return returnThisList
+
+def PartTwo():
+    oxygenGeneratorValue = str(filterListToSignifigantValue("1"))
+    cO2GeneratorValue = str (filterListToSignifigantValue("0"))
+    o2GeneratorDecimal = binaryToDecimal(oxygenGeneratorValue)
+    cO2GeneratorDecimal = binaryToDecimal(cO2GeneratorValue)
+    print ("The Oxygen generator Value is : " + oxygenGeneratorValue + " with a decimal value of " + str(o2GeneratorDecimal))
+    print ("The CO2 generator Value is : " + cO2GeneratorValue + " with a decimal value of " + str(cO2GeneratorDecimal))
+    print ("Multiplied: That comes to :" + str(o2GeneratorDecimal * cO2GeneratorDecimal))
 
 
-Main()
-getOxygenGeneratorValue()
+PartOne()
+PartTwo()
