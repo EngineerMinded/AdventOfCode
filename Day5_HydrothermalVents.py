@@ -12,22 +12,7 @@ https://adventofcode.com/2021/day/5
 ------------------------------------------
 
 '''
-class occupiedPoint:
-    timesPointisPlotted = 0
-    def __init__ (self, rawData):
-        parsedData = rawData.split(",")
-        self.x = int(parsedData[0])
-        self.y = int(parsedData[1])
-        timesPointisPlotted = 1
-    def pointIsPlottedMoreThanOnce():
-        return timesPointisPlotted > 1
-    def pointExists(self , variablesToCheck):
-        numbersToCheck = variablesToCheck.split(",")
-        if (self.x == numbersToCheck[0]) and (self.y == numbersToCheck[1]):
-            timesPointisPlotted+=1
-            return True
-        else:
-            return False
+
 class Vector:
     x1 = 0
     x2 = 0
@@ -87,20 +72,29 @@ def PartOne():
         pointArray = vectorArray[i].addPoints(pointArray)
     # Now you have your point array and even duplicate. Let's sparce them to see which are duplicates
     # start by adding the first One
-    def duplicatePointExists(pointToFind):
 
+    def duplicatePointExists(pointToFind):
         global pointCounter
-        duplicateFound = False
         for i in range(len(pointCounter)):
             if pointCounter[i].pointExists(pointToFind):
-                duplicateFound = True
-        return duplicateFound
-    print str(len(pointArray))
+                return True
+        return False
+    #print (pointArray)
     for i in range(len(pointArray)):
-        #print (str(i) +" of " + str(len(pointArray)) + "Loops here")
-        if not duplicatePointExists(pointArray[i]):
-            pointCounter.append(occupiedPoint(pointArray[i]))
-    print str(len(pointCounter)))
+        #print (str(i))
+        for j in range(len(pointArray)):
+            if (i != j and pointArray[i] == pointArray [j]):
+                alreadyExists = False
+                for k in range(len(pointCounter)):
+                    if pointCounter[k] == pointArray[i]:
+                        alreadyExists = True
+                if not alreadyExists:
+                    pointCounter.append(pointArray[i])
+    print str(len(pointCounter))
+
+
+
+
 
 
 
