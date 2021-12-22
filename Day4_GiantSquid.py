@@ -12,6 +12,7 @@ https://adventofcode.com/2021/day/4
 ------------------------------------------
 
 ACHIEVMENT: OBTAINED FIRST GOLD STAR
+ACHIEVMENT: OBTAINED SECOND GOLD STAR
 
 '''
 
@@ -72,7 +73,7 @@ def finalScoreTally (bingoCard):
             Answer += int(bingoCards[bingoCard][i])
     return Answer * int(winningFinalNumber)
 
-def Main():
+def PartOne():
     '''
     This function will draw numbers from the array of winning
     numbers until a winner in the BIngo cards are declared. it
@@ -89,4 +90,30 @@ def Main():
                 print ("Bingo Card Number " + str(j) + " is the winning one with a score of : " + str(finalScoreTally(j)))
                 exit()
     print ("Apparently something is wrong. there is no winner")
-Main()
+completedBingoCards = []
+def bingoCardWasNotAlreadyCalled(checkThisNumber):
+    global completedBingoCards
+    for i in range(len(completedBingoCards)):
+        if completedBingoCards[i] == checkThisNumber:
+            return False
+
+    completedBingoCards.append(checkThisNumber)
+    return True
+
+def PartTwo():
+    '''
+    Alot of this will be a modification of the Part One program.
+    We now need to figure out the last one that is going to win
+    '''
+    global selectedNumbers
+    numbersToDraw = fileRead("Day4.PZL")
+    parseBingoData (numbersToDraw)
+    #print (bingoCards)
+    #print (selectedNumbers)
+    for i in range(len(numbersToDraw)):
+        for j in range(len(bingoCards)):
+            if (addSelectedNumberAndWinningCardDetermination(j, selectedNumbers[i])) and (bingoCardWasNotAlreadyCalled(j)):
+                print ("Bingo Card Number " + str(j) + " won with a score of : " + str(finalScoreTally(j)))
+# NOTE: Comment out PartOne() below to execute Part 2
+PartOne()
+PartTwo()
