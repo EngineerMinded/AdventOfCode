@@ -12,59 +12,7 @@ https://adventofcode.com/2021/day/4
 ------------------------------------------
 
 '''
-class BingoCard:
-    ''' These are individual bingo Card Objects '''
-    cardNumbers = []
-    winningSquares = []
-    gameWinningNumber = 0
 
-    def __init__ (self, dataInput):
-        ''' Constructor '''
-        global cardNumbers
-        cardNumbers = dataInput.split()
-        global winningSquares
-        winningSquares = ["0"] * 25
-
-    def addWinningNumberAndDetermineWinner ( self, winningNumber):
-        global cardNumbers
-        global winningSquares
-        '''
-        Add a number and determine if this card is the winner by returning
-        the next function
-        '''
-        def thereIsAWinner (winningNumber):
-            '''
-            Determine if any rows or columns have called Bingo
-            '''
-            for u in range(5):
-                if winningSquares[u] == "1" and winningSquares [u + 5] == "1" and winningSquares [u + 10] == "1" and winningSquares [u + 15] == "1" and winningSquares [u + 20] == "1":
-                    gameWinningNumber = winningNumber
-                    return True
-            for v in range (5):
-                if winningSquares[( u * 5) ] == "1" and winningSquares [( u * 5) + 1] == "1" and winningSquares [( u * 5) + 2] == "1" and winningSquares [( u * 5) + 3] == "1" and winningSquares [( u * 5) + 4] == "1":
-                    gameWinningNumber = winningNumber
-                    return True
-            # if the program made it here there was not row and now, it has been ruled as False
-            return False
-        print (cardNumbers)
-        for x in range(len(cardNumbers)):
-            if cardNumbers[x] == winningNumber:
-                winningSquares[x] = "1"
-        return thereIsAWinner(winningNumber)
-
-
-
-    def tallyWinningScore():
-        '''
-        If a winner is declared, tally up the score and
-        return the winning score. this is the objective
-        of the Program
-        '''
-        returnAnswer = 0
-        for i in range(25):
-            if winningSquare[i] == "0":
-                returnAnswer += winningSquare[i]
-        return returnAnswer * gameWinningNumber
 def fileRead(fileName):
     '''
     read the file data and return it's contents
@@ -74,36 +22,70 @@ def fileRead(fileName):
     arrayToReturn = file.read().splitlines()
     file.close()
     return arrayToReturn
-
-
+winningFinalNumber = 0
 selectedNumbers = []
 bingoCards = []
-
+bingoSelectedGrids = []
 def parseBingoData (inputData):
     '''
     The Bingo data consist of the called number as list level 0, use The
     mathematic equation numberOfCards = (totalNumberOfItemsInList / 10) - 1
     to make sense of parseing the data.
     '''
+    global selectedNumbers
     selectedNumbers = inputData[0].split(",")
     numberOfCards = (len(inputData) / 6)
     arrayAddressCounter = 1
     for i in range(int(numberOfCards)):
         arrayAddressCounter += 1
         dataToBingoCard = inputData[arrayAddressCounter] + " " + inputData[arrayAddressCounter + 1] + " " + inputData[arrayAddressCounter + 2]+ " " + inputData[arrayAddressCounter + 3]+ " " + inputData[arrayAddressCounter + 4]
-        bingoCards.append (BingoCard(dataToBingoCard))
+        bingoCards.append (dataToBingoCard.split())
+        bingoSelectedGrids.append (["0"] * 25)
         arrayAddressCounter += 5
+def addSelectedNumberAndWinningCardDetermination (bingoCard, selectedNumber):
+    for i in range(len(bingoCards[bingoCard])):
+        #print (str(selectedNumber) + " " + str(bingoCards[bingoCard][i]))
+        if selectedNumber == bingoCards[bingoCard][i]:
+            bingoSelectedGrids[bingoCard][i] = "1"
+    return bingoCardIsAWinner(bingoCard, selectedNumber)
+
+def bingoCardIsAWinner (bingoCard, selectedNumber):
+    global winningFinalNumber
+    for u in range(5):
+        if bingoSelectedGrids[bingoCard][u] == "1" and bingoSelectedGrids[bingoCard][u + 5] == "1" and bingoSelectedGrids[bingoCard][u + 10] == "1" and bingoSelectedGrids[bingoCard][u + 15] == "1" and bingoSelectedGrids[bingoCard][u + 20] == "1":
+            winningFinalNumber = selectedNumber
+            return True
+        if bingoSelectedGrids[bingoCard][( u * 5) ] == "1" and bingoSelectedGrids[bingoCard] [( u * 5) + 1] == "1" and bingoSelectedGrids[bingoCard] [( u * 5) + 2] == "1" and bingoSelectedGrids[bingoCard] [( u * 5) + 3] == "1" and bingoSelectedGrids[bingoCard] [( u * 5) + 4] == "1":
+            winningFinalNumber = selectedNumber
+            return True
+    return False
+
+def finalScoreTally (bingoCard):
+    print (bingoSelectedGrids[bingoCard])
+    print (bingoCards[bingoCard])
+    print (winningFinalNumber)
+    Answer = 0
+    for i in range(25):
+        if bingoSelectedGrids[bingoCard][i] == "0":
+            Answer += int(bingoCards[bingoCard][i])
+    return Answer * int(winningFinalNumber)
+
 def Main():
     '''
     This function will draw numbers from the array of winning
     numbers until a winner in the BIngo cards are declared. it
     will then return the winning tallyWinningScore
     '''
+    global selectedNumbers
     numbersToDraw = fileRead("Day4.PZL")
     parseBingoData (numbersToDraw)
+    #print (bingoCards)
+    #print (selectedNumbers)
     for i in range(len(numbersToDraw)):
         for j in range(len(bingoCards)):
-            if bingoCards[j].addWinningNumberAndDetermineWinner(numbersToDraw[i]):
-                print ("Bingo card " + str(j + 1) + " has won. The score for this card is :" + str(bingoCards[j].tallyWinningScore))
+            if addSelectedNumberAndWinningCardDetermination(j, selectedNumbers[i]):
+                print ("Bingo Card Number " + str(j) + " is the winning one with a score of : " + str(finalScoreTally(j)))
+                exit()
     print ("Apparently something is wrong. there is no winner")
+    print (bingoSelectedGrids)
 Main()
