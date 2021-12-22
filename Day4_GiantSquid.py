@@ -11,6 +11,8 @@ Advent of Code
 https://adventofcode.com/2021/day/4
 ------------------------------------------
 
+ACHIEVMENT: OBTAINED FIRST GOLD STAR
+
 '''
 
 def fileRead(fileName):
@@ -61,9 +63,9 @@ def bingoCardIsAWinner (bingoCard, selectedNumber):
     return False
 
 def finalScoreTally (bingoCard):
-    print (bingoSelectedGrids[bingoCard])
-    print (bingoCards[bingoCard])
-    print (winningFinalNumber)
+    #print (bingoSelectedGrids[bingoCard])
+    #print (bingoCards[bingoCard])
+    #print (winningFinalNumber)
     Answer = 0
     for i in range(25):
         if bingoSelectedGrids[bingoCard][i] == "0":
@@ -87,5 +89,4 @@ def Main():
                 print ("Bingo Card Number " + str(j) + " is the winning one with a score of : " + str(finalScoreTally(j)))
                 exit()
     print ("Apparently something is wrong. there is no winner")
-    print (bingoSelectedGrids)
 Main()
