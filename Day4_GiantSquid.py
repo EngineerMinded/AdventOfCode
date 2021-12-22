@@ -32,7 +32,7 @@ bingoSelectedGrids = []
 def parseBingoData (inputData):
     '''
     The Bingo data consist of the called number as list level 0, use The
-    mathematic equation numberOfCards = (totalNumberOfItemsInList / 10) - 1
+    mathematic equation numberOfCards = (totalNumberOfItemsInList / 6) 
     to make sense of parseing the data.
     '''
     global selectedNumbers
