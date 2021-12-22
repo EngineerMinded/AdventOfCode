@@ -92,16 +92,7 @@ def PartOne():
                 if not alreadyExists:
                     pointCounter.append(pointArray[i])
                     duplicateCount += 1
-                    print (str(pointArray[i]) + " Found Duplicate : " + str(duplicateCount)) + " of Total :" + str(i) + " / " +str(len(pointArray))
-    print str(len(pointCounter))
-
-
-
-
-
-
-
-
-
+                    print (str(pointArray[i]) + " Found Duplicate : " + str(duplicateCount) + " of Total :" + str(i) + " / " + str(len(pointArray)))
+    print ("There are " + str(duplicateCount) + " duplicates")
 
 PartOne()
