@@ -80,6 +80,7 @@ def PartOne():
                 return True
         return False
     #print (pointArray)
+    duplicateCount = 0
     for i in range(len(pointArray)):
         #print (str(i))
         for j in range(len(pointArray)):
@@ -90,6 +91,8 @@ def PartOne():
                         alreadyExists = True
                 if not alreadyExists:
                     pointCounter.append(pointArray[i])
+                    duplicateCount += 1
+                    print (str(pointArray[i]) + " Found Duplicate : " + str(duplicateCount)) + " of Total :" + str(i) + " / " +str(len(pointArray))
     print str(len(pointCounter))
 
 
