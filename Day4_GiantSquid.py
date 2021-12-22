@@ -26,6 +26,8 @@ class BingoCard:
         winningSquares = ["0"] * 25
 
     def addWinningNumberAndDetermineWinner ( self, winningNumber):
+        global cardNumbers
+        global winningSquares
         '''
         Add a number and determine if this card is the winner by returning
         the next function
@@ -44,9 +46,8 @@ class BingoCard:
                     return True
             # if the program made it here there was not row and now, it has been ruled as False
             return False
-
+        print (cardNumbers)
         for x in range(len(cardNumbers)):
-            print (cardNumbers[x])
             if cardNumbers[x] == winningNumber:
                 winningSquares[x] = "1"
         return thereIsAWinner(winningNumber)
@@ -61,7 +62,7 @@ class BingoCard:
         '''
         returnAnswer = 0
         for i in range(25):
-            if winningSquare[i] == 0:
+            if winningSquare[i] == "0":
                 returnAnswer += winningSquare[i]
         return returnAnswer * gameWinningNumber
 def fileRead(fileName):
