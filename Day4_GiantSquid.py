@@ -3,7 +3,7 @@ Wayne Mack
 (c)2021 EngineerMinded
 
 
-Program: Depth Difference indicator
+Program: Something about Bingo and a Squid
 Written in: Python
 ------------------------------------------
 NOTE: This is an activity for:
