@@ -115,5 +115,6 @@ def PartTwo():
             if (addSelectedNumberAndWinningCardDetermination(j, selectedNumbers[i])) and (bingoCardWasNotAlreadyCalled(j)):
                 print ("Bingo Card Number " + str(j) + " won with a score of : " + str(finalScoreTally(j)))
 
-PartTwo()
+# NOTE: comment out part one to see part 2
 PartOne()
+PartTwo()
