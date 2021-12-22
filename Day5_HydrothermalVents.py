@@ -26,9 +26,8 @@ class occupiedPoint:
         if (self.x == numbersToCheck[0]) and (self.y == numbersToCheck[1]):
             timesPointisPlotted+=1
             return True
-        else:'''
-        print (variablesToCheck)
-        return False
+        else:
+            return False
 class Vector:
     x1 = 0
     x2 = 0
@@ -89,16 +88,19 @@ def PartOne():
     # Now you have your point array and even duplicate. Let's sparce them to see which are duplicates
     # start by adding the first One
     def duplicatePointExists(pointToFind):
+
         global pointCounter
         duplicateFound = False
         for i in range(len(pointCounter)):
             if pointCounter[i].pointExists(pointToFind):
                 duplicateFound = True
         return duplicateFound
-    pointCounter.append(occupiedPoint(pointArray[0]))
-    for i in range(1,len(pointArray)):
+    print str(len(pointArray))
+    for i in range(len(pointArray)):
+        #print (str(i) +" of " + str(len(pointArray)) + "Loops here")
         if not duplicatePointExists(pointArray[i]):
-            pointCounter.append(occupiedPoint(pointArray[1]))
+            pointCounter.append(occupiedPoint(pointArray[i]))
+    print str(len(pointCounter)))
 
 
 
