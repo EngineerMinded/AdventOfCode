@@ -32,7 +32,7 @@ bingoSelectedGrids = []
 def parseBingoData (inputData):
     '''
     The Bingo data consist of the called number as list level 0, use The
-    mathematic equation numberOfCards = (totalNumberOfItemsInList / 6) 
+    mathematic equation numberOfCards = (totalNumberOfItemsInList / 6)
     to make sense of parseing the data.
     '''
     global selectedNumbers
@@ -114,6 +114,6 @@ def PartTwo():
         for j in range(len(bingoCards)):
             if (addSelectedNumberAndWinningCardDetermination(j, selectedNumbers[i])) and (bingoCardWasNotAlreadyCalled(j)):
                 print ("Bingo Card Number " + str(j) + " won with a score of : " + str(finalScoreTally(j)))
-# NOTE: Comment out PartOne() below to execute Part 2
-PartOne()
+
 PartTwo()
+PartOne()
