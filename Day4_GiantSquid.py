@@ -86,15 +86,20 @@ def parseBingoData (inputData):
     for i in range(int(numberOfCards)):
         arrayAddressCounter += 1
         dataToBingoCard = inputData[arrayAddressCounter] + " " + inputData[arrayAddressCounter + 1] + " " + inputData[arrayAddressCounter + 2]+ " " + inputData[arrayAddressCounter + 3]+ " " + inputData[arrayAddressCounter + 4]
-        print (dataToBingoCard)
+        #print (dataToBingoCard)
         bingoCards.append (BingoCard(dataToBingoCard))
         arrayAddressCounter += 5
-def bingoDrawingProcedure():
+def Main():
     '''
     This function will draw numbers from the array of winning
     numbers until a winner in the BIngo cards are declared. it
     will then return the winning tallyWinningScore
     '''
-
-
-parseBingoData (fileRead ("Day4.PZL"))
+    numbersToDraw = fileRead("Day4.PZL")
+    parseBingoData (numbersToDraw)
+    for i in range(len(numbersToDraw)):
+        for j in range(len(bingoCards)):
+            if bingoCards[j].addWinningNumberAndDetermineWinner(numbersToDraw[i]):
+                print ("Bingo card " + str(j + 1) + " has won. The score for this card is :" + str(bingoCards[j].tallyWinningScore))
+    print ("Apparently something is wrong. there is no winner")
+Main()
