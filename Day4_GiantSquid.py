@@ -20,34 +20,38 @@ class BingoCard:
 
     def __init__ (self, dataInput):
         ''' Constructor '''
+        global cardNumbers
         cardNumbers = dataInput.split()
-        winningSquares = [0] * 25
+        global winningSquares
+        winningSquares = ["0"] * 25
 
-    def addWinningNumberAndDetermineWinner (winningNumber):
+    def addWinningNumberAndDetermineWinner ( self, winningNumber):
         '''
         Add a number and determine if this card is the winner by returning
         the next function
         '''
+        def thereIsAWinner (winningNumber):
+            '''
+            Determine if any rows or columns have called Bingo
+            '''
+            for u in range(5):
+                if winningSquares[u] == "1" and winningSquares [u + 5] == "1" and winningSquares [u + 10] == "1" and winningSquares [u + 15] == "1" and winningSquares [u + 20] == "1":
+                    gameWinningNumber = winningNumber
+                    return True
+            for v in range (5):
+                if winningSquares[( u * 5) ] == "1" and winningSquares [( u * 5) + 1] == "1" and winningSquares [( u * 5) + 2] == "1" and winningSquares [( u * 5) + 3] == "1" and winningSquares [( u * 5) + 4] == "1":
+                    gameWinningNumber = winningNumber
+                    return True
+            # if the program made it here there was not row and now, it has been ruled as False
+            return False
+
         for x in range(len(cardNumbers)):
-            if cardNumber[x] == winningNumber:
-                winningSquares[x] = 1
-                break
+            print (cardNumbers[x])
+            if cardNumbers[x] == winningNumber:
+                winningSquares[x] = "1"
         return thereIsAWinner(winningNumber)
 
-    def thereIsAWinner (winningNumber):
-        '''
-        Determine if any rows or columns have called Bingo
-        '''
-        for u in range(5):
-            if winningSquares[u] == 1 and winningSquares [u + 5] == 1 and winningSquares [u + 10] == 1 and winningSquares [u + 15] == 1 and winningSquares [u + 20] == 1:
-                gameWinningNumber = winningNumber
-                return True
-        for v in range (5):
-            if winningSquares[( u * 5) ] == 1 and winningSquares [( u * 5) + 1] == 1 and winningSquares [( u * 5) + 2] == 1 and winningSquares [( u * 5) + 3] == 1 and winningSquares [( u * 5) + 4] == 1:
-                gameWinningNumber = winningNumber
-                return True
-        # if the program made it here there was not row and now, it has been ruled as False
-        return False
+
 
     def tallyWinningScore():
         '''
@@ -86,7 +90,6 @@ def parseBingoData (inputData):
     for i in range(int(numberOfCards)):
         arrayAddressCounter += 1
         dataToBingoCard = inputData[arrayAddressCounter] + " " + inputData[arrayAddressCounter + 1] + " " + inputData[arrayAddressCounter + 2]+ " " + inputData[arrayAddressCounter + 3]+ " " + inputData[arrayAddressCounter + 4]
-        #print (dataToBingoCard)
         bingoCards.append (BingoCard(dataToBingoCard))
         arrayAddressCounter += 5
 def Main():
