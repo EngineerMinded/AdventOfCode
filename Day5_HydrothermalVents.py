@@ -17,6 +17,7 @@ pointArray = []
 pointCounter = []
 Matrix = []
 matrixBounds = 10
+fileName = "Day5_TestCase.PZL"
 numberOfAccesses = 0
 
 def fileRead(fileName):
@@ -44,24 +45,24 @@ def dechiperLineAndPlaceIntoMatrix(lineCommand):
         return
     if (x1 != x2):
         if (x1 < x2):
-            for i in range(x1, x2 + 1, 1):
-                print (str(i) + " " + str(y1))
+            for i in range(x1, x2 +1 ):
+                #print (str(i) + " " + str(y1))
                 Matrix[i][y1] +=1
                 numberOfAccesses +=1
         else:
             for i in range(x2 + 1  , x1):
-                print (str(i) + " " + str(y1))
+                #print (str(i) + " " + str(y1))
                 Matrix[i][y1] +=1
                 numberOfAccesses +=1
     elif(y1 != y2):
         if (y1 < y2):
-            for i in range(y1, y2 + 1  ):
-                print (str(x1) + " " + str(i))
+            for i in range(y1, y2 +1  ):
+                #print (str(x1) + " " + str(i))
                 Matrix[x1][i] +=1
                 numberOfAccesses +=1
         else:
-            for i in range(y2 + 1  , y1):
-                print (str(x1) + " " + str(i))
+            for i in range(y2 +1  , y1):
+                #print (str(x1) + " " + str(i))
                 Matrix[x1][i] +=1
                 numberOfAccesses +=1
 
@@ -70,10 +71,10 @@ def PartOne():
     # Generate Matrix at all zeroes
     print ("Generating Matrix")
     global Matrix
-    Matrix = [[0]* matrixBounds]*matrixBounds
+    Matrix =[ [0] * matrixBounds for _ in range(matrixBounds)]
     #print (Matrix)
     print ("Reading Data and placing into Matrix")
-    rawData = fileRead("Day5_TestCase.PZL")
+    rawData = fileRead(fileName)
     for i in range(len(rawData)):
         dechiperLineAndPlaceIntoMatrix(rawData[i])
     for i in range(matrixBounds):
