@@ -42,31 +42,30 @@ def dechiperLineAndPlaceIntoMatrix(lineCommand):
     y2 = int(secondVector[1])
     print (str(x1) + " " + str(y1) + " " + str(x2) + " " + str(y2))
     if (x1 != x2) and (y1 != y2):
+        print ("(Sequence not Used)")
         return
     if (x1 != x2):
         if (x1 < x2):
-            for i in range(x1, x2 +1 ):
+            for i in range(x1, x2 +1, 1):
                 #print (str(i) + " " + str(y1))
                 Matrix[i][y1] +=1
                 numberOfAccesses +=1
         else:
-            for i in range(x2 + 1  , x1):
+            for i in range(x1, x2 + 1, -1):
                 #print (str(i) + " " + str(y1))
                 Matrix[i][y1] +=1
                 numberOfAccesses +=1
     elif(y1 != y2):
         if (y1 < y2):
-            for i in range(y1, y2 +1  ):
+            for i in range(y1, y2 +1, 1  ):
                 #print (str(x1) + " " + str(i))
                 Matrix[x1][i] +=1
                 numberOfAccesses +=1
         else:
-            for i in range(y2 +1  , y1):
+            for i in range(y1, y2 + 1, -1):
                 #print (str(x1) + " " + str(i))
                 Matrix[x1][i] +=1
                 numberOfAccesses +=1
-
-
 def PartOne():
     # Generate Matrix at all zeroes
     print ("Generating Matrix")
