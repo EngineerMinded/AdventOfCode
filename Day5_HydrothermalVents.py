@@ -16,6 +16,8 @@ vectorArray = []
 pointArray = []
 pointCounter = []
 Matrix = []
+matrixBounds = 10
+numberOfAccesses = 0
 
 def fileRead(fileName):
     '''
@@ -29,6 +31,7 @@ def fileRead(fileName):
 
 def dechiperLineAndPlaceIntoMatrix(lineCommand):
     global Matrix
+    global numberOfAccesses
     intermediateArray = lineCommand.split()
     firstVector = intermediateArray[0].split(",")
     secondVector = intermediateArray[2].split(",")
@@ -36,40 +39,50 @@ def dechiperLineAndPlaceIntoMatrix(lineCommand):
     y1 = int(firstVector[1])
     x2 = int(secondVector[0])
     y2 = int(secondVector[1])
-    #print (str(x1) + " " + str(y1) + " " + str(y1) + " " + str(y2))
+    print (str(x1) + " " + str(y1) + " " + str(x2) + " " + str(y2))
     if (x1 != x2) and (y1 != y2):
         return
     if (x1 != x2):
         if (x1 < x2):
-            for i in range(x1, x2 + 1  ):
-                Matrix[i][y1]+= 1
+            for i in range(x1, x2 + 1, 1):
+                print (str(i) + " " + str(y1))
+                Matrix[i][y1] +=1
+                numberOfAccesses +=1
         else:
             for i in range(x2 + 1  , x1):
-                Matrix[i][y1] += 1
+                print (str(i) + " " + str(y1))
+                Matrix[i][y1] +=1
+                numberOfAccesses +=1
     elif(y1 != y2):
         if (y1 < y2):
-                for i in range(y1, y2 + 1  ):
-                    Matrix[x1][i] += 1
+            for i in range(y1, y2 + 1  ):
+                print (str(x1) + " " + str(i))
+                Matrix[x1][i] +=1
+                numberOfAccesses +=1
         else:
             for i in range(y2 + 1  , y1):
-                Matrix[x1][1] += 1
+                print (str(x1) + " " + str(i))
+                Matrix[x1][i] +=1
+                numberOfAccesses +=1
 
 
 def PartOne():
     # Generate Matrix at all zeroes
     print ("Generating Matrix")
     global Matrix
-    Matrix = [[0]* 10]*10
-    print (Matrix)
+    Matrix = [[0]* matrixBounds]*matrixBounds
+    #print (Matrix)
     print ("Reading Data and placing into Matrix")
     rawData = fileRead("Day5_TestCase.PZL")
     for i in range(len(rawData)):
         dechiperLineAndPlaceIntoMatrix(rawData[i])
-    print (Matrix)
+    for i in range(matrixBounds):
+        print (Matrix[i])
     intersectCount = 0
-    for u in range(10):
-        for v in range(10):
+    for u in range(matrixBounds):
+        for v in range(matrixBounds):
             if Matrix[u][v] > 1:
                 intersectCount+=1
     print ("Number of intersecting points has been evaluated as : " + str(intersectCount))
+    print (numberOfAccesses)
 PartOne()
