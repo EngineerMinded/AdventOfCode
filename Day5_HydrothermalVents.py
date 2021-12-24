@@ -12,26 +12,31 @@ https://adventofcode.com/2021/day/5
 ------------------------------------------
 
 ACHIEVMENT: OBTAINED FIRST GOLD STAR
+ACHIEVMENT: OBTAINED SECOND GOLD STAR
 '''
+''' Local Variables '''
 vectorArray = []
 pointArray = []
 pointCounter = []
 Matrix = []
-matrixBounds = 10
-fileName = "Day5_TestCase.PZL"
+matrixBounds = 1000
+#matrixBounds = 10
+fileName = "Day5.PZL"
+#fileName = "Day5_TestCase.PZL"
 numberOfAccesses = 0
 
 def fileRead(fileName):
-    '''
-    read the file data and return it's contents
-    as an arrayToReturn
-    '''
+    ''' read the file data and return it's contents
+        as an arrayToReturn '''
     file = open (fileName)
     arrayToReturn = file.read().splitlines()
     file.close()
     return arrayToReturn
 
 def dechiperLineAndPlaceIntoMatrix(lineCommand):
+    ''' This Fuction takes the line command and parses it to get the four
+        coordinate numbers out of it. It will then plot the matrix every
+        time a coordinate plotted '''
     global Matrix
     global numberOfAccesses
     intermediateArray = lineCommand.split()
@@ -41,7 +46,6 @@ def dechiperLineAndPlaceIntoMatrix(lineCommand):
     y1 = int(firstVector[1])
     x2 = int(secondVector[0])
     y2 = int(secondVector[1])
-
     print (str(x1) + " " + str(y1) + " " + str(x2) + " " + str(y2))
     if (x1 != x2) and (y1 != y2):
         # Diagonal Modification for Part 2
@@ -56,11 +60,11 @@ def dechiperLineAndPlaceIntoMatrix(lineCommand):
                 if countUpX:
                     dx = x1 + i
                 else:
-                    dx = x2 - i
+                    dx = x1 - i
                 if countUpY:
                     dy = y1 + i
                 else:
-                    dy = y2 - i
+                    dy = y1 - i
                 print str(dx) + " " + str(dy)
                 Matrix[dx][dy] +=1
         else:
@@ -89,6 +93,7 @@ def dechiperLineAndPlaceIntoMatrix(lineCommand):
                 Matrix[x1][i] +=1
                 numberOfAccesses +=1
 def Main():
+    ''' The Main function '''
     # Generate Matrix at all zeroes
     print ("Generating Matrix")
     global Matrix
@@ -106,5 +111,6 @@ def Main():
             if Matrix[u][v] > 1:
                 intersectCount+=1
     print ("Number of intersecting points has been evaluated as : " + str(intersectCount))
-    print (numberOfAccesses)
+
+# Call the main function
 Main()
