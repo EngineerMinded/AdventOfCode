@@ -11,7 +11,7 @@ Advent of Code
 https://adventofcode.com/2021/day/6
 ------------------------------------------
 ACHIEVMENT: EARNED FIRST STAR
-ACHIEVMENT: EARNED SECOND STAR 
+ACHIEVMENT: EARNED SECOND STAR
 
 '''
 lanternFish = []
@@ -53,8 +53,10 @@ def evaluateLanternFishList (lanternFishList):
         lanternFishList.append(newLanternFish[x])
     return lanternFishList
 
-''' Main Program starts here '''
+
 def PartOne():
+    ''' Part one will use a simple approach but as we will find out in part two,
+        This is terribly innefficent                                            '''
     def currentCount(LFList):
         tempList = [0] * 8
         for a in range(len(LFList)):
@@ -75,13 +77,11 @@ def PartTwo():
         because the program in part one would tie up system resources and take
         a long time to finish. This program will demonstrate both             '''
     lanternFish = []
-
     lanternFishMetaData = getFileInformation(fileName).split(",")
     for i in range(len(lanternFishMetaData)):
         lanternFish.append(int(lanternFishMetaData[i]))
     Day = 0
     fishByQuantity = [0] * 9
-
     for i in range(len(lanternFish)):
         fishByQuantity[lanternFish[i] ] += 1
     print (fishByQuantity)
@@ -105,14 +105,10 @@ def PartTwo():
         for r in range(len(currentList)):
             Total += currentList[r]
         return Total
-
-
     while Day <= 256:
         print ("Day " + str(Day) + " Total LanternFish :" + str(getTotalNumberOfFish(fishByQuantity)) )
         Day +=1
         fishByQuantity = tallyAllFish(fishByQuantity)
-
-
 
 PartOne()
 PartTwo()
