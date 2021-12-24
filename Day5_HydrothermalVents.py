@@ -92,25 +92,21 @@ def dechiperLineAndPlaceIntoMatrix(lineCommand):
                 print (str(x1) + " " + str(i))
                 Matrix[x1][i] +=1
                 numberOfAccesses +=1
-def Main():
-    ''' The Main function '''
-    # Generate Matrix at all zeroes
-    print ("Generating Matrix")
-    global Matrix
-    Matrix =[ [0] * matrixBounds for _ in range(matrixBounds)]
-    #print (Matrix)
-    print ("Reading Data and placing into Matrix")
-    rawData = fileRead(fileName)
-    for i in range(len(rawData)):
-        dechiperLineAndPlaceIntoMatrix(rawData[i])
-    for i in range(matrixBounds):
-        print (Matrix[i])
-    intersectCount = 0
-    for u in range(matrixBounds):
-        for v in range(matrixBounds):
-            if Matrix[u][v] > 1:
-                intersectCount+=1
-    print ("Number of intersecting points has been evaluated as : " + str(intersectCount))
-
-# Call the main function
-Main()
+''' The Remaining code is Main function '''
+# Generate Matrix at all zeroes
+print ("Generating Matrix")
+global Matrix
+Matrix =[ [0] * matrixBounds for _ in range(matrixBounds)]
+print ("Reading Data and placing into Matrix")
+rawData = fileRead(fileName)
+for i in range(len(rawData)):
+    # call the function above to plot the matrix
+    dechiperLineAndPlaceIntoMatrix(rawData[i])
+for i in range(matrixBounds):
+    print (Matrix[i])
+intersectCount = 0
+for u in range(matrixBounds):
+    for v in range(matrixBounds):
+        if Matrix[u][v] > 1:
+            intersectCount+=1
+print ("Number of intersecting points has been evaluated as : " + str(intersectCount))
