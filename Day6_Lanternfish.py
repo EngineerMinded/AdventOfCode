@@ -28,21 +28,13 @@ def getFileInformation (fName):
 def evaluateLanternFishList (lanternFishList):
     ''' An original lanternFish List by day will be the argument. The List
         returned will be the new list for that day
-
         Rules:
-
         - For Each day that passes (the calling of this function, a LanternFish's
           number will deplete by one unless it is zero.
-
         - If it is zero, it will reset to 6 and produce another lanternfish that
           starts off with a number of 8
-
         - The cycle contines the next day even with the new Lanternfish)'''
-    # Create a list for the potential of new LanternFish
     newLanternFish = []
-    # Change the numbers of the current lanternfish and add new ones to the new list if need be
-
-
     for x in range(len(lanternFishList)):
         if int(lanternFishList [x]) > 0:
             lanternFishList[x] -= 1
@@ -52,7 +44,6 @@ def evaluateLanternFishList (lanternFishList):
     for x in range(len(newLanternFish)):
         lanternFishList.append(newLanternFish[x])
     return lanternFishList
-
 
 def PartOne():
     ''' Part one will use a simple approach but as we will find out in part two,
@@ -88,14 +79,8 @@ def PartTwo():
 
     def tallyAllFish(currentList):
         newCycle = currentList[0]
-        currentList[0] = currentList[1]
-        currentList[1] = currentList[2]
-        currentList[2] = currentList[3]
-        currentList[3] = currentList[4]
-        currentList[4] = currentList[5]
-        currentList[5] = currentList[6]
-        currentList[6] = currentList[7]
-        currentList[7] = currentList[8]
+        for i in range(8):
+            currentList[i] = currentList[i + 1]
         currentList[8] = newCycle
         currentList[6] += newCycle
         return currentList
