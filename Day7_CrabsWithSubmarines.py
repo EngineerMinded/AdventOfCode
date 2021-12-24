@@ -12,6 +12,7 @@ https://adventofcode.com/2021/day/7
 ------------------------------------------
 
 ACHIEVMENT: OBTAINED FIRST GOLD STAR
+ACHIEVMENT: OBTAINED SECOND GOLD STAR
 '''
 fileName = ("Day7_TestCase.PZL")
 fileName = ("Day7.PZL")
@@ -50,7 +51,7 @@ def determineBestPosition(listFromSource,trueForPart2):
     for v in range(highestNumber - lowestNumber):
         if tallyTotalPoints(v,listFromSource,trueForPart2) < bestNumber:
             bestNumber = tallyTotalPoints(v,listFromSource,trueForPart2)
-            #print (str (v) + " " +str(bestNumber))
+            print (str (v) + " " +str(bestNumber))
     return bestNumber
 
 
@@ -63,4 +64,4 @@ def Main(trueForPart2):
     print ("The bestpoints points tallied are :" + str(bestPoints))
 
 Main(False)
-Main(True)
+#Main(True)
