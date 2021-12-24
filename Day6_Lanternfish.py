@@ -10,6 +10,8 @@ NOTE: This is an activity for:
 Advent of Code
 https://adventofcode.com/2021/day/6
 ------------------------------------------
+ACHIEVMENT: EARNED FIRST STAR
+ACHIEVMENT: EARNED SECOND STAR 
 
 '''
 lanternFish = []
