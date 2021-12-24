@@ -37,7 +37,7 @@ def determineBestPosition(listFromSource):
         for x in range(len(listFromSource)):
             totalPoints += abs(listFromSource[x] - medianNumber)
         return totalPoints
-    bestNumber = 999999999999999
+    bestNumber = 99999999999999
     for v in range(highestNumber - lowestNumber):
         if tallyTotalPoints(v,listFromSource) < bestNumber:
             bestNumber = tallyTotalPoints(v,listFromSource)
