@@ -14,8 +14,8 @@ ACHIEVMENT: EARN FIRST GOLD STAR FOR PART
             ONE
 '''
 
-FileName = ("Day8_TestCase.PZL")
 FileName = ("Day8.PZL")
+FileName = ("Day8_TestCase.PZL")
 
 
 
