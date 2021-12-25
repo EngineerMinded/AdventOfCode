@@ -16,6 +16,8 @@ https://adventofcode.com/2021/day/8
 FileName = ("Day8_TestCase.PZL")
 FileName = ("Day8.PZL")
 
+
+
 def numericDigitDetermination (dataSet):
     ''' output is number '''
     dataSetNumber = int(len(dataSet))
@@ -45,7 +47,7 @@ def readInformationFromFile (fileName):
 def extractLast4Numbers (dataLine):
     numberList = []
     lineSplit = dataLine.split("|")
-    print (lineSplit[1])
+    # print (lineSplit[1])
     numericMetaData = lineSplit[1].split()
     for a in range (len(numericMetaData)):
         numberList.append(numericDigitDetermination(numericMetaData[a]))
@@ -63,7 +65,7 @@ def ParseDataForPartOne ():
 
 def PartOne():
     numericValues = ParseDataForPartOne()
-    print (numericValues)
+    # print (numericValues)
     countFor147or8 = 0
     for h in range(len(numericValues)):
         if numericValues[h] == 1 or numericValues[h] == 4 or numericValues[h] == 7 or numericValues[h] == 8:
