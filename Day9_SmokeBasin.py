@@ -8,6 +8,8 @@ Written in: Python
 ------------------------------------
 https://adventofcode.com/2021/day/9
 
+ACHIEVED FIRST GOLD COIN
+
 '''
 
 fileName = ("Day9.PZL")
@@ -26,7 +28,7 @@ def isLowPoint(x,y):
     if x == 0:
         xu = 10
     else:
-      xu = int(len(MapMatrix[x - 1][y]))
+      xu = int(MapMatrix[x - 1][y])
     if x == len(MapMatrix) - 1:
         xd = 10
     else:
@@ -47,5 +49,5 @@ def isLowPoint(x,y):
 for x in range(len(MapMatrix)):
     for y in range(len(MapMatrix[0])):
         if isLowPoint(x,y):
-            lowPoints += 1
-print ("The number of low points has been evaluated as " + str(lowPoints) )
+            lowPoints += int(MapMatrix[x][y]) + 1
+print ("The value of the low points has been evaluated as " + str(lowPoints) )
