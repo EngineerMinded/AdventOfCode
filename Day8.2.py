@@ -1,125 +1,66 @@
-def calc_digits(dig_output):
-    req_dig_len = [2, 4, 3, 7]
-    qty = 0
-    for item in dig_output:
-        if len(item) in req_dig_len:
-            qty += 1
-    return qty
 
+fileName = ("Day8_TestCase.PZL")
+fileName = ("Day8.PZL")
 
-def clean_input(dig_input, digits):
-    '''Just clean already found digits
-    '''
-    for key in digits:
-        if dig_input.count(digits[key]) > 0:
-            dig_input.pop(dig_input.index(digits[key]))
+def readInformationFromFile (fileName):
+    ''' Read Data from the file and, return as list to be evaluated '''
+    File = open (fileName)
+    returnThisList = File.read().splitlines()
+    File.close()
+    return returnThisList
+inputs = readInformationFromFile(fileName)
 
+ans = sum(
+  len(chars) in (2, 3, 4, 7)
+  for line in inputs
+  for chars in line.split('|')[1].strip().split()
+)
+print(f'Times do digits 1, 4, 7, or 8 appear: {ans}')
 
-def analyze_digit(dig_input):
-    # length for digits
-    digs_length = {
-        2: 1,
-        5: [2, 3, 5],
-        4: 4,
-        6: [6, 9, 0],
-        3: 7,
-        7: 8
-    }
+code = []
+mapping = {2: 1, 3: 7, 4: 4, 7: 8}
+for input in inputs:
+    temp = {}
+    for word in input:
+        if len(word) in mapping:
+            temp[mapping[len(word)]] = word
 
-    '''
-     #1#
-    #   #
-    2   3
-    #   #
-     #4#
-    #   #
-    5   6
-    #   #
-     #7#
-    '''
-    wires = {
-        1: '',
-        2: '',
-        3: '',
-        4: '',
-        5: '',
-        6: '',
-        7: ''
-    }
-    digits = {}
-    digits_s = {}
+    # Find 6
+    for word in input:
+        if len(word) == 6 and any(char not in word for char in temp[1]):
+            temp[6] = word
+            break
+# Find 0
+    for word in input:
+        if len(word) == 6 and any(char not in word for char in temp[4]) and word not in temp.values():
+            temp[0] = word
+            break
 
-    # find 1, 4, 7, 8
-    for item in dig_input:
-        if type(digs_length[len(item)]) == int:
-            digits[digs_length[len(item)]] = item
-            digits_s[item] = digs_length[len(item)]
-    clean_input(dig_input, digits)
+    # Find 9 after 6 and 0 with length 6
+    for word in input:
+        if len(word) == 6 and word not in temp.values():
+            temp[9] = word
+            break
+# Find 5
+    for word in input:
+        if len(word) == 5 and all(char in temp[6] for char in word):
+            temp[5] = word
+            break
 
-    # find 6, 3
-    for item in dig_input:
-        if len(item) == 6:
-            if len(set(digits[1]) - set(item)) == 1:
-                digits[6] = item
-                digits_s[item] = 6
-                wires[3] = set(digits[1]) - set(item)
-                wires[6] = set(digits[1]) - wires[3]
-        elif len(item) == 5:
-            if len(set(item) - set(digits[7])) == 2:
-                digits[3] = item
-                digits_s[item] = 3
-    clean_input(dig_input, digits)
+    # Find 3
+    for word in input:
+        if len(word) == 5 and all(char in temp[9] for char in word) and word not in temp.values():
+            temp[3] = word
+            break
 
-    # find 9, 0
-    for item in dig_input:
-        if len(item) == 6:
-            if len(set(digits[8]) - set(digits[3]) - set(item)) == 1:
-                digits[9] = item
-                digits_s[item] = 9
-                wires[5] = set(digits[8]) - set(digits[3]) - set(item)
-                wires[2] = set(digits[9]) - set(digits[3])
-                wires[4] = set(digits[4]) - set(digits[7]) - wires[2]
-                wires[7] = set(digits[3]) - set(digits[7]) - wires[4]
-            elif len(set(digits[8]) - set(digits[3]) - set(item)) == 0:
-                digits[0] = item
-                digits_s[item] = 0
-    clean_input(dig_input, digits)
+    # Find 2 after 3 and 5 with length 5
+    for word in input:
+        if len(word) == 5 and word not in temp.values():
+            temp[2] = word
 
-    # find 5, 2
-    for item in dig_input:
-        if len(set(digits[9]) - wires[3] - set(item)) == 0:
-            digits[5] = item
-            digits_s[item] = 5
-        else:
-            digits[2] = item
-            digits_s[item] = 2
-    clean_input(dig_input, digits)
-    wires[1] = set(digits[7]) - set(digits[1])
-
-    return digits_s
-
-
-def calc_outputs(digits_s, dig_output):
-    number = 0
-    for item in dig_output:
-        for digit in digits_s:
-            if set(item) == set(digit):
-                number = number * 10 + digits_s[digit]
-    return int(number)
-
-
-def main():
-    qty = 0
-    sum_output = 0
-    with open("Day8.PZL") as f:
-        for line in f:
-            dig_input, dig_output = line.replace('\n', '').split(' | ')
-            qty += calc_digits(dig_output.split())
-            digits_s = analyze_digit(dig_input.split())
-            sum_output += calc_outputs(digits_s, dig_output.split())
-    print(qty)
-    print(sum_output)
-
-
-if __name__ == "__main__":
-    main()
+    # Transform key-value to value-key
+    code.append({v: k for k, v in temp.items()})
+total = 0
+for i, output in enumerate(outputs):
+    total += int(''.join(map(str, [code[i][word] for word in output])))
+print(f'Sum of the output values is {total}')
