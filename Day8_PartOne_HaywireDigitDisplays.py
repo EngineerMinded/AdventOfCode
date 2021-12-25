@@ -10,7 +10,8 @@ NOTE: This is an activity for:
 Advent of Code
 https://adventofcode.com/2021/day/8
 ------------------------------------------
-
+ACHIEVMENT: EARN FIRST GOLD STAR FOR PART
+            ONE
 '''
 
 FileName = ("Day8_TestCase.PZL")
