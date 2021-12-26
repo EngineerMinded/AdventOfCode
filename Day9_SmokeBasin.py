@@ -12,7 +12,7 @@ ACHIEVED FIRST GOLD COIN
 '''
 
 fileName = ("Day9.PZL")
-fileName = ("Day9_TestCase.PZL")
+#fileName = ("Day9_TestCase.PZL")
 lowPoints = 0
 File = open (fileName)
 fileMeta = File.read().splitlines()
@@ -21,7 +21,7 @@ MapMatrix = []
 basinCenterList = []
 for n in range(len(fileMeta)):
     MapMatrix.append(list(fileMeta[n]))
-    print (MapMatrix[n])
+    #print (MapMatrix[n])
 ''' We now have our map matrix, let's continue '''
 
 def isLowPoint(x,y):
@@ -55,9 +55,8 @@ print ("The value of the low points has been evaluated as " + str(lowPoints) )
 previouslyAccessedNodes = []
 def calculateBasinSize(x,y):
 
-
     def getMemberInformation(x,y):
-        print ("Accessing : " + str(x) +" "+ str(y))
+        #print ("Accessing : " + str(x) +" "+ str(y))
         localTotalWellCount = 1
         previouslyAccessedNodes.append(str(x) +","+ str(y))
 
@@ -75,10 +74,10 @@ def calculateBasinSize(x,y):
         if y > 0:
             if int(MapMatrix[x][y - 1]) < 9 and nodeHasNotBeenAccessed(x, y - 1):
                 localTotalWellCount += getMemberInformation(x, y - 1)
-        if x < len(MapMatrix) - 2:
+        if x < len(MapMatrix) - 1:
             if int(MapMatrix[x + 1][y]) < 9 and nodeHasNotBeenAccessed(x + 1, y):
                 localTotalWellCount += getMemberInformation(x + 1, y)
-        if y < len(MapMatrix[x]) - 2:
+        if y < len(MapMatrix[x]) - 1:
             if int(MapMatrix[x][y + 1]) < 9 and nodeHasNotBeenAccessed(x, y + 1):
                 localTotalWellCount += getMemberInformation(x, y + 1)
         return localTotalWellCount
@@ -86,10 +85,19 @@ def calculateBasinSize(x,y):
     return getMemberInformation(x, y)
 
 finalValues = []
-print type(MapMatrix[0][0])
 for h in range(len(basinCenterList)):
     basinListMetaData = basinCenterList[h].split(",")
-    print ("Starting low point " + str(h))
+    #print ("Starting low point " + str(h))
     finalValues.append(calculateBasinSize(int(basinListMetaData[0]), int(basinListMetaData[1])))
-print (finalValues)
-#accept New changes
+#print (finalValues)
+finalCalculation = 1
+for e in range(3):
+    currentHighAddress = 0
+    currentHighValue = 0
+    for d in range(len(finalValues)):
+        if finalValues[d] > currentHighValue:
+            currentHighValue = finalValues[d]
+            currentHighAddress = d
+    finalValues.pop(currentHighAddress)
+    finalCalculation *= currentHighValue
+print (" The final calculation was evauated as :" + str(finalCalculation))
