@@ -1,6 +1,6 @@
 '''
 Wayne Mack
-(c)2021 Engineerminded
+(c)2021 EngineerMinded
 
 ------------------------------------
 Day 9 : Smoke Basin
