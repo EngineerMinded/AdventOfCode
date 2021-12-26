@@ -99,4 +99,4 @@ for e in range(3):
             currentHighAddress = d
     finalValues.pop(currentHighAddress)
     finalCalculation *= currentHighValue
-print (" The final calculation was evaluated as :" + str(finalCalculation))
+print (" The final calculation have been evaluated as :" + str(finalCalculation))
