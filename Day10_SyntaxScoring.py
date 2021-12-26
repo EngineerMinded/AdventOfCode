@@ -19,7 +19,7 @@ totalSyntaxErrors = 0
 syntaxLines = []
 for a in range(len(fileMetaData)):
     syntaxLines.append(list(fileMetaData[a]))
-    
+
 def syntaxCheck (lineNumber) :
     chunkBalances = []
     for a in range(len(syntaxLines[lineNumber])):
@@ -100,6 +100,7 @@ for q in range(len(syntaxLines)):
 
 def returnFinalAnswer(finalList):
     Answer = 0
+    
     def isThisMedian(numberToEvaluate):
         high = 0
         low = 0
