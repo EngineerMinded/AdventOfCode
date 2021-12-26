@@ -25,7 +25,7 @@ for n in range(len(fileMeta)):
 
 for x in range(len(MapMatrix)):
 
-    def isLowPoint(x,y):
+    def pointIsLowPoint(x,y):
         if x == 0:
             xu = 10
         else:
@@ -43,11 +43,10 @@ for x in range(len(MapMatrix)):
         else:
             yr = int(MapMatrix[x][y + 1])
         xTarget = int(MapMatrix[x][y])
-        answer  = xTarget < xu and xTarget < xd and xTarget < yl and xTarget < yr
-        return answer
+        return xTarget < xu and xTarget < xd and xTarget < yl and xTarget < yr
 
     for y in range(len(MapMatrix[0])):
-        if isLowPoint(x,y):
+        if pointIsLowPoint(x,y):
             basinCenterList.append(str(x)  + "," + str(y))
             lowPoints += int(MapMatrix[x][y]) + 1
 
