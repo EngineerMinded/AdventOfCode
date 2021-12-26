@@ -27,34 +27,33 @@ for a in range(len(fileMetaData)):
  2 = "{" - 1197 points
  3 = "<" - 25137 points
  '''
-for g in range (len(syntaxLines)):
-    print (syntaxLines[g])
+
 
 def syntaxCheck (lineNumber) :
-    print ("Line Number" + str(lineNumber))
+    #print ("Line Number" + str(lineNumber))
     chunkBalances = []
-    print (chunkBalances)
+    #print (chunkBalances)
     for a in range(len(syntaxLines[lineNumber])):
-        print (str(chunkBalances) + " : " + syntaxLines[lineNumber][a])
+        #print (str(chunkBalances) + " : " + syntaxLines[lineNumber][a])
         if syntaxLines[lineNumber][a] == "(" or syntaxLines[lineNumber][a] == "[" or syntaxLines[lineNumber][a] == "{" or syntaxLines[lineNumber][a] == "<":
             chunkBalances.append(syntaxLines[lineNumber][a])
         elif syntaxLines[lineNumber][a] == ")":
             if chunkBalances.pop() != "(":
-                print ("Corrupted")
+                #print ("Corrupted")
                 return 3
         elif syntaxLines[lineNumber][a] == "]":
             if chunkBalances.pop() != "[":
-                print ("Corrupted")
+                #print ("Corrupted")
                 return 57
         elif syntaxLines[lineNumber][a] == "}":
             if chunkBalances.pop() != "{":
-                print ("Currupted")
+                #print ("Currupted")
                 return 1197
         elif syntaxLines[lineNumber][a] == ">":
             if chunkBalances.pop() != "<":
-                print ("Corrupted")
+                #print ("Corrupted")
                 return 25137
-    print ("Not corrupted")
+    #print ("Not corrupted")
     syntaxLines[lineNumber] = chunkBalances
     return 0
 
@@ -64,7 +63,7 @@ for c in range(len(syntaxLines)):
         corruptedLines.append(c)
         totalSyntaxErrors += syntaxCheck(c)
 print("The syntax error total is :" + str(totalSyntaxErrors))
-print("The corrupted Lines are: " + str(corruptedLines))
+#print("The corrupted Lines are: " + str(corruptedLines))
 previousNumber = 0
 for l in corruptedLines:
 
@@ -133,6 +132,5 @@ def returnFinalAnswer(finalList):
     for i in finalList:
         if isThisMedian(i):
             Answer = i
-    print (Answer)
     return Answer
 print ("The final answer for Part 2 is :" + str(returnFinalAnswer(finalList)))
