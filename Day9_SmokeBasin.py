@@ -56,33 +56,30 @@ previouslyAccessedNodes = []
 
 def calculateBasinSize(x,y):
 
-    def getMemberInformation(x,y):
-        localTotalWellCount = 1
-        previouslyAccessedNodes.append(str(x) +","+ str(y))
+    localTotalWellCount = 1
+    previouslyAccessedNodes.append(str(x) +","+ str(y))
 
-        def nodeHasNotBeenAccessed(x,y):
-            for g in range(len(previouslyAccessedNodes)):
-                coordinates = previouslyAccessedNodes[g].split(",")
-                if int(coordinates[0]) == x and int(coordinates[1]) == y:
-                    return False
-            return True
+    def nodeHasNotBeenAccessed(x,y):
+        for g in range(len(previouslyAccessedNodes)):
+            coordinates = previouslyAccessedNodes[g].split(",")
+            if int(coordinates[0]) == x and int(coordinates[1]) == y:
+                return False
+        return True
 
-        ''' Check surrounding points and return getMemberInforMation '''
-        if x > 0:
-            if int(MapMatrix[x - 1][y]) < 9 and nodeHasNotBeenAccessed(x - 1 , y):
-                localTotalWellCount += getMemberInformation(x - 1, y)
-        if y > 0:
-            if int(MapMatrix[x][y - 1]) < 9 and nodeHasNotBeenAccessed(x, y - 1):
-                localTotalWellCount += getMemberInformation(x, y - 1)
-        if x < len(MapMatrix) - 1:
-            if int(MapMatrix[x + 1][y]) < 9 and nodeHasNotBeenAccessed(x + 1, y):
-                localTotalWellCount += getMemberInformation(x + 1, y)
-        if y < len(MapMatrix[x]) - 1:
-            if int(MapMatrix[x][y + 1]) < 9 and nodeHasNotBeenAccessed(x, y + 1):
-                localTotalWellCount += getMemberInformation(x, y + 1)
-        return localTotalWellCount
-
-    return getMemberInformation(x, y)
+    ''' Check surrounding points and return getMemberInforMation '''
+    if x > 0:
+        if int(MapMatrix[x - 1][y]) < 9 and nodeHasNotBeenAccessed(x - 1 , y):
+            localTotalWellCount += calculateBasinSize(x - 1, y)
+    if y > 0:
+        if int(MapMatrix[x][y - 1]) < 9 and nodeHasNotBeenAccessed(x, y - 1):
+            localTotalWellCount += calculateBasinSize(x, y - 1)
+    if x < len(MapMatrix) - 1:
+        if int(MapMatrix[x + 1][y]) < 9 and nodeHasNotBeenAccessed(x + 1, y):
+            localTotalWellCount += calculateBasinSize(x + 1, y)
+    if y < len(MapMatrix[x]) - 1:
+        if int(MapMatrix[x][y + 1]) < 9 and nodeHasNotBeenAccessed(x, y + 1):
+            localTotalWellCount += calculateBasinSize(x, y + 1)
+    return localTotalWellCount
 
 finalValues = []
 for h in range(len(basinCenterList)):
