@@ -9,7 +9,6 @@ Written in: Python
 https://adventofcode.com/2021/day/9
 
 ACHIEVED FIRST GOLD COIN
-
 '''
 
 fileName = ("Day9.PZL")
@@ -19,6 +18,7 @@ File = open (fileName)
 fileMeta = File.read().splitlines()
 File.close()
 MapMatrix = []
+basinCenterList = []
 for n in range(len(fileMeta)):
     MapMatrix.append(list(fileMeta[n]))
     print (MapMatrix[n])
@@ -43,11 +43,52 @@ def isLowPoint(x,y):
         yr = int(MapMatrix[x][y + 1])
     xTarget = int(MapMatrix[x][y])
     answer  = xTarget < xu and xTarget < xd and xTarget < yl and xTarget < yr
-    print (str(xTarget)+": "+ str(xd) +" "+ str(xu) +" "+ str(yl) +" "+ str(yr) + " "+ str(answer))
     return answer
 
 for x in range(len(MapMatrix)):
     for y in range(len(MapMatrix[0])):
         if isLowPoint(x,y):
+            basinCenterList.append(str(x)  + "," + str(y))
             lowPoints += int(MapMatrix[x][y]) + 1
 print ("The value of the low points has been evaluated as " + str(lowPoints) )
+''' With part one done, we move to Part 2 '''
+previouslyAccessedNodes = []
+def calculateBasinSize(x,y):
+
+
+    def getMemberInformation(x,y):
+        print ("Accessing : " + str(x) +" "+ str(y))
+        localTotalWellCount = 1
+        previouslyAccessedNodes.append(str(x) +","+ str(y))
+
+        def nodeHasNotBeenAccessed(x,y):
+            for g in range(len(previouslyAccessedNodes)):
+                coordinates = previouslyAccessedNodes[g].split(",")
+                if int(coordinates[0]) == x and int(coordinates[1]) == y:
+                    return False
+            return True
+
+        ''' Check surrounding points and return getMemberInforMation '''
+        if x > 0:
+            if int(MapMatrix[x - 1][y]) < 9 and nodeHasNotBeenAccessed(x - 1 , y):
+                localTotalWellCount += getMemberInformation(x - 1, y)
+        if y > 0:
+            if int(MapMatrix[x][y - 1]) < 9 and nodeHasNotBeenAccessed(x, y - 1):
+                localTotalWellCount += getMemberInformation(x, y - 1)
+        if x < len(MapMatrix) - 2:
+            if int(MapMatrix[x + 1][y]) < 9 and nodeHasNotBeenAccessed(x + 1, y):
+                localTotalWellCount += getMemberInformation(x + 1, y)
+        if y < len(MapMatrix[x]) - 2:
+            if int(MapMatrix[x][y + 1]) < 9 and nodeHasNotBeenAccessed(x, y + 1):
+                localTotalWellCount += getMemberInformation(x, y + 1)
+        return localTotalWellCount
+
+    return getMemberInformation(x, y)
+
+finalValues = []
+print type(MapMatrix[0][0])
+for h in range(len(basinCenterList)):
+    basinListMetaData = basinCenterList[h].split(",")
+    print ("Starting low point " + str(h))
+    finalValues.append(calculateBasinSize(int(basinListMetaData[0]), int(basinListMetaData[1])))
+print (finalValues)
