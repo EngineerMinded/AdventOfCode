@@ -11,7 +11,7 @@ https://adventofcode.com/2021/day/10
 
 '''
 fileName = ("Day10.PZL")
-fileName = ("Day10_TestCase.PZL")
+#fileName = ("Day10_TestCase.PZL")
 
 File = open(fileName)
 fileMetaData = File.read().splitlines()
@@ -68,8 +68,8 @@ print("The corrupted Lines are: " + str(corruptedLines))
 previousNumber = 0
 for l in corruptedLines:
 
-    syntaxLines.pop(l - previousNumber)
-    previousNumber = l
+    syntaxLines[l] = []
+    #previousNumber = l
 ''' Begin procedures for Part 2 '''
 totalPoints = 0
 def remainingScoreDeterminationByLine (lineNumber):
@@ -108,11 +108,31 @@ def remainingScoreDeterminationByLine (lineNumber):
             charactertoFind = "{"
         elif g == ">":
             charactertoFind = "<"
-        print (totalbyLine)
         r -= 1
-    print ("Final " + str(totalbyLine))
     return totalbyLine
-
+finalList = []
 part2Answer = 0
 for q in range(len(syntaxLines)):
-    part2Answer +=remainingScoreDeterminationByLine(q)
+    localAnswer = remainingScoreDeterminationByLine(q)
+    if (localAnswer > 0):
+        finalList.append(localAnswer)
+''' evaluate final list to find Median '''
+
+def returnFinalAnswer(finalList):
+    Answer = 0
+    def isThisMedian(numberToEvaluate):
+        high = 0
+        low = 0
+        for j in finalList:
+            if j < numberToEvaluate:
+                low += 1
+            elif j > numberToEvaluate:
+                high += 1
+        return high == low
+
+    for i in finalList:
+        if isThisMedian(i):
+            Answer = i
+    print (Answer)
+    return Answer
+print ("The final answer for Part 2 is :" + str(returnFinalAnswer(finalList)))
