@@ -45,7 +45,7 @@ for c in range(len(syntaxLines)):
     if syntaxCheck(c) != 0:
         corruptedLines.append(c)
         totalSyntaxErrors += syntaxCheck(c)
-print("The syntax error total is :" + str(totalSyntaxErrors))
+print("The final answer for Part 1 is :" + str(totalSyntaxErrors))
 previousNumber = 0
 for l in corruptedLines:
 
@@ -100,7 +100,7 @@ for q in range(len(syntaxLines)):
 
 def returnFinalAnswer(finalList):
     Answer = 0
-    
+
     def isThisMedian(numberToEvaluate):
         high = 0
         low = 0
