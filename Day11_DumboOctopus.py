@@ -81,11 +81,12 @@ def everyOctopusIsSynchronizing(currentOctopusMatrix):
 ''' NOTE: comment out line below and replace with :
     while generation < 100:
     to demonstrate part one '''
-    
+
 while not everyOctopusIsSynchronizing(octopusMatrix):
     octopusMatrix =  generationChange(octopusMatrix)
     for octo in octopusMatrix:
         print octo
-    print(" ")
     generation +=1
+    print ("Generation :" + str(generation))
+    print ("")
 print ("After " + str (generation) + " steps, there have been " + str (numberOfFlashes) + " flashes!")
