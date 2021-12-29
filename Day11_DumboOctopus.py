@@ -35,7 +35,11 @@ for i in  range(len(fileMetaData)):
 for i in octopusMatrix:
     print (i)
 print (" ")
+# this function makes changes on every passing generation
 def generationChange(oldOctopusMatrix):
+    ''' procedure for every flash made by a given octopus
+        this method is recursive to include adjacent octopi
+        that may flash due to the octopus                    '''
 
     def flash(oldOctopusMatrix, x, y):
         global numberOfFlashes
@@ -69,7 +73,7 @@ def generationChange(oldOctopusMatrix):
             if oldOctopusMatrix[column][point] > 9:
                 oldOctopusMatrix = flash(oldOctopusMatrix,column,point)
     return oldOctopusMatrix
-
+# Check and see if every octopus in grid is flashing at the same instance
 def everyOctopusIsSynchronizing(currentOctopusMatrix):
     synchronizingCheck = currentOctopusMatrix[0][0]
     for u in range(len(currentOctopusMatrix)):
