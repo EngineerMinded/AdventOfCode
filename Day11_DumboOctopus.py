@@ -10,12 +10,10 @@ https://adventofcode.com/2021/day/11
 
 ACHIEVMENT : FIRST GOLD STAR
 
-
 '''
 octopusMatrix = []
 generation = 0
 numberOfFlashes = 0
-
 fileName = ("Day11.Puzzle")
 #fileName = ("Day11_TestCase.Puzzle")
 #fileName = ("Day11_TestCase2.Puzzle")
@@ -69,18 +67,22 @@ def generationChange(oldOctopusMatrix):
         for point in range(len(oldOctopusMatrix[column])):
             if oldOctopusMatrix[column][point] > 9:
                 oldOctopusMatrix = flash(oldOctopusMatrix,column,point)
-
-
     return oldOctopusMatrix
 
-
-
-while generation < 100:
+def everyOctopusIsSynchronizing(currentOctopusMatrix):
+    synchronizingCheck = currentOctopusMatrix[0][0]
+    for u in range(len(currentOctopusMatrix)):
+        for v in range(len(currentOctopusMatrix[u])):
+            if (currentOctopusMatrix[u][v] != synchronizingCheck):
+                return False
+    return True
+''' NOTE: comment out line below and replace with :
+    while generation < 100:
+    to demonstrate part one '''
+while not everyOctopusIsSynchronizing(octopusMatrix):
     octopusMatrix =  generationChange(octopusMatrix)
     for octo in octopusMatrix:
         print octo
     print(" ")
     generation +=1
-
-
 print ("After " + str (generation) + " steps, there have been " + str (numberOfFlashes) + " flashes!")
