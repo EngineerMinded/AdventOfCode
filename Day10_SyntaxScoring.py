@@ -8,7 +8,8 @@ Written in: Python
 ------------------------------------
 https://adventofcode.com/2021/day/10
 
-
+ACHIEVED FIRST GOLD STAR
+ACHIEVED SECOND GOLD STAR
 '''
 fileName = ("Day10.PZL")
 #fileName = ("Day10_TestCase.PZL")
