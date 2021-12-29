@@ -9,6 +9,7 @@ Written in: Python
 https://adventofcode.com/2021/day/11
 
 ACHIEVMENT : FIRST GOLD STAR
+ACHIEVMENT : SECOND GOLD STAR
 
 '''
 octopusMatrix = []
@@ -76,9 +77,11 @@ def everyOctopusIsSynchronizing(currentOctopusMatrix):
             if (currentOctopusMatrix[u][v] != synchronizingCheck):
                 return False
     return True
+
 ''' NOTE: comment out line below and replace with :
     while generation < 100:
     to demonstrate part one '''
+    
 while not everyOctopusIsSynchronizing(octopusMatrix):
     octopusMatrix =  generationChange(octopusMatrix)
     for octo in octopusMatrix:
