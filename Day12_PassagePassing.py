@@ -20,17 +20,6 @@ class Cave :
         self.subCaves = []
         self.numberOfEnds = 0
 
-    def addCave(self, cave2BeAdded):
-        # create a new cave. add it if it already does not exist
-        foundExisting = False
-        for u in self.subCaves:
-            if u.ID == cave2BeAdded.ID:
-                for v in self.cave2BeAdded.subCaves:
-                    u.addCave(v)
-                    foundExisting = True
-        if not foundExisting:
-            self.subCaves.append(cave2BeAdded)
-
     def countEnds(endCount):
         # count caves that say End
         for w in subCaves:
@@ -40,11 +29,23 @@ class Cave :
         return endCount
 
     def printAllCaves(self, spaceNumber):
+        print (" " * spaceNumber + self.ID)
         for x in self.subCaves:
-            print ("   " * spaceNumber + " " + x.ID )
             x.printAllCaves(spaceNumber + 1)
 
 
+    def addCave(self, parentCave , nextCave):
+        # create a new cave. add it if it already does not exist
+        if parentCave == self.ID:
+            self.subCaves.append(Cave(nextCave))
+            return True
+        elif len(self.subCaves) == 0:
+            return False
+        else:
+            for name in self.subCaves:
+                    if name.addCave(parentCave , nextCave):
+                        return True
+        return False
 
 fileName = ("Day12.Puzzle")
 fileName = ("Day12_TestCase1.Puzzle")
@@ -52,30 +53,20 @@ fileName = ("Day12_TestCase2.Puzzle")
 fileName = ("Day12_TestCase3.Puzzle")
 
 commandList = []
-listOfCaves = []
+
 File = open(fileName)
 commandList = File.read().splitlines()
 File.close()
-for command in commandList:
-    commandSet = command.split("-")
-    duplicatePresent = False
-    for currentList in listOfCaves:
-        if commandSet[0] == currentList.ID:
-            currentList.addCave(Cave(commandSet[1]))
-            duplicatePresent = True
-    if not duplicatePresent:
-        listOfCaves.append(Cave(commandSet[0]))
-        listOfCaves[-1].addCave(Cave(commandSet[1]))
-print (len(listOfCaves))
-print (len(commandList))
-for x in listOfCaves:
-    print ( x.ID)
-    x.printAllCaves(0)
-
-for e in commandList:
-    commandSet = e.split("-")
-    if commandSet[0] == "start":
-        CaveList = Cave(commandSet[0])
-        CaveList.addCave(commandSet[1])
-        pop(e)
+listEstablished = False
+caveEntrance = Cave("start")
 print (commandList)
+while len(commandList) > 0:
+    print ("CommandList :" + str(len(commandList)))
+    for i in commandList:
+        splitData = i.split("-")
+        if caveEntrance.addCave(splitData[0] , splitData [1]):
+            i = "XXX"
+    for i in range(len(commandList)):
+        if commandList[i] == "XXX":
+            commandList.pop(i)
+caveEntrance.printAllCaves(0)
