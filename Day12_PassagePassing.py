@@ -39,7 +39,7 @@ class Cave :
         return endCount
 
     def printAllCaves(self, spaceNumber):
-        print (" " * spaceNumber + self.ID)
+        print ("      " * spaceNumber + self.ID)
         for x in self.subCaves:
             x.printAllCaves(spaceNumber + 1)
 
@@ -49,6 +49,11 @@ class Cave :
         # create a new cave. add it if it already does not exist
         if parentCave == self.ID:
             self.subCaves.append(Cave(nextCave))
+            if parentCave[0].isupper():
+
+    def addLargeCave(parentCave,arrayOflittleCaves:
+        print ("o")
+
             returnThus = True
         elif len(self.subCaves) == 0:
             return False
