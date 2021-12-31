@@ -35,23 +35,20 @@ class Cave :
 
 
     def addCave(self, parentCave , nextCave):
+        returnThus = False
         # create a new cave. add it if it already does not exist
         if parentCave == self.ID:
             self.subCaves.append(Cave(nextCave))
-            return True
+            returnThus = True
         elif len(self.subCaves) == 0:
             return False
-        else:
-            for name in self.subCaves:
+        for name in self.subCaves:
                     if name.addCave(parentCave , nextCave):
-                        return True
-        return False
+                        returnThus =  True
+        return returnThus
 
 fileName = ("Day12.Puzzle")
 fileName = ("Day12_TestCase1.Puzzle")
-fileName = ("Day12_TestCase2.Puzzle")
-fileName = ("Day12_TestCase3.Puzzle")
-
 commandList = []
 
 File = open(fileName)
@@ -61,12 +58,11 @@ listEstablished = False
 caveEntrance = Cave("start")
 print (commandList)
 while len(commandList) > 0:
-    print ("CommandList :" + str(len(commandList)))
-    for i in commandList:
-        splitData = i.split("-")
-        if caveEntrance.addCave(splitData[0] , splitData [1]):
-            i = "XXX"
+    addressesToPop = []
     for i in range(len(commandList)):
-        if commandList[i] == "XXX":
+
+        splitData = commandList[i].split("-")
+        if caveEntrance.addCave(splitData[0] , splitData [1]):
             commandList.pop(i)
+            break
 caveEntrance.printAllCaves(0)
