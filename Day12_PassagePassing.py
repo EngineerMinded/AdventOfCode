@@ -12,6 +12,16 @@ https://adventofcode.com/2021/day/12
 ''' This is the first time we will be using a class
     in Python. This may start a trend for the remainder
     of the projects '''
+
+fileName = ("Day12.Puzzle")
+fileName = ("Day12_TestCase1.Puzzle")
+commandList = []
+
+File = open(fileName)
+commandList = File.read().splitlines()
+File.close()
+listEstablished = False
+
 class Cave :
 
     def __init__(self, ID ):
@@ -47,14 +57,7 @@ class Cave :
                         returnThus =  True
         return returnThus
 
-fileName = ("Day12.Puzzle")
-fileName = ("Day12_TestCase1.Puzzle")
-commandList = []
 
-File = open(fileName)
-commandList = File.read().splitlines()
-File.close()
-listEstablished = False
 caveEntrance = Cave("start")
 print (commandList)
 while len(commandList) > 0:
