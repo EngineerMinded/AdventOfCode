@@ -12,65 +12,38 @@ https://adventofcode.com/2021/day/12
 ''' This is the first time we will be using a class
     in Python. This may start a trend for the remainder
     of the projects '''
+#!/usr/bin/python3
+import sys
+import itertools
+from collections import defaultdict, Counter, deque
 
-fileName = ("Day12.Puzzle")
-fileName = ("Day12_TestCase1.Puzzle")
-commandList = []
+infile = sys.argv[1] if len(sys.argv)>1 else 'Day12.Puzzle'
 
-File = open(fileName)
-commandList = File.read().splitlines()
-File.close()
-listEstablished = False
+# adjacency list - for each vertex, what vertices does it have edges to?
+E = defaultdict(list)
+for line in open(infile):
+    a,b = line.strip().split('-')
+    E[a].append(b)
+    E[b].append(a)
 
-class Cave :
-
-    def __init__(self, ID ):
-        # CONSTRUCTOR
-        self.ID = ID
-        self.subCaves = []
-        self.numberOfEnds = 0
-
-    def countEnds(endCount):
-        # count caves that say End
-        for w in subCaves:
-            if w.ID == "end":
-                endCount += 1
-            endCount = w.countEnds(endCount)
-        return endCount
-
-    def printAllCaves(self, spaceNumber):
-        print ("      " * spaceNumber + self.ID)
-        for x in self.subCaves:
-            x.printAllCaves(spaceNumber + 1)
-
-
-    def addCave(self, parentCave , nextCave):
-        returnThus = False
-        # create a new cave. add it if it already does not exist
-        if parentCave == self.ID:
-            self.subCaves.append(Cave(nextCave))
-            if parentCave[0].isupper():
-
-    def addLargeCave(parentCave,arrayOflittleCaves:
-        print ("o")
-
-            returnThus = True
-        elif len(self.subCaves) == 0:
-            return False
-        for name in self.subCaves:
-                    if name.addCave(parentCave , nextCave):
-                        returnThus =  True
-        return returnThus
-
-
-caveEntrance = Cave("start")
-print (commandList)
-while len(commandList) > 0:
-    addressesToPop = []
-    for i in range(len(commandList)):
-
-        splitData = commandList[i].split("-")
-        if caveEntrance.addCave(splitData[0] , splitData [1]):
-            commandList.pop(i)
-            break
-caveEntrance.printAllCaves(0)
+def solve(p1):
+    start = ('start', set(['start']), None)
+    ans = 0
+    Q = deque([start])
+    while Q:
+        # where we are, which small caves we've visited
+        pos, small, twice = Q.popleft()
+        if pos == 'end':
+            ans += 1
+            continue
+        for y in E[pos]:
+            if y not in small:
+                new_small = set(small)
+                if y.lower() == y:
+                    new_small.add(y)
+                Q.append((y, new_small, twice))
+            elif y in small and twice is None and y not in ['start', 'end'] and not p1:
+                Q.append((y, small, y))
+    return ans
+print(solve(p1=True))
+print(solve(p1=False))
