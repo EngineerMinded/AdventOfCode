@@ -89,7 +89,7 @@ def everyOctopusIsSynchronizing(currentOctopusMatrix):
 while not everyOctopusIsSynchronizing(octopusMatrix):
     octopusMatrix =  generationChange(octopusMatrix)
     for octo in octopusMatrix:
-        print octo
+        print (octo)
     generation +=1
     print ("Generation :" + str(generation))
     print ("")
