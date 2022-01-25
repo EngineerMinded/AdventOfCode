@@ -42,8 +42,8 @@ print ("xMax : " + str(xMax))
 print ("yMax : " + str(yMax))
 print (coordinates)
 print (parsedInstructions)
-
+'''
 def foldOrigami (coordinates, parsedInstructions):
     for fold in parsedInstructions:
         if fold[0] == "x":
-            
+'''
