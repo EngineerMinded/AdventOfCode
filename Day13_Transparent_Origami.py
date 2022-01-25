@@ -23,26 +23,27 @@ def readAndParseData (plotData):
     global parsedInstructions
 
     for line in plotData:
-        dataLine = line.split()
-        if len(dataLine)  == 1:
-            # if this is true, it is a coordinate so . . .
-            xNow,yNow = dataLine.split(",")
-            if xNow > xMax:
-                xMax = xNow
-            if yNow > yMax:
-                yMax = yNow
-            data2Insert = []
-            data2Insert.append(xNow)
-            data2Insert.append(yNow)
-            coordinates.append(data2Insert)
-        elif len(dataLine) == 3:
-            # if this is true, it is a instructions so . . .
-            plot,value = dataLine[2].split("=")
-            data2Insert = []
-            data2Insert.append(plot)
-            data2Insert.append(value)
-            parsedInstructions.append(data2Insert)
-print (plotData)
+        if line != "":
+            dataLine = line.split()
+            if len(dataLine) == 3:
+                # if this is true, it is a instructions so . . .
+                plotValue = dataLine[2].split("=")
+                parsedInstructions.append(plotValue)
+            else :
+                numberSet = line.split(",")
+                if int(numberSet[0]) > xMax:
+                    xMax = int(numberSet[0])
+                if int(numberSet[1]) > yMax:
+                    yMax = int(numberSet[1])
+                coordinates.append(numberSet)
+
 readAndParseData(plotData)
+print ("xMax : " + str(xMax))
+print ("yMax : " + str(yMax))
 print (coordinates)
 print (parsedInstructions)
+
+def foldOrigami (coordinates, parsedInstructions):
+    for fold in parsedInstructions:
+        if fold[0] == "x":
+            
