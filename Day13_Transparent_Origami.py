@@ -98,7 +98,3 @@ for i in finalMatrix:
         else:
             TextLine += " "
     print (TextLine)
-
-
-
-            
