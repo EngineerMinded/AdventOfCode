@@ -20,7 +20,7 @@ def parseMetaData (metaData):
     for characters in metaData[0]:
         Formula.append(characters)
     for line in range(2, len(metaData)):
-        forLoopData = metaData[line].split("->")
+        forLoopData = metaData[line].split("-> ")
         pair = (list(forLoopData[0]))
         segment = []
         segment.append(pair[0])
