@@ -39,7 +39,6 @@ readAndParseData(plotData)
 print (coordinates)
 print (parsedInstructions)
 
-
 def foldOrigami (coordinates, parsedInstructions):
 
     def foldAlongXAxis (xFold, coordinates):
@@ -81,14 +80,11 @@ def plotWithCoordinates (coordinates):
     return matrix
 
 finalMatrix = (plotWithCoordinates(coordinates))
-
 part1Count = 0
-
 for x in finalMatrix:
     for y in x:
         if y == "#":
             part1Count += 1
-
 print ("The number of Elements in the Matrix in part one is :" +str(part1Count))
 for i in finalMatrix:
     TextLine = ""
