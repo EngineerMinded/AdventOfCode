@@ -53,7 +53,7 @@ def stepFormulaModifications (numberOfSteps, Formula, Instructions):
         printAsString(Answer)
     return Answer
 
-Answer = stepFormulaModifications(4,Formula, Instructions)
+Answer = stepFormulaModifications(10,Formula, Instructions)
 
 def getFirstAndLastAnswer (completedFormula):
     valueList =[]
@@ -61,7 +61,7 @@ def getFirstAndLastAnswer (completedFormula):
     def addVariable (letterValue):
             for value in valueList:
                 if value[0] == letterValue:
-                    value[1] = +1
+                    value[1] += 1
                     return
             LV = []
             LV.append (letterValue)
