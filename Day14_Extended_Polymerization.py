@@ -29,32 +29,32 @@ def parseMetaData (metaData):
         Instructions.append(segment)
 
 parseMetaData(metaData)
-print (Formula)
-for e in Instructions:
-    print (e)
-
 
 def stepFormulaModifications (numberOfSteps, Formula, Instructions):
 
-    def insertInstruction(Formula, instruction):
+    def printAsString (Formula):
+        printMe = ""
+        for g in Formula:
+            printMe += g
+        print (printMe)
+    printAsString(Formula)
+    def insertInstruction(Formula, instructions):
         Answer = []
         for i in range(len(Formula) - 1):
-            if Formula[i] == instruction[0] and Formula[i + 1] == instruction[1]:
-                Answer.append(Formula[i])
-                Answer.append(instruction[2])
-            else:
-                Answer.append(Formula[i])
+            Answer.append(Formula[i])
+            for ins in instructions:
+                if Formula[i] == ins[0] and Formula[i + 1] == ins[1]:
+                    Answer.append(ins[2])
         Answer.append(Formula[len(Formula) - 1])
         return Answer
-    if (numberOfSteps == 0):
-        return Formula
+    Answer = Formula
+    for i in range(numberOfSteps):
+        Answer = insertInstruction(Answer, Instructions)
+        printAsString(Answer)
+    return Answer
 
-    for ins in Instructions:
-        Formula = insertInstruction(Formula, ins)
-    print (Formula)
-    return (stepFormulaModifications(numberOfSteps - 1, Formula, Instructions))
+Answer = stepFormulaModifications(4,Formula, Instructions)
 
-Formula = stepFormulaModifications(10,Formula,Instructions)
 
 
 
