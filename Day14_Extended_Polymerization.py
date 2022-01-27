@@ -9,7 +9,7 @@ Written in: Python
 Formula = []
 Instructions = []
 metaData = []
-fileName = "Day14.TestCase.Puzzle";
+fileName = "Day14.Testcase.Puzzle"
 File = open(fileName)
 metaData = File.read().splitlines()
 File.close()
@@ -55,7 +55,7 @@ def stepFormulaModifications (numberOfSteps, Formula, Instructions):
 
 Answer = stepFormulaModifications(10,Formula, Instructions)
 
-def getFirstAndLastAnswer (completedFormula):
+def tallyVariables (completedFormula):
     valueList =[]
 
     def addVariable (letterValue):
@@ -71,11 +71,20 @@ def getFirstAndLastAnswer (completedFormula):
     for cF in completedFormula:
         addVariable(cF)
     print (valueList)
+    return valueList
 
-getFirstAndLastAnswer(Answer)
+def partAnswer (valueList):
+    biggestNumber = 0
+    smallestNumber = 99999999999999
+    for v in valueList:
+        if v[1] > biggestNumber:
+            biggestNumber = v[1]
+        if v[1] < smallestNumber:
+            smallestNumber = v[1]
+    print ("The Biggest and smallest Range is : "+ str(biggestNumber) +" - " + str(smallestNumber) )
+    print ("Subtracted, that equals : " + str( biggestNumber - smallestNumber) )
 
+partAnswer(tallyVariables(Answer))
 
-
-
-
-
+# Part2Answer = stepFormulaModifications(40,Formula, Instructions)
+# partAnswer (tallyVariables(Part2Answer))
