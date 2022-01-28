@@ -86,5 +86,5 @@ def partAnswer (valueList):
 
 partAnswer(tallyVariables(Answer))
 
-# Part2Answer = stepFormulaModifications(40,Formula, Instructions)
-# partAnswer (tallyVariables(Part2Answer))
+Part2Answer = stepFormulaModifications(40,Formula, Instructions)
+partAnswer (tallyVariables(Part2Answer))
