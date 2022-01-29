@@ -9,7 +9,7 @@ Written in: Python
 Formula = []
 Instructions = []
 metaData = []
-fileName = "Day14.Testcase.Puzzle"
+fileName = "Day14.Puzzle"
 File = open(fileName)
 metaData = File.read().splitlines()
 File.close()
@@ -86,5 +86,5 @@ def partAnswer (valueList):
 
 partAnswer(tallyVariables(Answer))
 
-Part2Answer = stepFormulaModifications(40,Formula, Instructions)
+Part2Answer = stepFormulaModifications(10,Formula, Instructions)
 partAnswer (tallyVariables(Part2Answer))
