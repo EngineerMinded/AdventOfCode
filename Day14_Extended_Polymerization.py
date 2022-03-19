@@ -9,7 +9,7 @@ Written in: Python
 Formula = []
 Instructions = []
 metaData = []
-fileName = "Day14.Puzzle"
+fileName = "Day14.TestCase.Puzzle"
 File = open(fileName)
 metaData = File.read().splitlines()
 File.close()
