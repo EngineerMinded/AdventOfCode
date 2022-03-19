@@ -86,5 +86,9 @@ def partAnswer (valueList):
 
 partAnswer(tallyVariables(Answer))
 
-Part2Answer = stepFormulaModifications(10,Formula, Instructions)
+Part2Answer = stepFormulaModifications(40,Formula, Instructions)
 partAnswer (tallyVariables(Part2Answer))
+
+tmp_poly = Counter(a+b for a,b in zip(polymer, polymer[1:]))
+print(tmp_poly)
+chars = Counter(polymer)
