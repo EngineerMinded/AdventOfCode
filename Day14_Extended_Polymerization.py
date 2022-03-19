@@ -12,7 +12,8 @@ metaData = []
 fileName = "Day14.TestCase.Puzzle"
 File = open(fileName)
 metaData = File.read().splitlines()
-File.close()
+File.close
+valueList = []
 
 def parseMetaData (metaData):
     global Formula
@@ -56,7 +57,7 @@ def stepFormulaModifications (numberOfSteps, Formula, Instructions):
 Answer = stepFormulaModifications(10,Formula, Instructions)
 
 def tallyVariables (completedFormula):
-    valueList =[]
+    global valueList
 
     def addVariable (letterValue):
             for value in valueList:
@@ -86,13 +87,29 @@ def partAnswer (valueList):
 
 partAnswer(tallyVariables(Answer))
 
-Part2Answer = stepFormulaModifications(10,Formula, Instructions)
-partAnswer (tallyVariables(Part2Answer))
+PartAnswer = stepFormulaModifications(10,Formula, Instructions)
+partAnswer (tallyVariables(PartAnswer))
 
-tmp_poly = Counter(a+b for a,b in zip(polymer, polymer[1:]))
-print(tmp_poly)
-chars = Counter(polymer)
+
 
 ''' Part 2 '''
-valueList = []
+# clear ValueList for part 2
+for d in valueList:
+    d[1] = 0
 print (Instructions)
+print (Formula)
+
+def part2Count () :
+    global valueList
+    global Instructions
+    global Formula
+
+    addtoCount (variable):
+        global valueList
+        for i in vvalueList:
+            if i[0] = valueList:
+                i[1] = i[1] + 1
+        
+
+    def countSegment(left, right, currentList):
+        if
