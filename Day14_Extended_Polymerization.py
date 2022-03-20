@@ -9,7 +9,7 @@ Written in: Python
 Formula = []
 Instructions = []
 metaData = []
-fileName = "Day14.TestCase.Puzzle"
+fileName = "Day14.Puzzle"
 File = open(fileName)
 metaData = File.read().splitlines()
 File.close
@@ -87,8 +87,8 @@ def partAnswer (valueList):
 
 partAnswer(tallyVariables(Answer))
 
-PartAnswer = stepFormulaModifications(10,Formula, Instructions)
-partAnswer (tallyVariables(PartAnswer))
+# PartAnswer = stepFormulaModifications(10,Formula, Instructions)
+# partAnswer (tallyVariables(PartAnswer))
 
 
 
@@ -96,20 +96,44 @@ partAnswer (tallyVariables(PartAnswer))
 # clear ValueList for part 2
 for d in valueList:
     d[1] = 0
-print (Instructions)
-print (Formula)
 
-def part2Count () :
+
+def part2Count (numberOfGenerations) :
     global valueList
     global Instructions
     global Formula
+    print (Instructions)
+    print (Formula)
+    print (valueList)
 
-    addtoCount (variable):
+    def countFormula (formula):
         global valueList
-        for i in vvalueList:
-            if i[0] = valueList:
-                i[1] = i[1] + 1
-        
+        for a in formula:
+            addToCount(a)
 
-    def countSegment(left, right, currentList):
-        if
+    def addToCount (variable):
+        global valueList
+        for i in (range(len(valueList))):
+            if valueList[i][0] == variable:
+                valueList[i][1] = valueList[i][1] + 1
+
+    def addElements (step, left, right):
+        print (valueList)
+        for a in Instructions:
+            if (a[0] == left and a[1] == right):
+                addToCount (a[2])
+                if step < numberOfGenerations - 1:
+                    addElements (step + 1, left, a[2])
+                    addElements (step + 1, a[2], right)
+
+    countFormula (Formula)
+    for i in range(len(Formula) - 1):
+        print ("Computing Element " + str(i))
+        addElements(0, Formula[i], Formula[i + 1])
+
+    print (valueList)
+
+
+
+part2Count(10)
+partAnswer(valueList)
