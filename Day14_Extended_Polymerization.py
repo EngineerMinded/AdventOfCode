@@ -135,5 +135,5 @@ def part2Count (numberOfGenerations) :
 
 
 
-part2Count(10)
+part2Count(40)
 partAnswer(valueList)
