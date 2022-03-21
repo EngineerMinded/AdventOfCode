@@ -118,7 +118,7 @@ def part2Count (numberOfGenerations) :
                 valueList[i][1] = valueList[i][1] + 1
 
     def addElements (step, left, right):
-        print (valueList)
+        # print (valueList)
         for a in Instructions:
             if (a[0] == left and a[1] == right):
                 addToCount (a[2])
@@ -135,5 +135,5 @@ def part2Count (numberOfGenerations) :
 
 
 
-part2Count(10)
+part2Count(40)
 partAnswer(valueList)
