@@ -131,7 +131,7 @@ def part2Count (numberOfGenerations) :
         print ("Computing Element " + str(i))
         addElements(0, Formula[i], Formula[i + 1])
 
-    print (valueList)
+    #print (valueList)
 
 
 
