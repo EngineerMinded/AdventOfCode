@@ -117,21 +117,24 @@ def part2Count (numberOfGenerations) :
             if valueList[i][0] == variable:
                 valueList[i][1] = valueList[i][1] + 1
 
-    def addElements (step, left, right):
-        # print (valueList)
+    def addElements (step, left, right,coordinateList,nextCoordinate):
+        coordinateList = coordinateList + nextCoordinate
+        print (str(coordinateList))
         for a in Instructions:
             if (a[0] == left and a[1] == right):
                 addToCount (a[2])
                 if step < numberOfGenerations - 1:
-                    addElements (step + 1, left, a[2])
-                    addElements (step + 1, a[2], right)
+                    addElements (step + 1, left, a[2], coordinateList, "L")
+                    addElements (step + 1, a[2], right, coordinateList, "R")
 
     countFormula (Formula)
     for i in range(len(Formula) - 1):
+        coordinateList = ""
         print ("Computing Element " + str(i))
-        addElements(0, Formula[i], Formula[i + 1])
+        #coordinateList.append(str(i) + " of " + str(len(Formula)))
+        addElements(0, Formula[i], Formula[i + 1],coordinateList,str(i) + " of " + str(len(Formula)))
 
-    #print (valueList)
+    print (valueList)
 
 
 
