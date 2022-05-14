@@ -98,7 +98,7 @@ for d in valueList:
     d[1] = 0
 
 
-def part2Count (numberOfGenerations) :
+def notAVeryEfficientCounter (numberOfGenerations) :
     global valueList
     global Instructions
     global Formula
@@ -137,6 +137,26 @@ def part2Count (numberOfGenerations) :
     print (valueList)
 
 
+def moreEfficientCounter (numberOfElements):
+    global valueList
+    global Instructions
+    global Formula
+    print (Instructions)
+    print (Formula)
+    print (valueList)
+    cumulativeValue = []
 
-part2Count(40)
-partAnswer(valueList)
+    # initiate cumulative value list
+    for individualInstruction in Instructions:
+        temporaryValue = []
+        temporaryValue.append(individualInstruction)
+        temporaryValue.append(valueList)
+        cumulativeValue.append(temporaryValue)
+    for x in cumulativeValue:
+        print (x)
+
+
+
+# notAVeryEfficientCounter(40)
+moreEfficientCounter (40)
+# partAnswer(valueList)
