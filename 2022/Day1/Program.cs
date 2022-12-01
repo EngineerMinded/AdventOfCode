@@ -9,8 +9,7 @@ using Day_1;
 using System;
 using System.IO;
 
-
-
+// Prep CalorieCount and read from file
 CalorieCount calorieCount = new CalorieCount(0);
 int total = 0;
 foreach (string data in File.ReadAllLines("C:\\Users\\wamj2\\OneDrive\\Desktop\\Advent Of Code 2022\\Day-1\\Day-1\\Day1Input.txt"))
@@ -36,6 +35,3 @@ foreach (string data in File.ReadAllLines("C:\\Users\\wamj2\\OneDrive\\Desktop\\
 Console.WriteLine("The highest calorie count found is: " + calorieCount.getHighestValue(0));
 // ANSWER FOR PART TWO
 Console.WriteLine("The sum of the highest three however is : " + calorieCount.getTotalOfTopThree(0, 0, 0));
-
-
-
