@@ -19,8 +19,6 @@ namespace Day_1
     {
         private int value;
         private CalorieCount next;
-
-
         public CalorieCount(int value)
         {
             this.value = value;
