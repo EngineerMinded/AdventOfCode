@@ -14,7 +14,6 @@ namespace Day2_AOC_2022
         static void Main(string[] args)
         {
             rockPaperScissors = new RockPaperScissors();
-
             foreach (string line in System.IO.File.ReadAllLines("/Users/waynemack/Projects/Day2-AOC_2022/Day2-AOC_2022/Day2Data.txt"))
             {
                 SELECTION getSelection(string item)
@@ -37,7 +36,6 @@ namespace Day2_AOC_2022
                 }
                 String [] readLine  = line.Split(" ");
                 rockPaperScissors.add(getSelection(readLine[1]), getSelection(readLine[0]));
-                
             }
             rockPaperScissors.printData();
             // Part 1 Answer:
