@@ -5,9 +5,7 @@
  * --------------------------------------------*
  * Written in C#                               *
  ***********************************************/
-
 using System;
-
 class  RuckSack
 {
     public int address;   // ADD ON FOR PART TWO
@@ -126,7 +124,6 @@ class RuckSackGroup
         this.sack2 = sack2;
         this.sack3 = sack3;
         findCommonValue();
-
     } 
     private void findCommonValue()
     {
@@ -147,7 +144,6 @@ class RuckSackGroup
     }
     private void setItemValue () // REFER TO ITEM VALUE CRITERIA
     {                            // IN THE RUCKSACK CONSTRUCTOR ABOVE
-    
         if ((int)commonItem > 96)
         {
             itemValue = (int)commonItem - 96;
@@ -196,7 +192,6 @@ class Program
 {
     static RuckSack ruckSack;
     static RuckSackGroup ruckSackGroup;
-
     static string Path = ("C:\\Users\\wamj2\\OneDrive\\Desktop\\Advent Of Code 2022\\Day3_Rucksack_Reorganization\\Day3_Rucksack_Reorganization\\Day3_Input.txt");
     static void Main(string[] args)
     {
@@ -210,7 +205,7 @@ class Program
         Console.WriteLine("The total tally for part one is :" + ruckSack.tallyCharacterValue());
         //////////////////////////////////// PART TWO ///////////////////////////////////////////
         ruckSackGroup = new RuckSackGroup();
-        ruckSackGroup.add(ruckSack.next);
+        ruckSackGroup.add(ruckSack.next); // Use the next one because the first one is blank.
         Console.WriteLine("The total tally for part two is :" + ruckSackGroup.tally());
     }
 }
