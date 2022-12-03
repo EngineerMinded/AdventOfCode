@@ -164,7 +164,6 @@ class RuckSackGroup
             int targetAddress1 = ruckSack.address;
             int targetAddress2 = ruckSack.next.address;
             int targetAddress3 = ruckSack.next.next.address;
-
             next = new RuckSackGroup(ruckSack.getAtAddress(targetAddress1),
                 ruckSack.getAtAddress(targetAddress2),
                 ruckSack.getAtAddress(targetAddress3));
