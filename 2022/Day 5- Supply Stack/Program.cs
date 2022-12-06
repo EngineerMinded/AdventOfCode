@@ -1,9 +1,11 @@
-﻿/* Wayne Mack
- * Advent of Code 2022 - Day 5
- * Written in C#
- * 
- */
-
+﻿/*********************************************
+ * Wayne Mack                                *
+ * Advent of Code - Day 5                    *
+ * Supply Stacks                             *
+ * Written in C#                             *
+ * ----------------------------------------- *
+ * Main Program                              *
+ *********************************************/
 using System;
 using System.IO;
 
@@ -13,6 +15,7 @@ class Program
     static Platform deck;
     static void Main(string[] args )
     {
+        // This block of code generates the platform from the raw data. This was generated to make a fresh version for part 2.
         void generatePlatform ()
         {
             commands = new Container();
@@ -31,7 +34,6 @@ class Program
             }
             pile.display();
             Console.WriteLine("There are {0} piles!", pile.getPileSize());
-            //commands.display();
             // PARSE PILE DATA INT PLATFORMS
             deck = new Platform(pile.getPileSize());
             while (!(pile.isEmpty))

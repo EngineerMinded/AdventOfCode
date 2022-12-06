@@ -1,21 +1,35 @@
-﻿public class Container
+﻿/*********************************************
+ * Wayne Mack                                *
+ * Advent of Code - Day 5                    *
+ * Supply Stacks                             *
+ * Written in C#                             *
+ * ----------------------------------------- *
+ * Container and Platform class              *
+ *********************************************/
+
+
+// The container class is a modified stack used for the data and the containers itself
+public class Container
 {
     private string value;
     private Container next;
     public bool isEmpty;
     private bool alreadyRecorded;
-
+    
+    // Blank Constructor
     public Container()
     {
         value = "_";
         next = null;
         isEmpty = true;
     }
+    // New Reference constructor
     public Container(string v)
     {
         value = v;
         next = null;
     }
+    // Push data into the stack
     public void push(string v)
     {
         if (value == "_")
@@ -32,6 +46,7 @@
             next = new Container(v);
         }
     }
+    // Push multiple Containers into a stack
     public void push (Container toPush)
     {
         if (next != null)
@@ -43,6 +58,7 @@
             next = toPush;
         }
     }
+    // Pop data from the stack
     public string pop()
     {
         if (next == null)
@@ -63,6 +79,7 @@
             return next.popBeyondFirst();
         }
     }
+    // Pop a number of containers from the stack
     public Container pop(int numbertoget)
     {
         Container subContainer = new Container();
@@ -78,6 +95,7 @@
         }
         return subContainer;
     }
+    // Supplemental to popping the stack
     private string popBeyondFirst()
     {
         if (next.next == null)
@@ -91,6 +109,7 @@
             return next.popBeyondFirst();
         }
     }
+    // Display values for error cheking
     public void display ()
     {
         Console.WriteLine(value);
@@ -99,6 +118,7 @@
             next.display();
         }
     }
+    // Get the size of the stack
     public int getPileSize()
     {
         if (next == null)
@@ -110,6 +130,7 @@
             return next.getPileSize();
         }
     }
+    // read the last value of the stack without deleting it (opposite of pop() ).
     public String peek()
     {
         if (next != null)
@@ -121,6 +142,7 @@
             return value;
         }
     }
+    // This function is used for reading the stack to to bottom. Poppong the stack woul make it read backwards
     public String record()
     {
         if (!(alreadyRecorded))
@@ -137,6 +159,7 @@
             return ("END");
         }
     }
+    // Make the stack readable again.
     public void resetRecord()
     {
         alreadyRecorded = false;
@@ -146,13 +169,14 @@
         }
     }
 }
-
+// Platform is main function that holds all stacks and allows exchhanges of containers between them
 public class Platform
 {
     int value;
     public Container container;
     Platform next;
 
+    // Initial Constructor
     public Platform (int v)
     {
         value = 1;
@@ -166,6 +190,7 @@ public class Platform
             next = null;
         }
     }
+    // Supplemental constructor
     private Platform (int v, int limit)
     {
         this.value =v;
@@ -179,6 +204,7 @@ public class Platform
             next = null;
         }
     }
+    // Individual data from one stack. to be used with to() function.
     public String from (int value)
     {
         if (this.value == value)
@@ -195,6 +221,7 @@ public class Platform
             return "0";
         }
     }
+    // to() function transfering more than one container
     public void to(int value, string data)
     {
         if (this.value == value)
@@ -210,6 +237,7 @@ public class Platform
             Console.WriteLine("Value to go to doesn't exist");
         }
     }
+    // function used in exchange of data from one stack to another
     public Container from (int v, int amount)
     {
         if (v == value)
@@ -222,6 +250,7 @@ public class Platform
             return next.from(v, amount);
         }
     }
+    // Transfer more than one container to another stack
     public void to  (int v, Container c)
     {
         if (value == v)
@@ -233,6 +262,7 @@ public class Platform
             next.to(v, c);
         }
     }
+    // Display all values for error checking
     public void display()
     {
         Console.Write (value + "____\n");
@@ -242,6 +272,7 @@ public class Platform
             next.display();
         }
     }
+    // Read out top most container from each pile to get answer
     public String getPartOneAnswer ()
     {
        if (next != null)
@@ -253,6 +284,7 @@ public class Platform
             return container.peek();    
         }
     }
+    // reset all values for the stacks so that they can be used again
     public void reset()
     {
         container.resetRecord();
