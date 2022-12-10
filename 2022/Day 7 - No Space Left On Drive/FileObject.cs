@@ -6,6 +6,7 @@ class FileObject
     public int value;
     public FileObject next;
     public Type type;
+    public Boolean alreadyRecorded;
 
     public FileObject()
     {
@@ -14,6 +15,7 @@ class FileObject
         value = 0;
         name = "";
         next = null;
+        alreadyRecorded = false;
     }
     public FileObject(string dir, string name)
     {
@@ -22,6 +24,7 @@ class FileObject
         type = Type.DIRECTORY;
         value = 0;
         next = null;
+        alreadyRecorded = false;
     }
 
     public FileObject(string dir, string name, int value)
@@ -31,6 +34,7 @@ class FileObject
         this.value = value;
         type = Type.FILE;
         next = null;
+        alreadyRecorded = false;
     }
     public void append ( string workingDirectory, string rawData)
     {
@@ -54,6 +58,18 @@ class FileObject
             }
         }
     }
+
+    public void appendFiles (FileObject onlyFiles)
+    {
+        if (next != null)
+        {
+            next.appendFiles(onlyFiles);
+        }
+        else
+        {
+            next = onlyFiles;
+        }
+    }
     public void display()
     {
         Console.WriteLine( directoryValue + " " + name);
@@ -62,6 +78,30 @@ class FileObject
             next.display();
         }
     }
+
+    public void resetAll ()
+    {
+        alreadyRecorded = false;
+        if (next != null)
+        {
+            next.resetAll();
+        }
+    }
+
+    public string getNextValue()
+    {
+        if (next != null)
+        {
+            if (!next.alreadyRecorded)
+            {
+                return next.getNextValue();
+            }
+        }
+        alreadyRecorded = true;
+        return (directoryValue + " " + value + " " + name);
+
+    }
+
 }
 
 

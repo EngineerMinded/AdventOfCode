@@ -1,16 +1,16 @@
 ﻿class DirectoryList
 {
     string dir;
-    int value;
+    long value;
     DirectoryList next;
-
+    
     public  DirectoryList() 
     {
         dir = "/";
         next = null;
     }
 
-    public DirectoryList (string dir, int value)
+    public DirectoryList (string dir, long value)
     {
         this.dir = dir;
         this.value = value;
@@ -59,7 +59,7 @@
     }
 
    
-    public void addValue (string directory,int Value )
+    public void addValue (string directory,long Value )
     {
         if ( dir == directory)
         {
@@ -73,39 +73,13 @@
             }
             else
             {
-                next = new DirectoryList(dir,value);
+             
+                next = new DirectoryList(directory,Value);
             }
         }
     }
-    public void addValue (string directory, String fromDirectory ,DirectoryList getInfo)
-    {
-        if (dir == directory )
-        {
-            if (getInfo.dir == fromDirectory)
-            {
-                this.value = this.value + getInfo.value;
-            }
-            else
-            {
-                if (getInfo.next != null)
-                {
-                    addValue(directory,fromDirectory,getInfo.next);
-                }
-            }
-        }
-        else
-        {
-            if (next != null)
-            {
-                next.addValue (directory,fromDirectory,getInfo);
-            }
-            else
-            {
-                next = new DirectoryList(directory, value);
-            }
-        }
-    }
-    void printAll()
+  
+    public void printAll()
     {
         Console.WriteLine(dir + " " + value);
         if (next != null)
@@ -113,5 +87,34 @@
             next.printAll();
         }
     }
+
+    public long getValueAtAddress(string inputValue)
+    {
+        if (inputValue == dir)
+        {
+            return value;
+        }
+        if (next != null)
+        {
+            return next.getValueAtAddress(inputValue);
+        }
+        return 0;
+    }
+    public long getSumUnder(int maxValue)
+    {
+        long sumNow = 0;
+        if (value <= maxValue)
+        {
+            sumNow = value;
+            Console.WriteLine("DirectoryList.cs 109 -> " + value);
+        }
+        if (next == null)
+        {
+            return sumNow;
+        }
+        return sumNow + next.getSumUnder(maxValue);  
+    }
+    
+
 }
 
