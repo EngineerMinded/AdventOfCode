@@ -1,16 +1,30 @@
-﻿
+﻿/****************************************************************
+ * Wayne Mack                                                   *
+ * Advent Of Code 2020 - Day 7:                                 *
+ * No space Left on Device                                      *
+ * ------------------------------------------------------------ *
+ * Written in C#                                                *
+ * FileObject.cs                                                *
+ * **************************************************************/
+
+/*****************************************************************
+ * TO DO:                                                        *
+ * Tally up all of the file sizes in the respective directories  *
+ *****************************************************************/
 enum Type { FILE, DIRECTORY, UNINITIALIZED} 
 class FileObject
 {
     string name;
+    bool readInTally;
     Type type;
     FileObject contents; // For Subdirectories and files
     FileObject Next; // for objects in directory as this one
-    int fileSize;
+    long fileSize;
     InstructionSet instructions;
     public FileObject ()
     {
         name = "";
+        readInTally = false;
         type = Type.UNINITIALIZED;
         Next = null;
         contents = null;
@@ -20,6 +34,7 @@ class FileObject
     {
         type = Type.DIRECTORY;
         this.name = name;
+        readInTally = false;
         Next = null;
         contents = null;
         this.fileSize = 0;
@@ -27,6 +42,7 @@ class FileObject
     private FileObject (String name, int size)
     {
         type= Type.FILE;
+        readInTally= false;
         this.name = name;
         this.fileSize = size;
         Next = null; 
@@ -64,7 +80,6 @@ class FileObject
 
     public void command (string targetDirectory, InstructionSet i)
     {
-        Console.WriteLine(targetDirectory == this.name + " " + targetDirectory + " " + this.name);
         this.instructions = i;
         if (targetDirectory == this.name)
         {
@@ -92,16 +107,17 @@ class FileObject
                             }
                             else 
                             {
-                                Console.WriteLine (nextCommand);
+                                //Console.WriteLine (nextCommand);
                                 if (contents == null)
                                 {
                                     contents = new FileObject(nextCommand.Split(" ")[1], int.Parse(nextCommand.Split(" ")[0]));
+                                    
                                 }
                                 else
                                 {
                                     contents.append(nextCommand.Split(" ")[1], int.Parse(nextCommand.Split(" ")[0]));
                                 }
-                                fileSize = fileSize + int.Parse(nextCommand.Split(" ")[0]);
+                                
                             }
                         }
                     }
@@ -109,17 +125,18 @@ class FileObject
                     {
                         if (nextCommand.Contains(".."))
                         {
+
                             breakLoop = true;
                         }
                         else
                         {
-                            Console.WriteLine(nextCommand);
+               
                             if (contents == null)
                             {
                                 contents = new FileObject(nextCommand.Split(" ")[2]);
                             }
                             contents.command(nextCommand.Split(" ")[2], instructions);
-                            fileSize = fileSize + contents.fileSize;
+  
                         }
                     }
                     else
@@ -133,13 +150,19 @@ class FileObject
         {
             Next.command(targetDirectory, instructions);
             instructions = Next.instructions;
+            //fileSize = fileSize + Next.fileSize;
+            //Console.WriteLine("Add: " + Next.fileSize);
         }
         else
         {
             Next = new FileObject(targetDirectory);
             Next.command(targetDirectory, instructions);
             instructions = Next.instructions;
+            //fileSize = fileSize + Next.fileSize;
+            //Console.WriteLine("Add: " + Next.fileSize);
         }
+        
+
     }
 
     public void printTree()
@@ -150,7 +173,7 @@ class FileObject
     {
         for (int i = 0; i < space; i++)
         {
-            Console.Write(" ");
+            Console.Write("  ");
         }
         if (type == Type.DIRECTORY)
         {
@@ -167,16 +190,17 @@ class FileObject
         if (Next != null)
         {
             Next.printTree(space);
+               
         }
     }
-    public int getAllDirectoriesAtMaxNumber(int maxNumber)
+    public long getAllDirectoriesAtMaxNumber(int maxNumber)
     {
-        int total = 0;
+        long total = 0;
         if (contents != null)
         {
             total = total + contents.getAllDirectoriesAtMaxNumber(maxNumber);
         }
-        if (type == Type.DIRECTORY)
+        if (type == Type.DIRECTORY )
         {
             if (fileSize <= maxNumber)
             {
@@ -189,5 +213,4 @@ class FileObject
         }
         return total;
     }
-    
 }
