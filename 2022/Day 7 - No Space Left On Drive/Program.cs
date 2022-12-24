@@ -8,7 +8,7 @@
  * **************************************************************/
 class Program
 {
-    static bool testMode = true;
+    static bool testMode = false;
     static InstructionSet instructions;
     static FileObject tree;
     static void Main(string[] args)
@@ -27,8 +27,45 @@ class Program
         }
         //instructions.PrintAll();
         tree = new FileObject("/");
-        tree.command("ROOT",instructions);
+        tree.command("/",instructions);
         tree.printTree();
+
+        /////////////////////////////////////// PART ONE ///////////////////////////////////////////////////////////////////////////////////
         Console.WriteLine("The total for part One is : " + tree.getAllDirectoriesAtMaxNumber(100000));
+
+        long totalSpace = 70000000;
+        long spaceRequired = 30000000;
+
+        ////////////////////////////////////////////////////////////////////////////// PART TWO ////////////////////////////////////////////
+        LinkedList<long> fileSizeList = new LinkedList<long>();
+
+        fileSizeList = tree.allDirectoryNumbers(fileSizeList);
+        fileSizeList.RemoveFirst();
+        long[] fileList = fileSizeList.ToArray();
+        Array.Sort(fileList);
+        foreach(long variable in fileList)
+        {
+            Console.WriteLine(variable);
+        }
+
+        int arrayRange = fileList.Length;
+
+        long availibleSpace = totalSpace - fileList[fileList.Length - 1];
+        Console.WriteLine(" Availible Space : " + availibleSpace);
+
+        int position = 0;
+
+        while (position < arrayRange - 1)
+        {
+            if (fileList[position] + availibleSpace > spaceRequired)
+            {
+                break;
+            }
+            else
+            {
+                position++;
+            }
+        }
+        Console.WriteLine("The lowest Number that can be deleted is : " + fileList[position]);
     }
 }

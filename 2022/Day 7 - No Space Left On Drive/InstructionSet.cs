@@ -81,6 +81,4 @@ class InstructionSet
             Next.PrintAll();
         }
     }
-
-
 }

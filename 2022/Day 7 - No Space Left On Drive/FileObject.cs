@@ -106,8 +106,7 @@ class FileObject
                                 }
                             }
                             else 
-                            {
-                                //Console.WriteLine (nextCommand);
+                            {     
                                 if (contents == null)
                                 {
                                     contents = new FileObject(nextCommand.Split(" ")[1], int.Parse(nextCommand.Split(" ")[0]));
@@ -116,8 +115,7 @@ class FileObject
                                 else
                                 {
                                     contents.append(nextCommand.Split(" ")[1], int.Parse(nextCommand.Split(" ")[0]));
-                                }
-                                
+                                }             
                             }
                         }
                     }
@@ -150,23 +148,39 @@ class FileObject
         {
             Next.command(targetDirectory, instructions);
             instructions = Next.instructions;
-            //fileSize = fileSize + Next.fileSize;
-            //Console.WriteLine("Add: " + Next.fileSize);
         }
         else
         {
             Next = new FileObject(targetDirectory);
             Next.command(targetDirectory, instructions);
             instructions = Next.instructions;
-            //fileSize = fileSize + Next.fileSize;
-            //Console.WriteLine("Add: " + Next.fileSize);
         }
-        
+    }
 
+    public long getDirectoryValues()
+    {
+
+        if (type == Type.DIRECTORY)
+        {
+            if (contents != null)
+            {
+                fileSize = contents.getDirectoryValues();
+            }
+        }
+        if (Next != null)
+        {
+            return fileSize + Next.getDirectoryValues();
+            
+        }
+        else
+        {
+            return fileSize;
+        }
     }
 
     public void printTree()
     {
+        fileSize = getDirectoryValues();
         printTree(0);
     }
     private void printTree(int space)
@@ -193,7 +207,7 @@ class FileObject
                
         }
     }
-    public long getAllDirectoriesAtMaxNumber(int maxNumber)
+    public long getAllDirectoriesAtMaxNumber(int maxNumber) // Procedure for Part One
     {
         long total = 0;
         if (contents != null)
@@ -213,4 +227,52 @@ class FileObject
         }
         return total;
     }
+
+    public long getLargestNumberupTo(long maxNumber) 
+    {
+        long answer = fileSize;
+        if (type == Type.DIRECTORY)
+        {
+            if (contents != null) {
+                if (answer > contents.getLargestNumberupTo(maxNumber) &&
+                    (contents.getLargestNumberupTo(maxNumber) > maxNumber))
+                {
+                    answer = contents.getLargestNumberupTo(maxNumber);
+                }
+            }
+            if (Next != null)
+            {
+                if (answer > Next.getLargestNumberupTo(maxNumber) &&
+                    (Next.getLargestNumberupTo(maxNumber) > maxNumber))
+                {
+                    answer = Next.getLargestNumberupTo(maxNumber);
+                }
+            }
+            return answer;
+        }
+        else if (Next == null)
+        {
+            return 999999999999999999; // 
+        }
+        return Next.getLargestNumberupTo(maxNumber);
+    }
+
+    public LinkedList<long> allDirectoryNumbers (LinkedList<long> list)
+    {
+        if (type == Type.DIRECTORY)
+        {
+            list.AddLast(fileSize);
+        }
+        if (contents != null)
+        {
+            list = contents.allDirectoryNumbers(list);
+        }
+        if (Next != null)
+        {
+            list = Next.allDirectoryNumbers(list);
+        }
+        LinkedList<long> sorted = new LinkedList<long>();
+        return list;
+    }
+
 }
