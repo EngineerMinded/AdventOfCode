@@ -6,6 +6,11 @@
  * Written in C#                                                *
  * InstructionSet.cs                                            *
  * **************************************************************/
+ /***************************************************************
+  * InstructionSet as you may guess simple holds the            *
+  * instructions. These instructions will be parsed in the      *
+  * FileObjects class as an declare variable.                   *
+  ***************************************************************/
 class InstructionSet
 {
     string data;
@@ -36,7 +41,7 @@ class InstructionSet
         }
     }
 
-    
+
     public String getNext()
     {
         if (!read)

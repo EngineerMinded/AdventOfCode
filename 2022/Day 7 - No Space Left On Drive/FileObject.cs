@@ -7,11 +7,10 @@
  * FileObject.cs                                                *
  * **************************************************************/
 
-/*****************************************************************
- * TO DO:                                                        *
- * Tally up all of the file sizes in the respective directories  *
- *****************************************************************/
-enum Type { FILE, DIRECTORY, UNINITIALIZED} 
+enum Type { FILE, DIRECTORY, UNINITIALIZED}
+/****************************************************************
+ * FileObjects can either be files or directories               *
+ ****************************************************************/
 class FileObject
 {
     string name;
@@ -45,7 +44,7 @@ class FileObject
         readInTally= false;
         this.name = name;
         this.fileSize = size;
-        Next = null; 
+        Next = null;
         contents = null; // In this case, CONTENTS is never used
     }
     private void append (String name)
@@ -59,7 +58,7 @@ class FileObject
         }
         if (Next == null)
         {
-            Next = new FileObject(name);    
+            Next = new FileObject(name);
         }
         else
         {
@@ -105,17 +104,17 @@ class FileObject
                                     contents.append(nextCommand.Split(" ")[1]);
                                 }
                             }
-                            else 
-                            {     
+                            else
+                            {
                                 if (contents == null)
                                 {
                                     contents = new FileObject(nextCommand.Split(" ")[1], int.Parse(nextCommand.Split(" ")[0]));
-                                    
+
                                 }
                                 else
                                 {
                                     contents.append(nextCommand.Split(" ")[1], int.Parse(nextCommand.Split(" ")[0]));
-                                }             
+                                }
                             }
                         }
                     }
@@ -128,13 +127,13 @@ class FileObject
                         }
                         else
                         {
-               
+
                             if (contents == null)
                             {
                                 contents = new FileObject(nextCommand.Split(" ")[2]);
                             }
                             contents.command(nextCommand.Split(" ")[2], instructions);
-  
+
                         }
                     }
                     else
@@ -170,7 +169,7 @@ class FileObject
         if (Next != null)
         {
             return fileSize + Next.getDirectoryValues();
-            
+
         }
         else
         {
@@ -204,7 +203,7 @@ class FileObject
         if (Next != null)
         {
             Next.printTree(space);
-               
+
         }
     }
     public long getAllDirectoriesAtMaxNumber(int maxNumber) // Procedure for Part One
@@ -228,7 +227,7 @@ class FileObject
         return total;
     }
 
-    public long getLargestNumberupTo(long maxNumber) 
+    public long getLargestNumberupTo(long maxNumber)
     {
         long answer = fileSize;
         if (type == Type.DIRECTORY)
@@ -252,7 +251,7 @@ class FileObject
         }
         else if (Next == null)
         {
-            return 999999999999999999; // 
+            return 999999999999999999; //
         }
         return Next.getLargestNumberupTo(maxNumber);
     }
