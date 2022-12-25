@@ -7,182 +7,123 @@
  ***************************************/
 
 import java.lang.Math.*;
+import java.nio.file.attribute.GroupPrincipal;
+
 import static java.lang.Math.abs;
+enum Direction { DOWN,UP,LEFT,RIGHT };
+
 public class Rope {
     protected int xPosition;
     protected int yPosition;
-    private int tailXPosition, tailYPosition;
-    protected int intersecting;
-    protected int chainIntersecting;
-    boolean tailSkipTurn;
-    Trail head, tail;
-    TailChain tailChain;
+    private int segmentNumber;
+    Rope next;
+    RopeTrail ropeTrail;
+    RopeTrail lastRopeTrail;
 
     // Blank Constructor
-    Rope() {
+    public Rope(int numSegments) {
+        segmentNumber = numSegments;
         xPosition = yPosition = 0;
-        tailYPosition = tailXPosition = 0;
-        intersecting = 1;
-        tailSkipTurn = true;
-        head = new Trail();
-        tail = new Trail();
-        tailChain = new TailChain();
+        ropeTrail = new RopeTrail();
+        if (numSegments > 1) {
+            next = new Rope(numSegments - 1);
+
+        }
+        else {
+            next = null;
+        }
     }
-    // Move by instruction
-    public void Move(String input) {
-        //System.out.println("Command: " +input);
-        String direction = input.split(" ")[0];
-        int paces = Integer.parseInt(input.split(" ")[1]);
-        for (int i = 1; i <= paces; i++ ) {
+
+    public void move (Direction direction, int numberOfSteps) { // This is for the head only
+        for (int i = 0; i < numberOfSteps; i++ ) {
             switch (direction) {
-                case "U": {
-                    yPosition = yPosition + 1;
+                case UP: {
+                    yPosition++;
                     break;
                 }
-                case "D": {
-                    yPosition = yPosition - 1;
+                case DOWN: {
+                    yPosition--;
                     break;
                 }
-                case "L": {
-                    xPosition = xPosition - 1;
+                case LEFT: {
+                    xPosition++;
                     break;
                 }
-                case "R": {
-                    xPosition = xPosition + 1;
+                case RIGHT: {
+                    xPosition--;
                     break;
                 }
+            }
+            if (next != null) {
+                next.move(xPosition,yPosition);
+            }
+            ropeTrail.add(xPosition,yPosition);
+            displayChain();
+            System.out.println();
+        }
 
-            }
-            head.append(xPosition,yPosition);
-            if (!tailSkipTurn) {
-                follow();
-
-                if (thePointsVisited()) {
-                    tailSkipTurn = true;
-                }
-            }
-            else {
-                tailSkipTurn = false;
-            }
-            System.out.println(" Head: "+ xPosition +" ,"+ yPosition +
-                    " Tail: " + tailXPosition + " , " + tailYPosition);
-        }
     }
-    private void follow() {
-
-        if ((abs(tailXPosition - xPosition) > 1 ) || (abs(tailYPosition - yPosition) > 1)) {
-            if (tailXPosition  < xPosition) {
-                tailXPosition++;
+    private void move(int leadingX, int leadingY) { // This is for trailing sections only
+        int xDeviation = leadingX - xPosition;
+        int yDeviation = leadingY - yPosition;
+        if (xDeviation > 1) {
+            xPosition++;
+            if (yDeviation > 0) {
+                yPosition++;
             }
-            else if (tailXPosition > xPosition) {
-                tailXPosition--;
-            }
-            if (tailYPosition  < yPosition) {
-                tailYPosition++;
-            }
-            else if (tailYPosition > yPosition) {
-                tailYPosition--;
+            else if (yDeviation < 0) {
+                yPosition--;
             }
         }
-        else if ((abs(tailXPosition - xPosition)) == 1 || (abs(tailYPosition - yPosition)) == 1) {
-            return;
-        }
-        else if (tailXPosition  < xPosition) {
-            tailXPosition++;
-        }
-        else if (tailXPosition > xPosition) {
-            tailXPosition--;
-        }
-        else if (tailYPosition  < yPosition) {
-            tailYPosition++;
-        }
-        else if (tailYPosition > yPosition) {
-            tailYPosition--;
-        }
-        if (head.isTrail(tailXPosition, tailYPosition) && !tail.isTrail(tailXPosition,tailYPosition)) {
-            intersecting++;
-            //chainIntersecting = tailChain
-            tailChain.append();
-            System.out.println("ADD :" + tailXPosition + " " + tailYPosition);
-            tail.append(tailXPosition,tailYPosition);
-        }
-    }
-    private boolean thePointsVisited() {
-        return ((xPosition == tailXPosition) && (yPosition == tailYPosition));
-    }
-}
-class Trail {
-    int x;
-    int y;
-    Trail next;
-    Trail() {
-        this.x = 0;
-        this.y = 0;
-        next = null;
-    }
-    Trail(int x, int y) {
-        this.x = x;
-        this.y = y;
-        next = null;
-    }
-    public void append(int newX,int newY) {
-        if ((newX == x) && (newY == y) ) {
-            return;
-        }
-        if (next == null) {
-            next = new Trail(newX,newY);
-        }
-        else {
-            next.append(newX,newY);
-        }
-    }
-    public boolean isTrail(int xSearch, int ySearch) {
-        if ((xSearch == x) && (ySearch == y)) {
-            return true;
-        }
-        else if (next == null) {
-            return false;
-        }
-        else {
-            return next.isTrail(xSearch, ySearch);
-        }
-    }
-}
-class TailChain {
-    int count;
-    TailChain next;
-
-    public TailChain () {
-        count = 1;
-        next = null;
-    }
-    public void append() {
-        if (next == null) {
-            if (count > 0) {
-                count++;
+        else if (xDeviation < -1) {
+            xPosition--;
+            if (yDeviation > 0) {
+                yPosition++;
             }
-            if (count >= 10) {
-                count = 0;
+            else if (yDeviation < 0) {
+                yPosition--;
             }
-            next = new TailChain();
         }
-        else {
-            if (count > 0) {
-                count++;
+        else if (yDeviation > 1) {
+            yPosition++;
+            if (xDeviation > 0) {
+                xPosition++;
             }
-            if (count >= 10) {
-                count = 0;
+            else if (xDeviation < 0) {
+                xPosition--;
             }
-            next.append();
         }
-    }
-    public int getCount () {
+        else if (yDeviation < -1) {
+            yPosition--;
+            if (xDeviation > 0) {
+                xPosition++;
+            }
+            else if (xDeviation < 0) {
+                xPosition--;
+            }
+        }
         if (next != null) {
-            return count + next.getCount();
+            next.move(xPosition, yPosition);
         }
-        else {
-            return count;
+        ropeTrail.add(xPosition,yPosition);
+    }
+    public void displayChain() {
+        System.out.print("(" + xPosition + " , " + yPosition + ") ");
+        if (next != null) {
+            next.displayChain();
         }
     }
-}
+    private RopeTrail getLastRopeTrail() {
+        if (next == null) {
+            return ropeTrail;
+        }
+        else {
+            return next.getLastRopeTrail();
+        }
+    }
+    public int getAllTally() {
+        lastRopeTrail = getLastRopeTrail();
+        return ropeTrail.getAllInCount(lastRopeTrail);
+    }
 
+}
