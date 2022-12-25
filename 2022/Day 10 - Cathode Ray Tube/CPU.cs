@@ -4,6 +4,8 @@
  * Written in: C#                                                        *
  * --------------------------------------------------------------------- *
  * CPU.cs                                                                *
+ * This class holds the object code for the CPU. This code includes the  *
+ * calculations for part one and the pixel image for part two.           *
  *************************************************************************/
 
 using System;
@@ -15,7 +17,6 @@ class CPU
     char[] data;
     public int getCountAt(int getCountHere, string [] commandList, int arrayLength, bool partOne)
     {
-
         int currentValue = 1;
         arrayCounter = 0;
         int nextAccumulator =0;
@@ -25,11 +26,8 @@ class CPU
         for (int o = 0; o < 240; o++ ){
             data[o] = '.';
         }
-        
-
         for (int i = 0; i < getCountHere - 1; i++)
         {
-            
             // PIXEL DETERMINATION GOES HERE///
             int j = i;
             while (j > 40)
@@ -53,8 +51,7 @@ class CPU
                 {
                     string currentCharacter = commandList[arrayCounter].Split(" ")[1];
                     nextAccumulator = int.Parse(currentCharacter);
-                    halfPhase = true;
-                    
+                    halfPhase = true;        
                 }
                 else
                 {
@@ -66,8 +63,6 @@ class CPU
                     arrayCounter = 0;
                 }
             }
-
-
         }
         if (partOne)
         {
@@ -84,6 +79,5 @@ class CPU
         int m = getCountAt(getCountHere, commandList, arrayLength, partOne);
         return data;
     }
-
 };
 
