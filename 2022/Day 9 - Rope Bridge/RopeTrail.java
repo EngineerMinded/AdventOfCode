@@ -7,17 +7,18 @@
  ***************************************/
 
 public class RopeTrail {
-    int x,y;
+    int x, y;
     RopeTrail next;
     boolean hasBeenRead;
 
-    public RopeTrail () {
+    public RopeTrail() {
         this.x = 0;
         this.y = 0;
         next = null;
         hasBeenRead = false;
     }
-    private RopeTrail(int x , int y) {
+
+    private RopeTrail(int x, int y) {
         this.x = x;
         this.y = y;
         next = null;
@@ -27,32 +28,22 @@ public class RopeTrail {
     public void add(int xInput, int yInput) {
         if ((x == xInput) && (y == yInput)) {
             // DON'T ADD!
-        }
-        else {
+        } else {
             if (next != null) {
-                next.add(xInput,yInput);
-            }
-            else {
-                next = new RopeTrail( xInput , yInput );
+                next.add(xInput, yInput);
+            } else {
+                next = new RopeTrail(xInput, yInput);
             }
         }
+    }
 
-     }
-     public int getTrailCount (RopeTrail  toCount) {
+    public int getTrailCount(RopeTrail toCount) {
         if (toCount.next != null) {
             return 1 + getTrailCount(toCount.next);
-        }
-        else {
+        } else {
             return 1;
         }
-     }
-
-     public void displayAll(){
-        System.out.println(x + " , " + y);
-        if (next != null) {
-            next.displayAll();
-        }
-     }
+    }
 }
 
 

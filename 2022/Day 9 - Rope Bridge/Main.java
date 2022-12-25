@@ -17,7 +17,6 @@ public class Main {
         //////////////////////////////// PART ONE ///////////////////////////////////////////////////////
         calculateAtNumber(2);
         calculateAtNumber(10);
-
     }
     private static void calculateAtNumber (int numberOfTrailingKnots) {
         rope = new Rope(numberOfTrailingKnots);
@@ -45,7 +44,6 @@ public class Main {
                         break;
                     }
                 }
-
                 rope.move(direction, Integer.parseInt(instruction[1]));
             }
             myReader.close();

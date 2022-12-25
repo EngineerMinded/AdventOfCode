@@ -6,10 +6,6 @@
  * Only part one successful            *
  ***************************************/
 
-import java.lang.Math.*;
-import java.nio.file.attribute.GroupPrincipal;
-
-import static java.lang.Math.abs;
 enum Direction { DOWN,UP,LEFT,RIGHT };
 
 public class Rope {
@@ -58,8 +54,8 @@ public class Rope {
                 next.move(xPosition,yPosition);
             }
             ropeTrail.add(xPosition,yPosition);
-            displayChain();
-            System.out.println();
+            //displayChain();
+            //System.out.println();
         }
 
     }
@@ -126,7 +122,4 @@ public class Rope {
         lastRopeTrail = getLastRopeTrail();
         return ropeTrail.getTrailCount(lastRopeTrail);
     }
-
-
-
 }
