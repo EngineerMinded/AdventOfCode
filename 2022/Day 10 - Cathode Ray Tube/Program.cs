@@ -36,7 +36,6 @@ class Program
         ///////////////////////////////////////////////////PART TWO///////////////////////////////////////////////////////////////////
         char[] image = cpu.getData(240, commandList, countForArray, false);
         Console.WriteLine();
-  
         for (int x = 0; x < 40; x++) 
         {
             Console.Write(image[x]);
