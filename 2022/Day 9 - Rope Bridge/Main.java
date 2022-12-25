@@ -3,7 +3,7 @@
  * Advent Of Code - Day 9              *
  * ----------------------------------- *
  * Written in: Java                    *
- * Only part one successful            *
+ * Main.java                           *
  ***************************************/
 
 import java.io.File;
