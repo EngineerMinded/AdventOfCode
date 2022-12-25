@@ -24,8 +24,6 @@ public class RopeTrail {
         hasBeenRead = false;
     }
 
-
-
     public void add(int xInput, int yInput) {
         if ((x == xInput) && (y == yInput)) {
             // DON'T ADD!
@@ -40,35 +38,15 @@ public class RopeTrail {
         }
 
      }
-     public int getTrailCount() {
-        if (next != null) {
-            return 1 + next.getTrailCount();
+     public int getTrailCount (RopeTrail  toCount) {
+        if (toCount.next != null) {
+            return 1 + getTrailCount(toCount.next);
         }
         else {
             return 1;
         }
      }
-     public int getAllInCount (RopeTrail toCompare) {
-        int tally = 0;
-        if (toCompare.exists( x, y)) {
-            System.out.println("( "+ x + " , " + y + " )");
-            tally = 1;
-        }
-        if (next != null) {
-            tally = tally +  next.getAllInCount(toCompare);
-        }
-        return tally;
-     }
-     /*****************REWRITE AS LOOP ************************/
-     private boolean exists (int xFind, int yFind) {
-         if ((x == xFind) && (y == yFind)) {
-             return true;
-         }
-         if (next == null) {
-             return false;
-         }
-         return next.exists(xFind, yFind);
-     }
+
      public void displayAll(){
         System.out.println(x + " , " + y);
         if (next != null) {

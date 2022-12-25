@@ -12,10 +12,10 @@ import java.util.Scanner;
 
 public class Main {
     static Rope rope;
-    static String Path = "/Users/waynemack/Desktop/untitled folder/Day 9 - Rope Bridge/src/Day9Example2.txt";
+    static String Path = "/Users/waynemack/Desktop/untitled folder/Day 9 - Rope Bridge/src/Day9Data.txt";
     public static void main (String [] args) {
         //////////////////////////////// PART ONE ///////////////////////////////////////////////////////
-        //calculateAtNumber(2);
+        calculateAtNumber(2);
         calculateAtNumber(10);
 
     }

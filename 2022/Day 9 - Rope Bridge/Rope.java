@@ -66,25 +66,7 @@ public class Rope {
     private void move(int leadingX, int leadingY) { // This is for trailing sections only
         int xDeviation = leadingX - xPosition;
         int yDeviation = leadingY - yPosition;
-        if (xDeviation > 1) {
-            xPosition++;
-            if (yDeviation > 0) {
-                yPosition++;
-            }
-            else if (yDeviation < 0) {
-                yPosition--;
-            }
-        }
-        else if (xDeviation < -1) {
-            xPosition--;
-            if (yDeviation > 0) {
-                yPosition++;
-            }
-            else if (yDeviation < 0) {
-                yPosition--;
-            }
-        }
-        else if (yDeviation > 1) {
+        if (yDeviation > 1) {
             yPosition++;
             if (xDeviation > 0) {
                 xPosition++;
@@ -102,6 +84,25 @@ public class Rope {
                 xPosition--;
             }
         }
+        else if (xDeviation > 1) {
+            xPosition++;
+            if (yDeviation > 0) {
+                yPosition++;
+            }
+            else if (yDeviation < 0) {
+                yPosition--;
+            }
+        }
+        else if (xDeviation < -1) {
+            xPosition--;
+            if (yDeviation > 0) {
+                yPosition++;
+            }
+            else if (yDeviation < 0) {
+                yPosition--;
+            }
+        }
+
         if (next != null) {
             next.move(xPosition, yPosition);
         }
@@ -123,7 +124,9 @@ public class Rope {
     }
     public int getAllTally() {
         lastRopeTrail = getLastRopeTrail();
-        return ropeTrail.getAllInCount(lastRopeTrail);
+        return ropeTrail.getTrailCount(lastRopeTrail);
     }
+
+
 
 }
