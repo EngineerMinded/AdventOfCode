@@ -3,7 +3,7 @@
  * Advent Of Code - Day 9              *
  * ----------------------------------- *
  * Written in: Java                    *
- * RopeTrail.java.                     *
+ * RopeTrail.java                      *
  ***************************************/
 
 public class RopeTrail {
