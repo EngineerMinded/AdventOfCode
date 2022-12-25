@@ -7,7 +7,6 @@
  * Container and Platform class              *
  *********************************************/
 
-
 // The container class is a modified stack used for the data and the containers itself
 public class Container
 {
