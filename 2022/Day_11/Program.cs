@@ -1,4 +1,12 @@
-﻿using System;
+﻿/********************************************
+ * Wayne Mack                               *
+ * Advent Of Code - Day 11                  *
+ * ---------------------------------------- *
+ * Written in : C#                          *
+ * Hint for Part 2 was found on Reddit      *
+ * Program.cs                               *
+ ********************************************/
+using System;
 using System.IO;
 using System.Numerics;
 
@@ -6,7 +14,7 @@ namespace Day_11_Monkey_In_the_Middle
 {
     class Program
     {
-        static string Path = "Day11Example.txt";
+        static string Path = "Day11Data.txt";
         static void Main(string[] args)
         {
             int arrayLength = File.ReadAllText(Path).Split("\n\n").Length;
@@ -16,6 +24,7 @@ namespace Day_11_Monkey_In_the_Middle
                 MonkeyGroup[monkeyCounter] = new Monkey(line.Split("\n"));
                 monkeyCounter++;
             }
+            BigInteger commonModulo;
             void inspectionCycle(bool Part2)
             {
                 foreach (Monkey monkey in MonkeyGroup)
@@ -46,7 +55,7 @@ namespace Day_11_Monkey_In_the_Middle
                         }
                         else
                         {
-                           
+                            n = n % commonModulo;
                         }
                         if (n % monkey.divideTestNumber == 0)
                         {
@@ -101,6 +110,18 @@ namespace Day_11_Monkey_In_the_Middle
                 }
                 Console.WriteLine("The total for part One is: " + firstNumber + " * " + secondNumber + " = " + firstNumber * secondNumber);
             }
+            BigInteger getCommomModulo ()
+            {
+                BigInteger answer = 1;
+                foreach (Monkey m in MonkeyGroup)
+                {
+                    answer = answer * m.divideTestNumber;
+                }
+
+                return answer;
+            }
+            commonModulo = getCommomModulo();
+            // For Part one: Change 10000 to 20 and true to false
             getAnswerAtRound(10000,true);
         }
     }
