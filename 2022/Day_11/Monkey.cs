@@ -1,3 +1,14 @@
+/*********************************************
+ * Wayne Mack                                *
+ * Advent Of Code - Day 11                   *
+ * ------------------------------------------*
+ * Written in C#                             *
+ * ONLY FIRST PART COMPLETED!!               *
+ * Numbers become too big. Must find a way   *
+ * reduce it.                                *
+ *********************************************/
+
+
 ﻿using System;
 using System.Collections.Generic;
 using System.Numerics;
@@ -42,7 +53,7 @@ namespace Day_11_Monkey_In_the_Middle
             falseThrowTo = int.Parse(attributes[5].Split(" ")[9]);
 
             displayContents();
-            
+
         }
 
         private void displayContents ()
@@ -81,6 +92,6 @@ namespace Day_11_Monkey_In_the_Middle
                 //Console.Write(i + " ");
             }
         }
-        
+
     }
 }
