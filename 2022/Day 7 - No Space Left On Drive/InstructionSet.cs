@@ -63,7 +63,6 @@ class InstructionSet
         }
         return "$ end";
     }
-
     public void Unread()
     {
         read = true;
