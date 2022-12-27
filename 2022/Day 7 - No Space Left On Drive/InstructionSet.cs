@@ -16,14 +16,12 @@ class InstructionSet
     string data;
     InstructionSet Next;
     bool read;
-
     public InstructionSet ()
     {
         data = null;
         Next = null;
         read = false;
     }
-
     public void append(string dataInput)
     {
         if (data == null)
@@ -40,8 +38,6 @@ class InstructionSet
             Next.append (dataInput);
         }
     }
-
-
     public String getNext()
     {
         if (!read)
@@ -55,7 +51,6 @@ class InstructionSet
         }
         return "$ end";
     }
-
     public String peek()
     {
         if (!read)
@@ -77,7 +72,6 @@ class InstructionSet
             Next.Unread();
         }
     }
-
     public void PrintAll()
     {
         Console.WriteLine(data);
