@@ -3,9 +3,7 @@
    Day 4: Camp Cleanup
    -----------------------
    Writtem in: C++
-   
  */
-
 #include <cstring>
 #include <fstream>
 #include <iostream>
@@ -37,7 +35,6 @@ public:
 		secondMax = stoi(secondPart.substr(secondPart.find("-") + 1));
 		next = NULL;
 	}
-
 	// Add new items to list
 	void add(string rawData) {
 		if (next == NULL) {
@@ -87,7 +84,6 @@ public:
 		}
 	}
 };
-
 class IndividualRanges {
 private:
 	int min, max;
@@ -118,7 +114,6 @@ public:
 		}
 	}
 };
-
 int main() {
 	SectionAssignments list = SectionAssignments();
 	// READ FILE CONTENTS
