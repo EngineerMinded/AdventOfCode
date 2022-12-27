@@ -76,7 +76,6 @@ class FileObject
             Next.append(name, size);
         }
     }
-
     public void command (string targetDirectory, InstructionSet i)
     {
         this.instructions = i;
@@ -109,7 +108,6 @@ class FileObject
                                 if (contents == null)
                                 {
                                     contents = new FileObject(nextCommand.Split(" ")[1], int.Parse(nextCommand.Split(" ")[0]));
-
                                 }
                                 else
                                 {
@@ -155,7 +153,6 @@ class FileObject
             instructions = Next.instructions;
         }
     }
-
     public long getDirectoryValues()
     {
 
@@ -176,7 +173,6 @@ class FileObject
             return fileSize;
         }
     }
-
     public void printTree()
     {
         fileSize = getDirectoryValues();
@@ -226,7 +222,6 @@ class FileObject
         }
         return total;
     }
-
     public long getLargestNumberupTo(long maxNumber)
     {
         long answer = fileSize;
@@ -255,7 +250,6 @@ class FileObject
         }
         return Next.getLargestNumberupTo(maxNumber);
     }
-
     public LinkedList<long> allDirectoryNumbers (LinkedList<long> list)
     {
         if (type == Type.DIRECTORY)
@@ -273,5 +267,4 @@ class FileObject
         LinkedList<long> sorted = new LinkedList<long>();
         return list;
     }
-
 }
