@@ -88,7 +88,6 @@ namespace Day_11_Monkey_In_the_Middle
                             m.displayItemList();
                             m.displayNumberOfInspections();
                         }
-                        
                         monkeyCounter++;
                     }
                     Console.WriteLine();
@@ -117,7 +116,6 @@ namespace Day_11_Monkey_In_the_Middle
                 {
                     answer = answer * m.divideTestNumber;
                 }
-
                 return answer;
             }
             commonModulo = getCommomModulo();
