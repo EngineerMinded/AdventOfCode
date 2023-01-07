@@ -3,12 +3,11 @@
  * Day 12 - Hill Climbing Algorithm               *
  * -----------------------------------------------*
  * Written in C#                                  *
- * Gets the right answer for sample but wrong     *
- * answer  for practical                          *
+ * First Start obtained                           *
  **************************************************/
 class Program
 {
-    static bool example = true;
+    static bool example = false;
     static int[,]? Map, Trail;
     static string? path;
 
@@ -42,7 +41,7 @@ class Program
                 if (c == 'E')
                 {
                     endingPoint = (x, y);
-                    Map[x, y] = 27;
+                    Map[x, y] = 26;
                 }
 
                 y++;
@@ -85,35 +84,45 @@ class Program
         }
 
         Trail = new int[Map.GetLength(0), Map.GetLength(1)];
-        for (int i = 0; i < Trail.GetLength(0); i++)
+
+        void resetEntireTrail()
         {
-            for (int j =0; j < Trail.GetLength(1); j++)
+            for (int i = 0; i < Trail.GetLength(0); i++)
             {
-                Trail[i, j] = Trail.GetLength(0) * Trail.GetLength (1);
+                for (int j = 0; j < Trail.GetLength(1); j++)
+                {
+                    Trail[i, j] = Trail.GetLength(0) * Trail.GetLength(1);
+                }
             }
         }
+        resetEntireTrail();
+
         Console.ForegroundColor = ConsoleColor.Green;
 
-        void generateSteps(int xHere, int yHere, int Step)
+        void generateSteps(int xHere, int yHere, int Step, bool partOne)
         {
             //Console.Clear();
             //displayTrail();
-            Console.WriteLine("Generating " + xHere + " , " + yHere + " as " + Step );
+            //Console.WriteLine("Generating " + xHere + " , " + yHere + " as " + Step );
             bool canAccess(int xAccess, int yAccess)
             {
 
                 return ((Map[xAccess, yAccess] - Map[xHere, yHere] >= -1) && (Trail[xAccess,yAccess] > Trail[xHere, yHere]   + 1));
             }
-
-            if ((xHere,yHere) == startingPoint)
+            if (!partOne)
             {
-                return;
+                if (Trail[xHere,yHere] == 1)
+                {
+                    Console.WriteLine("point a is :" + xHere + " , " + yHere);
+                    startingPoint = (xHere, yHere);
+                    return;
+                }
             }
             if (xHere > 0)
             {
                 if (canAccess (xHere - 1, yHere)) {
                     Trail[xHere - 1, yHere] = Step + 1;
-                    generateSteps(xHere - 1, yHere, Step + 1 );
+                    generateSteps(xHere - 1, yHere, Step + 1, partOne );
 
                 }
             }
@@ -122,7 +131,7 @@ class Program
                 if (canAccess(xHere, yHere - 1))
                 {
                     Trail[xHere, yHere - 1] = Step + 1;
-                    generateSteps(xHere, yHere - 1, Step + 1);
+                    generateSteps(xHere, yHere - 1, Step + 1, partOne);
                 }
             }
             if (yHere < Map.GetLength(1) - 1)
@@ -130,7 +139,7 @@ class Program
                 if (canAccess(xHere, yHere + 1))
                 {
                     Trail[xHere, yHere + 1] = Step + 1;
-                    generateSteps(xHere, yHere + 1, Step + 1);
+                    generateSteps(xHere, yHere + 1, Step + 1, partOne);
                 }
             }
             if (xHere < Map.GetLength(0) - 1)
@@ -138,16 +147,26 @@ class Program
                 if (canAccess(xHere + 1, yHere))
                 {
                     Trail[xHere + 1, yHere] = Step + 1;
-                    generateSteps(xHere + 1, yHere, Step + 1);
+                    generateSteps(xHere + 1, yHere, Step + 1, partOne);
                 }
             }
 
         }
         Trail[endingPoint.x, endingPoint.y] = 0;
-        generateSteps(endingPoint.x, endingPoint.y, 0);
+        generateSteps(endingPoint.x, endingPoint.y, 0, true);
 
         displayTrail();
+        ////////////////////////////// PART ONE //////////////////////////////////////////////////////////////
 
         Console.WriteLine ("The miminum steps on this trail are :" + Trail[startingPoint.x, startingPoint.y]);
+
+        ////////////////////////////// PART TWO //////////////////////////////////////////////////////////////
+
+        resetEntireTrail();
+
+        generateSteps(endingPoint.x, endingPoint.y, 0, false);
+
+        Console.WriteLine("The minimum steps for the new Trail on Part two is " + Trail[startingPoint.x, startingPoint.y]);
+
     }
 }
