@@ -101,8 +101,6 @@ class Program
 
         void generateSteps(int xHere, int yHere, int Step)
         {
-
-
             bool canAccess(int xAccess, int yAccess)
             {
 
@@ -119,7 +117,6 @@ class Program
                 {
                     Trail[xHere - 1, yHere] = Step + 1;
                     generateSteps(xHere - 1, yHere, Step + 1);
-
                 }
             }
             if (yHere > 0)
