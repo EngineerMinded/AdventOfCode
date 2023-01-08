@@ -98,6 +98,7 @@ class Program
         int lowestA = 99999; // For the answer to part 2
         Console.ForegroundColor = ConsoleColor.Green;
         bool foundPartTwo = false;
+
         void generateSteps(int xHere, int yHere, int Step)
         {
 
@@ -105,7 +106,7 @@ class Program
             bool canAccess(int xAccess, int yAccess)
             {
 
-                return ((Map[xAccess, yAccess] - Map[xHere, yHere] >= -1) && (Trail[xAccess,yAccess] > Trail[xHere, yHere]   + 1));
+                return (Map[xAccess, yAccess] - Map[xHere, yHere] >= -1) && (Trail[xAccess,yAccess] > Trail[xHere, yHere]   + 1);
             }
 
             if (Map[xHere,yHere] == 1)
@@ -145,8 +146,6 @@ class Program
                     generateSteps(xHere + 1, yHere, Step + 1);
                 }
             }
-
-
         }
         ////////////////////////////// PART ONE //////////////////////////////////////////////////////////////
 
@@ -159,6 +158,6 @@ class Program
 
         ////////////////////////////// PART TWO //////////////////////////////////////////////////////////////
 
-        Console.WriteLine("Th minimum steps for the hiking trail is: " + lowestA);
+        Console.WriteLine("The minimum steps for the hiking trail is: " + lowestA);
     }
 }
