@@ -103,7 +103,6 @@ class Program
         {
             bool canAccess(int xAccess, int yAccess)
             {
-
                 return (Map[xAccess, yAccess] - Map[xHere, yHere] >= -1) && (Trail[xAccess,yAccess] > Trail[xHere, yHere]   + 1);
             }
 
