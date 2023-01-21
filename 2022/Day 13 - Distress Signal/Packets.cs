@@ -11,15 +11,14 @@ namespace Day_13___Distress_Signal
         int leftNumbericValue, rightNumbericValue;
         public List <string> left, right;
         int leftValue, rightValue;
-        bool lastWasBracket;
-      
+        bool lastWasClosedBracket, lastWasOpenBracket;
 
         // subPacket Constructor
         public Packet(string metadata)
         {
             left = new List <string> ();
             right = new List <string> ();
-            lastWasBracket = false;
+            lastWasClosedBracket = lastWasOpenBracket = false;
             foreach (char leftChar in metadata.Split("\n")[0]) {
                 fillInformation(true, leftChar);   
             }
@@ -54,7 +53,7 @@ namespace Day_13___Distress_Signal
                     }
                 case ']':
                     {
-                        if (!lastWasBracket)
+                        if (!lastWasClosedBracket && !lastWasOpenBracket)
                         {
                             addData(LeftTrueRightFalse, null);
                         }
@@ -64,9 +63,9 @@ namespace Day_13___Distress_Signal
                     }
                 case ',':
                     {
-                        if (lastWasBracket)
+                        if (lastWasClosedBracket)
                         {
-                            lastWasBracket = true;
+                            lastWasClosedBracket = true;
                         }
                         else
                         {
@@ -90,7 +89,8 @@ namespace Day_13___Distress_Signal
                         break;
                     }
             }
-            lastWasBracket = (item == ']');
+            lastWasClosedBracket = (item == ']');
+            lastWasOpenBracket = (item == '[');
            
 
         }
