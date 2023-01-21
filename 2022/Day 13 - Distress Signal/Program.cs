@@ -10,7 +10,7 @@ namespace Day_13___Distress_Signal
     {
         static List<Packet> packets;
         static string fileName = "Day13Data.txt";
-        static bool test = true;
+        static bool test = false;
 
         static void Main (string[] args)
         {
@@ -22,23 +22,8 @@ namespace Day_13___Distress_Signal
             // GET INFORMATION FROM FILE AND PUT IN PACKET LIST
             foreach (string data in File.ReadAllText(fileName).Split("\r\n\r\n"))
             {
-                Console.WriteLine (data);
                 packets.Add(new Packet(data));
-            }
-
-            foreach (Packet packet in packets)
-            {
-                foreach (string w in packet.left)
-                {
-                    Console.Write(" " + w);
-                }
-                Console.WriteLine();
-                foreach (string w in packet.right)
-                {
-                    Console.Write(" " + w);
-                }
-                Console.WriteLine();
-            }      
+            }   
         }
     }
 }

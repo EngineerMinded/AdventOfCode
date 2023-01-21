@@ -13,7 +13,7 @@ namespace Day_13___Distress_Signal
         int leftValue, rightValue;
         bool lastWasClosedBracket, lastWasOpenBracket;
 
-        // subPacket Constructor
+        // PACKET CONSTRUCTOR
         public Packet(string metadata)
         {
             left = new List <string> ();
@@ -26,8 +26,24 @@ namespace Day_13___Distress_Signal
             {
                 fillInformation(false, rightChar);
             }
+            printVariablesToTest(metadata);
         }
 
+        protected void printVariablesToTest (string metaData)
+        {
+            Console.WriteLine (metaData);
+            foreach (string w in left)
+            {
+                Console.Write(" " + w);
+            }
+            Console.WriteLine ();
+            foreach (string w in right)
+            {
+                Console.Write(" " + w);
+            }
+            Console.WriteLine();
+        }
+        // INPUT ALL INFORMATION INTO LIST FOR LATER USE
         private void fillInformation (bool LeftTrueRightFalse, char item)
         {
             void addData(bool isLeft, String data)
@@ -94,6 +110,7 @@ namespace Day_13___Distress_Signal
            
 
         }
+        // IS THIS IN THE RIGHT ORDER?
         
         public bool inRightOrder ()
         {
@@ -105,6 +122,19 @@ namespace Day_13___Distress_Signal
             }
 
             return true;
+        }
+        // IS THIS A NUMBER?
+        private bool isNumber (string testString)
+        {
+            foreach (char c in testString.ToCharArray())
+            {
+                if ((int) c < 48  || (int)c > 58)
+                {
+                    return false;
+                }
+            }
+            return true;
+
         }
 
        
