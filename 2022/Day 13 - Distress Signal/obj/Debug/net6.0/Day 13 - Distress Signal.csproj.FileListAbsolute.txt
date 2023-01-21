@@ -1,0 +1,15 @@
+D:\Advent Of Code 2022\Day 13 - Distress Signal\bin\Debug\net6.0\Day 13 - Distress Signal.exe
+D:\Advent Of Code 2022\Day 13 - Distress Signal\bin\Debug\net6.0\Day 13 - Distress Signal.deps.json
+D:\Advent Of Code 2022\Day 13 - Distress Signal\bin\Debug\net6.0\Day 13 - Distress Signal.runtimeconfig.json
+D:\Advent Of Code 2022\Day 13 - Distress Signal\bin\Debug\net6.0\Day 13 - Distress Signal.dll
+D:\Advent Of Code 2022\Day 13 - Distress Signal\bin\Debug\net6.0\Day 13 - Distress Signal.pdb
+D:\Advent Of Code 2022\Day 13 - Distress Signal\obj\Debug\net6.0\Day 13 - Distress Signal.csproj.AssemblyReference.cache
+D:\Advent Of Code 2022\Day 13 - Distress Signal\obj\Debug\net6.0\Day 13 - Distress Signal.GeneratedMSBuildEditorConfig.editorconfig
+D:\Advent Of Code 2022\Day 13 - Distress Signal\obj\Debug\net6.0\Day 13 - Distress Signal.AssemblyInfoInputs.cache
+D:\Advent Of Code 2022\Day 13 - Distress Signal\obj\Debug\net6.0\Day 13 - Distress Signal.AssemblyInfo.cs
+D:\Advent Of Code 2022\Day 13 - Distress Signal\obj\Debug\net6.0\Day 13 - Distress Signal.csproj.CoreCompileInputs.cache
+D:\Advent Of Code 2022\Day 13 - Distress Signal\obj\Debug\net6.0\Day 13 - Distress Signal.dll
+D:\Advent Of Code 2022\Day 13 - Distress Signal\obj\Debug\net6.0\refint\Day 13 - Distress Signal.dll
+D:\Advent Of Code 2022\Day 13 - Distress Signal\obj\Debug\net6.0\Day 13 - Distress Signal.pdb
+D:\Advent Of Code 2022\Day 13 - Distress Signal\obj\Debug\net6.0\Day 13 - Distress Signal.genruntimeconfig.cache
+D:\Advent Of Code 2022\Day 13 - Distress Signal\obj\Debug\net6.0\ref\Day 13 - Distress Signal.dll
