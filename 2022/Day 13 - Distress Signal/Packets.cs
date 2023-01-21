@@ -114,31 +114,23 @@ namespace Day_13___Distress_Signal
         
         public bool inRightOrder ()
         {
-            leftNumbericValue = rightNumbericValue = 0;
-
-            void getNextValueForBoth()
-            {
-
-            }
-
+            return _isInRightOrder(0, 0);
+        }
+        private bool _isInRightOrder (int xPosition, int yPosition)
+        {
             return true;
         }
         // IS THIS A NUMBER?
-        private bool isNumber (string testString)
+        private bool isNumber(string testString)
         {
             foreach (char c in testString.ToCharArray())
             {
-                if ((int) c < 48  || (int)c > 58)
+                if ((int)c < 48 || (int)c > 58)
                 {
                     return false;
                 }
             }
             return true;
-
         }
-
-       
-        
-
     }
 }
