@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Wayne Mack\\Documents\\GitHub\\AdventOfCode2021\\2022\\Day 13 - Distress Signal\\Day 13 - Distress Signal.csproj": {}
+    "C:\\Users\\wamj2\\OneDrive\\Documents\\GitHub\\AdventOfCode\\2022\\Day 13 - Distress Signal\\Day 13 - Distress Signal.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Wayne Mack\\Documents\\GitHub\\AdventOfCode2021\\2022\\Day 13 - Distress Signal\\Day 13 - Distress Signal.csproj": {
+    "C:\\Users\\wamj2\\OneDrive\\Documents\\GitHub\\AdventOfCode\\2022\\Day 13 - Distress Signal\\Day 13 - Distress Signal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Wayne Mack\\Documents\\GitHub\\AdventOfCode2021\\2022\\Day 13 - Distress Signal\\Day 13 - Distress Signal.csproj",
+        "projectUniqueName": "C:\\Users\\wamj2\\OneDrive\\Documents\\GitHub\\AdventOfCode\\2022\\Day 13 - Distress Signal\\Day 13 - Distress Signal.csproj",
         "projectName": "Day 13 - Distress Signal",
-        "projectPath": "C:\\Users\\Wayne Mack\\Documents\\GitHub\\AdventOfCode2021\\2022\\Day 13 - Distress Signal\\Day 13 - Distress Signal.csproj",
-        "packagesPath": "C:\\Users\\Wayne Mack\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Wayne Mack\\Documents\\GitHub\\AdventOfCode2021\\2022\\Day 13 - Distress Signal\\obj\\",
+        "projectPath": "C:\\Users\\wamj2\\OneDrive\\Documents\\GitHub\\AdventOfCode\\2022\\Day 13 - Distress Signal\\Day 13 - Distress Signal.csproj",
+        "packagesPath": "C:\\Users\\wamj2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\wamj2\\OneDrive\\Documents\\GitHub\\AdventOfCode\\2022\\Day 13 - Distress Signal\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Wayne Mack\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wamj2\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -59,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.111\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

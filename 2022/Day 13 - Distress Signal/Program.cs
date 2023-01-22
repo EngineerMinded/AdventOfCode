@@ -19,6 +19,7 @@ namespace Day_13___Distress_Signal
             {
                 fileName = "Day13Example.txt";
             }
+            fileName = "fromInternet.txt";
             // GET INFORMATION FROM FILE AND PUT IN PACKET LIST
             foreach (string data in File.ReadAllText(fileName).Split("\r\n\r\n"))
             {

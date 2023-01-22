@@ -28,3 +28,18 @@ C:\Users\Wayne Mack\Documents\GitHub\AdventOfCode2021\2022\Day 13 - Distress Sig
 C:\Users\Wayne Mack\Documents\GitHub\AdventOfCode2021\2022\Day 13 - Distress Signal\bin\Debug\net6.0\ref\Day 13 - Distress Signal.dll
 C:\Users\Wayne Mack\Documents\GitHub\AdventOfCode2021\2022\Day 13 - Distress Signal\bin\Debug\net6.0\Day 13 - Distress Signal.pdb
 C:\Users\Wayne Mack\Documents\GitHub\AdventOfCode2021\2022\Day 13 - Distress Signal\obj\Debug\net6.0\Day 13 - Distress Signal.genruntimeconfig.cache
+C:\Users\wamj2\OneDrive\Documents\GitHub\AdventOfCode\2022\Day 13 - Distress Signal\bin\Debug\net6.0\Day 13 - Distress Signal.exe
+C:\Users\wamj2\OneDrive\Documents\GitHub\AdventOfCode\2022\Day 13 - Distress Signal\bin\Debug\net6.0\Day 13 - Distress Signal.deps.json
+C:\Users\wamj2\OneDrive\Documents\GitHub\AdventOfCode\2022\Day 13 - Distress Signal\bin\Debug\net6.0\Day 13 - Distress Signal.runtimeconfig.json
+C:\Users\wamj2\OneDrive\Documents\GitHub\AdventOfCode\2022\Day 13 - Distress Signal\bin\Debug\net6.0\Day 13 - Distress Signal.dll
+C:\Users\wamj2\OneDrive\Documents\GitHub\AdventOfCode\2022\Day 13 - Distress Signal\bin\Debug\net6.0\Day 13 - Distress Signal.pdb
+C:\Users\wamj2\OneDrive\Documents\GitHub\AdventOfCode\2022\Day 13 - Distress Signal\obj\Debug\net6.0\Day 13 - Distress Signal.csproj.AssemblyReference.cache
+C:\Users\wamj2\OneDrive\Documents\GitHub\AdventOfCode\2022\Day 13 - Distress Signal\obj\Debug\net6.0\Day 13 - Distress Signal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wamj2\OneDrive\Documents\GitHub\AdventOfCode\2022\Day 13 - Distress Signal\obj\Debug\net6.0\Day 13 - Distress Signal.AssemblyInfoInputs.cache
+C:\Users\wamj2\OneDrive\Documents\GitHub\AdventOfCode\2022\Day 13 - Distress Signal\obj\Debug\net6.0\Day 13 - Distress Signal.AssemblyInfo.cs
+C:\Users\wamj2\OneDrive\Documents\GitHub\AdventOfCode\2022\Day 13 - Distress Signal\obj\Debug\net6.0\Day 13 - Distress Signal.csproj.CoreCompileInputs.cache
+C:\Users\wamj2\OneDrive\Documents\GitHub\AdventOfCode\2022\Day 13 - Distress Signal\obj\Debug\net6.0\Day 13 - Distress Signal.dll
+C:\Users\wamj2\OneDrive\Documents\GitHub\AdventOfCode\2022\Day 13 - Distress Signal\obj\Debug\net6.0\refint\Day 13 - Distress Signal.dll
+C:\Users\wamj2\OneDrive\Documents\GitHub\AdventOfCode\2022\Day 13 - Distress Signal\obj\Debug\net6.0\Day 13 - Distress Signal.pdb
+C:\Users\wamj2\OneDrive\Documents\GitHub\AdventOfCode\2022\Day 13 - Distress Signal\obj\Debug\net6.0\Day 13 - Distress Signal.genruntimeconfig.cache
+C:\Users\wamj2\OneDrive\Documents\GitHub\AdventOfCode\2022\Day 13 - Distress Signal\obj\Debug\net6.0\ref\Day 13 - Distress Signal.dll

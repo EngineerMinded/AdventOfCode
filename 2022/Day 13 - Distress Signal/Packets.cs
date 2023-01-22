@@ -152,7 +152,7 @@ namespace Day_13___Distress_Signal
                         pointOfFailure = lPosition;
                         return false;
                     }
-                    if ((left.ElementAt(rPosition + 1) != "]")) 
+                    if ((left.ElementAt(lPosition + 1) != "]")) 
                     {
                         right.Insert(rPosition, "[");
                         right.Insert(rPosition + 2, "]");
@@ -165,7 +165,7 @@ namespace Day_13___Distress_Signal
                 }
                 else if ((right.ElementAt(rPosition) == "[") )
                 {
-                    if (left.ElementAt(rPosition) == "]")
+                    if (left.ElementAt(lPosition) == "]")
                     {
                         return true;
                     }
