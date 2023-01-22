@@ -10,7 +10,7 @@ namespace Day_13___Distress_Signal
     {
         static List<Packet> packets;
         static string fileName = "Day13Data.txt";
-        static bool test = true;
+        static bool test = false;
 
         static void Main (string[] args)
         {
@@ -23,7 +23,20 @@ namespace Day_13___Distress_Signal
             foreach (string data in File.ReadAllText(fileName).Split("\r\n\r\n"))
             {
                 packets.Add(new Packet(data));
-            }   
+            }
+
+            int totalOfIndicesInOrder = 0;
+            int count = 1;
+            foreach (Packet packet in packets)
+            {
+                if (packet.inRightOrder())
+                {
+                    totalOfIndicesInOrder = totalOfIndicesInOrder + count;
+                    Console.WriteLine("Indice :" + count);
+                }
+                count++;
+            }
+            Console.WriteLine("The total of all indices is: " + totalOfIndicesInOrder);
         }
     }
 }

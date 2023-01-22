@@ -13,10 +13,12 @@ namespace Day_13___Distress_Signal
         public List <string> left, right;
         int leftValue, rightValue;
         bool lastWasClosedBracket, lastWasOpenBracket;
+        int pointOfFailure;
 
         // PACKET CONSTRUCTOR
         public Packet(string metadata)
         {
+            pointOfFailure = -1;
             left = new List <string> ();
             right = new List <string> ();
             lastWasClosedBracket = lastWasOpenBracket = false;
@@ -29,20 +31,35 @@ namespace Day_13___Distress_Signal
             }
             printVariablesToTest(metadata);
             Console.WriteLine(inRightOrder());
-            printVariablesToTest(metadata);
+            printVariablesToTest(" ");
+            Console.WriteLine();
         }
 
         protected void printVariablesToTest (string metaData)
         {
+            int count = 0;
             Console.WriteLine (metaData);
             foreach (string w in left)
             {
+                Console.ForegroundColor = ConsoleColor.White;
+                if (pointOfFailure == count)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
                 Console.Write(" " + w);
+                count++;
             }
             Console.WriteLine ();
+            count = 0;
             foreach (string w in right)
             {
+                Console.ForegroundColor = ConsoleColor.White;
+                if (pointOfFailure == count)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
                 Console.Write(" " + w);
+                count++;
             }
             Console.WriteLine();
         }
@@ -117,7 +134,11 @@ namespace Day_13___Distress_Signal
         }
         private bool _isInRightOrder (int lPosition, int rPosition)
         {
-            Console.WriteLine("Check : " + left.ElementAt(lPosition) + " " + right.ElementAt(rPosition));
+            if ((lPosition == left.Count) || (rPosition == right.Count))
+            {
+                return true;
+            }
+            //Console.WriteLine("Check : " + left.ElementAt(lPosition) + " " + right.ElementAt(rPosition));
             if (left.ElementAt(lPosition) == right.ElementAt(rPosition))
             {
                 return _isInRightOrder(lPosition + 1, rPosition + 1);
@@ -126,20 +147,12 @@ namespace Day_13___Distress_Signal
             {
                 if (left.ElementAt(lPosition) == "[")
                 {
-                    if ((left.ElementAt(rPosition + 1) != "]") && (right.ElementAt(rPosition) != "]")) 
+                    if (right.ElementAt(rPosition) == "]")
                     {
-                        left.Insert(lPosition, "[");
-                        left.Insert(lPosition + 2, "]");
-                        return _isInRightOrder(lPosition, rPosition);
+                        pointOfFailure = lPosition;
+                        return false;
                     }
-                    else
-                    {
-                        return _isInRightOrder(lPosition + 1, rPosition + 1);
-                    }
-                }
-                else if ((right.ElementAt(rPosition) == "[") && (right.ElementAt(rPosition) != "]")) 
-                {
-                    if (right.ElementAt(rPosition + 1) != "]")
+                    if ((left.ElementAt(rPosition + 1) != "]")) 
                     {
                         right.Insert(rPosition, "[");
                         right.Insert(rPosition + 2, "]");
@@ -150,23 +163,45 @@ namespace Day_13___Distress_Signal
                         return _isInRightOrder(lPosition + 1, rPosition + 1);
                     }
                 }
-                else if (left.ElementAt(lPosition) == "]")
+                else if ((right.ElementAt(rPosition) == "[") )
                 {
-                    return false;
+                    if (left.ElementAt(rPosition) == "]")
+                    {
+                        return true;
+                    }
+                    if ((right.ElementAt(rPosition + 1) != "]")) 
+                    {
+                        left.Insert(lPosition, "[");
+                        left.Insert(lPosition + 2, "]");
+                        return _isInRightOrder(lPosition, rPosition);
+                    }
+                    else
+                    {
+                        return _isInRightOrder(lPosition + 1, rPosition + 1);
+                    }
                 }
-                else if (right.ElementAt(rPosition) == "]")
+                else if (left.ElementAt(lPosition) == "]")
                 {
                     return true;
                 }
+                else if (right.ElementAt(rPosition) == "]")
+                {
+                    pointOfFailure = rPosition;
+                    return false;
+                }
                 else
                 {
-                    return (int.Parse(left.ElementAt(lPosition)) > (int.Parse(right.ElementAt(rPosition))));
+                    if (int.Parse(left.ElementAt(lPosition)) < (int.Parse(right.ElementAt(rPosition))))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        pointOfFailure = lPosition;
+                        return false;
+                    }
                 }
             }
-        }
-        private void formatNewBrackets ()
-        {
-
         }
         // IS THIS A NUMBER?
         private bool isNumber(string testString)
