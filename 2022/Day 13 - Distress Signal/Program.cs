@@ -10,7 +10,7 @@ namespace Day_13___Distress_Signal
     {
         static List<Packet> packets;
         static string fileName = "Day13Data.txt";
-        static bool test = false;
+        static bool test = true;
 
         static void Main (string[] args)
         {
