@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,8 @@ namespace Day_13___Distress_Signal
             {
                 fillInformation(false, rightChar);
             }
+            printVariablesToTest(metadata);
+            Console.WriteLine(inRightOrder());
             printVariablesToTest(metadata);
         }
 
@@ -89,7 +92,6 @@ namespace Day_13___Distress_Signal
                         }
                         break;
                     }
-
                 default :
                     { 
                         if (LeftTrueRightFalse)
@@ -107,18 +109,64 @@ namespace Day_13___Distress_Signal
             }
             lastWasClosedBracket = (item == ']');
             lastWasOpenBracket = (item == '[');
-           
-
         }
         // IS THIS IN THE RIGHT ORDER?
-        
         public bool inRightOrder ()
         {
             return _isInRightOrder(0, 0);
         }
-        private bool _isInRightOrder (int xPosition, int yPosition)
+        private bool _isInRightOrder (int lPosition, int rPosition)
         {
-            return true;
+            Console.WriteLine("Check : " + left.ElementAt(lPosition) + " " + right.ElementAt(rPosition));
+            if (left.ElementAt(lPosition) == right.ElementAt(rPosition))
+            {
+                return _isInRightOrder(lPosition + 1, rPosition + 1);
+            }
+            else
+            {
+                if (left.ElementAt(lPosition) == "[")
+                {
+                    if ((left.ElementAt(rPosition + 1) != "]") && (right.ElementAt(rPosition) != "]")) 
+                    {
+                        left.Insert(lPosition, "[");
+                        left.Insert(lPosition + 2, "]");
+                        return _isInRightOrder(lPosition, rPosition);
+                    }
+                    else
+                    {
+                        return _isInRightOrder(lPosition + 1, rPosition + 1);
+                    }
+                }
+                else if ((right.ElementAt(rPosition) == "[") && (right.ElementAt(rPosition) != "]")) 
+                {
+                    if (right.ElementAt(rPosition + 1) != "]")
+                    {
+                        right.Insert(rPosition, "[");
+                        right.Insert(rPosition + 2, "]");
+                        return _isInRightOrder(lPosition, rPosition);
+                    }
+                    else
+                    {
+                        return _isInRightOrder(lPosition + 1, rPosition + 1);
+                    }
+                }
+                else if (left.ElementAt(lPosition) == "]")
+                {
+                    return false;
+                }
+                else if (right.ElementAt(rPosition) == "]")
+                {
+                    return true;
+                }
+                else
+                {
+                    return (int.Parse(left.ElementAt(lPosition)) > (int.Parse(right.ElementAt(rPosition))));
+                }
+            }
+        }
+        private void formatNewBrackets ()
+        {
+
         }
         // IS THIS A NUMBER?
         private bool isNumber(string testString)
