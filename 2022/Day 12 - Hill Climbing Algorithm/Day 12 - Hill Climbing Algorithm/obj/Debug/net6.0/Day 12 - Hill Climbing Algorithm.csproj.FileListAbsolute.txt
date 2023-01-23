@@ -1,0 +1,38 @@
+C:/Users/wamj2/OneDrive/Desktop/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/Day 12 - Hill Climbing Algorithm.csproj.AssemblyReference.cache
+C:/Users/wamj2/OneDrive/Desktop/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/Day 12 - Hill Climbing Algorithm.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/wamj2/OneDrive/Desktop/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/Day 12 - Hill Climbing Algorithm.AssemblyInfoInputs.cache
+C:/Users/wamj2/OneDrive/Desktop/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/Day 12 - Hill Climbing Algorithm.AssemblyInfo.cs
+C:/Users/wamj2/OneDrive/Desktop/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/Day 12 - Hill Climbing Algorithm.csproj.CoreCompileInputs.cache
+C:/Users/wamj2/OneDrive/Desktop/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/bin/Debug/net6.0/Day 12 - Hill Climbing Algorithm.exe
+C:/Users/wamj2/OneDrive/Desktop/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/bin/Debug/net6.0/Day 12 - Hill Climbing Algorithm.deps.json
+C:/Users/wamj2/OneDrive/Desktop/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/bin/Debug/net6.0/Day 12 - Hill Climbing Algorithm.runtimeconfig.json
+C:/Users/wamj2/OneDrive/Desktop/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/bin/Debug/net6.0/Day 12 - Hill Climbing Algorithm.dll
+C:/Users/wamj2/OneDrive/Desktop/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/bin/Debug/net6.0/Day 12 - Hill Climbing Algorithm.pdb
+C:/Users/wamj2/OneDrive/Desktop/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/Day 12 - Hill Climbing Algorithm.dll
+C:/Users/wamj2/OneDrive/Desktop/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/refint/Day 12 - Hill Climbing Algorithm.dll
+C:/Users/wamj2/OneDrive/Desktop/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/Day 12 - Hill Climbing Algorithm.pdb
+C:/Users/wamj2/OneDrive/Desktop/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/Day 12 - Hill Climbing Algorithm.genruntimeconfig.cache
+C:/Users/wamj2/OneDrive/Desktop/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/ref/Day 12 - Hill Climbing Algorithm.dll
+/Volumes/Wayne 500GB/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/Day 12 - Hill Climbing Algorithm.csproj.AssemblyReference.cache
+/Volumes/Wayne 500GB/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/Day 12 - Hill Climbing Algorithm.GeneratedMSBuildEditorConfig.editorconfig
+/Volumes/Wayne 500GB/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/Day 12 - Hill Climbing Algorithm.AssemblyInfoInputs.cache
+/Volumes/Wayne 500GB/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/Day 12 - Hill Climbing Algorithm.AssemblyInfo.cs
+/Volumes/Wayne 500GB/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/Day 12 - Hill Climbing Algorithm.csproj.CoreCompileInputs.cache
+/Volumes/Wayne 500GB/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/Day 12 - Hill Climbing Algorithm.dll
+/Volumes/Wayne 500GB/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/ref/Day 12 - Hill Climbing Algorithm.dll
+/Volumes/Wayne 500GB/Advent Of Code 2022/Day 12 - Hill Climbing Algorithm/Day 12 - Hill Climbing Algorithm/obj/Debug/net6.0/Day 12 - Hill Climbing Algorithm.pdb
+D:\Advent Of Code 2022\Day 12 - Hill Climbing Algorithm\Day 12 - Hill Climbing Algorithm\bin\Debug\net6.0\Day 12 - Hill Climbing Algorithm.exe
+D:\Advent Of Code 2022\Day 12 - Hill Climbing Algorithm\Day 12 - Hill Climbing Algorithm\bin\Debug\net6.0\Day 12 - Hill Climbing Algorithm.deps.json
+D:\Advent Of Code 2022\Day 12 - Hill Climbing Algorithm\Day 12 - Hill Climbing Algorithm\bin\Debug\net6.0\Day 12 - Hill Climbing Algorithm.runtimeconfig.json
+D:\Advent Of Code 2022\Day 12 - Hill Climbing Algorithm\Day 12 - Hill Climbing Algorithm\bin\Debug\net6.0\Day 12 - Hill Climbing Algorithm.dll
+D:\Advent Of Code 2022\Day 12 - Hill Climbing Algorithm\Day 12 - Hill Climbing Algorithm\bin\Debug\net6.0\Day 12 - Hill Climbing Algorithm.pdb
+D:\Advent Of Code 2022\Day 12 - Hill Climbing Algorithm\Day 12 - Hill Climbing Algorithm\obj\Debug\net6.0\Day 12 - Hill Climbing Algorithm.csproj.AssemblyReference.cache
+D:\Advent Of Code 2022\Day 12 - Hill Climbing Algorithm\Day 12 - Hill Climbing Algorithm\obj\Debug\net6.0\Day 12 - Hill Climbing Algorithm.GeneratedMSBuildEditorConfig.editorconfig
+D:\Advent Of Code 2022\Day 12 - Hill Climbing Algorithm\Day 12 - Hill Climbing Algorithm\obj\Debug\net6.0\Day 12 - Hill Climbing Algorithm.AssemblyInfoInputs.cache
+D:\Advent Of Code 2022\Day 12 - Hill Climbing Algorithm\Day 12 - Hill Climbing Algorithm\obj\Debug\net6.0\Day 12 - Hill Climbing Algorithm.AssemblyInfo.cs
+D:\Advent Of Code 2022\Day 12 - Hill Climbing Algorithm\Day 12 - Hill Climbing Algorithm\obj\Debug\net6.0\Day 12 - Hill Climbing Algorithm.csproj.CoreCompileInputs.cache
+D:\Advent Of Code 2022\Day 12 - Hill Climbing Algorithm\Day 12 - Hill Climbing Algorithm\obj\Debug\net6.0\Day 12 - Hill Climbing Algorithm.dll
+D:\Advent Of Code 2022\Day 12 - Hill Climbing Algorithm\Day 12 - Hill Climbing Algorithm\obj\Debug\net6.0\refint\Day 12 - Hill Climbing Algorithm.dll
+D:\Advent Of Code 2022\Day 12 - Hill Climbing Algorithm\Day 12 - Hill Climbing Algorithm\obj\Debug\net6.0\Day 12 - Hill Climbing Algorithm.pdb
+D:\Advent Of Code 2022\Day 12 - Hill Climbing Algorithm\Day 12 - Hill Climbing Algorithm\obj\Debug\net6.0\Day 12 - Hill Climbing Algorithm.genruntimeconfig.cache
+D:\Advent Of Code 2022\Day 12 - Hill Climbing Algorithm\Day 12 - Hill Climbing Algorithm\obj\Debug\net6.0\ref\Day 12 - Hill Climbing Algorithm.dll

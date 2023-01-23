@@ -1,0 +1,14 @@
+﻿$ cd /
+$ ls
+dir a
+dir b
+$ cd a
+$ ls
+1 some.txt
+$ cd ..
+$ cd b
+$ ls
+dir a
+$ cd a
+$ ls
+1 other.txt

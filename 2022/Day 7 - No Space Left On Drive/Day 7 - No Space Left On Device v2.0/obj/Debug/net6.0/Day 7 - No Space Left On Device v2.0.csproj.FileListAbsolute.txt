@@ -1,0 +1,15 @@
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 7 - No Space Left On Device v2.0\Day 7 - No Space Left On Device v2.0\bin\Debug\net6.0\Day 7 - No Space Left On Device v2.0.exe
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 7 - No Space Left On Device v2.0\Day 7 - No Space Left On Device v2.0\bin\Debug\net6.0\Day 7 - No Space Left On Device v2.0.deps.json
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 7 - No Space Left On Device v2.0\Day 7 - No Space Left On Device v2.0\bin\Debug\net6.0\Day 7 - No Space Left On Device v2.0.runtimeconfig.json
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 7 - No Space Left On Device v2.0\Day 7 - No Space Left On Device v2.0\bin\Debug\net6.0\Day 7 - No Space Left On Device v2.0.dll
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 7 - No Space Left On Device v2.0\Day 7 - No Space Left On Device v2.0\bin\Debug\net6.0\Day 7 - No Space Left On Device v2.0.pdb
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 7 - No Space Left On Device v2.0\Day 7 - No Space Left On Device v2.0\obj\Debug\net6.0\Day 7 - No Space Left On Device v2.0.csproj.AssemblyReference.cache
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 7 - No Space Left On Device v2.0\Day 7 - No Space Left On Device v2.0\obj\Debug\net6.0\Day 7 - No Space Left On Device v2.0.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 7 - No Space Left On Device v2.0\Day 7 - No Space Left On Device v2.0\obj\Debug\net6.0\Day 7 - No Space Left On Device v2.0.AssemblyInfoInputs.cache
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 7 - No Space Left On Device v2.0\Day 7 - No Space Left On Device v2.0\obj\Debug\net6.0\Day 7 - No Space Left On Device v2.0.AssemblyInfo.cs
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 7 - No Space Left On Device v2.0\Day 7 - No Space Left On Device v2.0\obj\Debug\net6.0\Day 7 - No Space Left On Device v2.0.csproj.CoreCompileInputs.cache
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 7 - No Space Left On Device v2.0\Day 7 - No Space Left On Device v2.0\obj\Debug\net6.0\Day 7 - No Space Left On Device v2.0.dll
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 7 - No Space Left On Device v2.0\Day 7 - No Space Left On Device v2.0\obj\Debug\net6.0\refint\Day 7 - No Space Left On Device v2.0.dll
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 7 - No Space Left On Device v2.0\Day 7 - No Space Left On Device v2.0\obj\Debug\net6.0\Day 7 - No Space Left On Device v2.0.pdb
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 7 - No Space Left On Device v2.0\Day 7 - No Space Left On Device v2.0\obj\Debug\net6.0\Day 7 - No Space Left On Device v2.0.genruntimeconfig.cache
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 7 - No Space Left On Device v2.0\Day 7 - No Space Left On Device v2.0\obj\Debug\net6.0\ref\Day 7 - No Space Left On Device v2.0.dll

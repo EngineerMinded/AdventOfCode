@@ -1,0 +1,66 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\wamj2\\OneDrive\\Desktop\\Advent Of Code 2022\\Day 5 - Supply Stacks\\Day 5 - Supply Stacks\\Day 5 - Supply Stacks.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\wamj2\\OneDrive\\Desktop\\Advent Of Code 2022\\Day 5 - Supply Stacks\\Day 5 - Supply Stacks\\Day 5 - Supply Stacks.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\wamj2\\OneDrive\\Desktop\\Advent Of Code 2022\\Day 5 - Supply Stacks\\Day 5 - Supply Stacks\\Day 5 - Supply Stacks.csproj",
+        "projectName": "Day 5 - Supply Stacks",
+        "projectPath": "C:\\Users\\wamj2\\OneDrive\\Desktop\\Advent Of Code 2022\\Day 5 - Supply Stacks\\Day 5 - Supply Stacks\\Day 5 - Supply Stacks.csproj",
+        "packagesPath": "C:\\Users\\wamj2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\wamj2\\OneDrive\\Desktop\\Advent Of Code 2022\\Day 5 - Supply Stacks\\Day 5 - Supply Stacks\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\wamj2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

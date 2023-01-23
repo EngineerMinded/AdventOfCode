@@ -1,0 +1,15 @@
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 5 - Supply Stacks\Day 5 - Supply Stacks\obj\Debug\net6.0\Day 5 - Supply Stacks.csproj.AssemblyReference.cache
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 5 - Supply Stacks\Day 5 - Supply Stacks\obj\Debug\net6.0\Day 5 - Supply Stacks.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 5 - Supply Stacks\Day 5 - Supply Stacks\obj\Debug\net6.0\Day 5 - Supply Stacks.AssemblyInfoInputs.cache
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 5 - Supply Stacks\Day 5 - Supply Stacks\obj\Debug\net6.0\Day 5 - Supply Stacks.AssemblyInfo.cs
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 5 - Supply Stacks\Day 5 - Supply Stacks\obj\Debug\net6.0\Day 5 - Supply Stacks.csproj.CoreCompileInputs.cache
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 5 - Supply Stacks\Day 5 - Supply Stacks\bin\Debug\net6.0\Day 5 - Supply Stacks.exe
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 5 - Supply Stacks\Day 5 - Supply Stacks\bin\Debug\net6.0\Day 5 - Supply Stacks.deps.json
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 5 - Supply Stacks\Day 5 - Supply Stacks\bin\Debug\net6.0\Day 5 - Supply Stacks.runtimeconfig.json
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 5 - Supply Stacks\Day 5 - Supply Stacks\bin\Debug\net6.0\Day 5 - Supply Stacks.dll
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 5 - Supply Stacks\Day 5 - Supply Stacks\bin\Debug\net6.0\Day 5 - Supply Stacks.pdb
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 5 - Supply Stacks\Day 5 - Supply Stacks\obj\Debug\net6.0\Day 5 - Supply Stacks.dll
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 5 - Supply Stacks\Day 5 - Supply Stacks\obj\Debug\net6.0\refint\Day 5 - Supply Stacks.dll
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 5 - Supply Stacks\Day 5 - Supply Stacks\obj\Debug\net6.0\Day 5 - Supply Stacks.pdb
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 5 - Supply Stacks\Day 5 - Supply Stacks\obj\Debug\net6.0\Day 5 - Supply Stacks.genruntimeconfig.cache
+C:\Users\wamj2\OneDrive\Desktop\Advent Of Code 2022\Day 5 - Supply Stacks\Day 5 - Supply Stacks\obj\Debug\net6.0\ref\Day 5 - Supply Stacks.dll
