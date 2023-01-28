@@ -13,12 +13,12 @@ namespace Day_13___Distress_Signal
         public List <string> left, right;
         int leftValue, rightValue;
         bool lastWasClosedBracket, lastWasOpenBracket;
-        int pointOfFailure;
+        int pointOfFailure, pointOfSuccess;
 
         // PACKET CONSTRUCTOR
         public Packet(string metadata)
         {
-            pointOfFailure = -1;
+            pointOfFailure = pointOfSuccess = -1;
             left = new List <string> ();
             right = new List <string> ();
             lastWasClosedBracket = lastWasOpenBracket = false;
@@ -46,6 +46,10 @@ namespace Day_13___Distress_Signal
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                 }
+                else if (pointOfSuccess == count)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                }
                 Console.Write(" " + w);
                 count++;
             }
@@ -57,6 +61,10 @@ namespace Day_13___Distress_Signal
                 if (pointOfFailure == count)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
+                }
+                else if (pointOfSuccess == count)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
                 }
                 Console.Write(" " + w);
                 count++;
@@ -101,7 +109,7 @@ namespace Day_13___Distress_Signal
                     {
                         if (lastWasClosedBracket)
                         {
-                            lastWasClosedBracket = true;
+                            lastWasClosedBracket = false;
                         }
                         else
                         {
@@ -152,7 +160,7 @@ namespace Day_13___Distress_Signal
                         pointOfFailure = lPosition;
                         return false;
                     }
-                    if ((left.ElementAt(lPosition + 1) != "]")) 
+                    if (((left.ElementAt(lPosition + 1) != "]") )) 
                     {
                         right.Insert(rPosition, "[");
                         right.Insert(rPosition + 2, "]");
@@ -167,6 +175,7 @@ namespace Day_13___Distress_Signal
                 {
                     if (left.ElementAt(lPosition) == "]")
                     {
+                        pointOfSuccess = lPosition;
                         return true;
                     }
                     if ((right.ElementAt(rPosition + 1) != "]")) 
@@ -182,6 +191,7 @@ namespace Day_13___Distress_Signal
                 }
                 else if (left.ElementAt(lPosition) == "]")
                 {
+                    pointOfSuccess = lPosition;
                     return true;
                 }
                 else if (right.ElementAt(rPosition) == "]")
@@ -193,6 +203,7 @@ namespace Day_13___Distress_Signal
                 {
                     if (int.Parse(left.ElementAt(lPosition)) < (int.Parse(right.ElementAt(rPosition))))
                     {
+                        pointOfSuccess = lPosition;
                         return true;
                     }
                     else
@@ -202,18 +213,6 @@ namespace Day_13___Distress_Signal
                     }
                 }
             }
-        }
-        // IS THIS A NUMBER?
-        private bool isNumber(string testString)
-        {
-            foreach (char c in testString.ToCharArray())
-            {
-                if ((int)c < 48 || (int)c > 58)
-                {
-                    return false;
-                }
-            }
-            return true;
         }
     }
 }
