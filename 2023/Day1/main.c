@@ -12,7 +12,10 @@
 
 #define MAX_LINE_LENGTH 100
 
-int main( int argc, char **argv) {
+int parse_part_one ( char*);
+int parse_part_two(const char*, int*, int*);
+
+int main( ) {
     
     
     FILE *filePointer;
@@ -22,7 +25,7 @@ int main( int argc, char **argv) {
     filePointer = fopen("day1.data", "r");
     
     if (filePointer == NULL) {
-        printf("%s cannot be opened or does not exist.\n", argv[1]);
+        printf("File cannot be opened or does not exist.\n");
         return 1;
     }
     int sum = 0;
