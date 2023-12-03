@@ -126,7 +126,7 @@ int Game::returnGameNumbersForSatisfiedGames(int requiredRed, int requiredGreen,
 		return returnThis + next->returnGameNumbersForSatisfiedGames(requiredRed, requiredGreen, requiredBlue);
 	}
 }
-
+// CUMULATIVELY GET ALL POWERS FOR THE ANSWER TO PART TWO
 int Game::getPowers() {
 	if (next == NULL) {
 		return red * green * blue;
