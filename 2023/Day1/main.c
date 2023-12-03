@@ -1,17 +1,19 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Wayne Mack                                                                 //
-// Advent of Code 2023 - Day 1: Day 1: Trebuchet?!                            //
+// Advent of Code 2023 - Day 1: Trebuchet?!                                   //
 //----------------------------------------------------------------------------//
 // Written in C: GNU/GCC                                                      //
+// Both stars achieved                                                        //
 ////////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
+#include <string.h>  // FOR STRING FUNCTIONS
+#include <ctype.h>   // FOR 'isdigit' FUNCTION
 
 #define MAX_LINE_LENGTH 100
 
+// DECLARE FUNCTIONS
 int parse_part_one ( char*);
 int parse_part_two(const char*, int*, int*);
 
@@ -43,7 +45,7 @@ int main( ) {
     printf("The total sum for part two is %d.\n", sum2);
     return 0;
 }
-
+// PARSE DATA AND FIND ONLY DIGITS FOR PART ONE
 int parse_part_one ( char* str) {
  if (str == NULL) {
         printf("String is empty.\n");
@@ -63,17 +65,19 @@ int parse_part_one ( char* str) {
     }
     return sum;
 }
-
+// FIND DIGITS AND FULL WORDS FOR PART 2
 int parse_part_two(const char *input, int *first, int *last) {
     const char *numbers[] = {
         "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"
     };
 
     int len = strlen(input);
+    // BOOLEAN INTEGERS
     int firstNumber = -1, lastNumber = -1;
+    // VARIABLES TO STORE FOUND NUMBERS
     int firstNumFound = 0, lastNumFound = 0;
 
-    // Finding the first number
+    // GET THE FIRST NUMBER 
     for (int i = 0; i < len; ++i) {
         if (isdigit(input[i])) {
             firstNumber = input[i] - '0';
@@ -94,7 +98,7 @@ int parse_part_two(const char *input, int *first, int *last) {
         }
     }
 
-    // Finding the last number
+    // PERFORM THE SAME CYCLE IN REVERSE TO GET THE LAST NUMBER
     for (int i = len - 1; i >= 0; --i) {
         if (isdigit(input[i])) {
             lastNumber = input[i] - '0';
