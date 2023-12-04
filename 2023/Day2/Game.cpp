@@ -6,7 +6,6 @@
 #include <sstream>
 using namespace std;
 
-
 // GAME CONSTRUCTOR
 Game::Game() {
 	Game::number = red = blue = green = 0;
@@ -49,7 +48,6 @@ void Game::addNew(string new_data) {
 			}
 		}
 	}
-
 }
 
 // PRINT ALL GAME DATA
@@ -60,7 +58,6 @@ void Game::printAllGameData() {
 	if (next != NULL) {
 		next->printAllGameData();
 	}
-	
 }
 
 // extract integer numbers from parsed data
@@ -75,7 +72,6 @@ int Game::parseNumberData(const std::string & str) {
 			return foundInteger;
 		}
 	}
-
 	// Return 0 if no integer is found in the string
 	return foundInteger;
 }
@@ -126,7 +122,7 @@ int Game::returnGameNumbersForSatisfiedGames(int requiredRed, int requiredGreen,
 		return returnThis + next->returnGameNumbersForSatisfiedGames(requiredRed, requiredGreen, requiredBlue);
 	}
 }
-
+// CUMULATIVELY GET ALL POWERS FOR THE ANSWER TO PART TWO
 int Game::getPowers() {
 	if (next == NULL) {
 		return red * green * blue;

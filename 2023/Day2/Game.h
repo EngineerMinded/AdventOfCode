@@ -1,3 +1,4 @@
+/* Game.h */
 #pragma once
 
 #include <iostream>
@@ -20,13 +21,15 @@ public:
 	void printAllGameData();
 	int parseNumberData(const std::string& str);
 
-	// PART ONE FUNCTIONS
+	// PREPARATION FUNCTIONS
 	vector<string> splitString(const std::string& str);
 	void printVector(const vector<string>& data);
 	bool isSubstringIncluded(const string& mainString, const string& substring);
+
+	// PART ONE FUNCTION
 	int returnGameNumbersForSatisfiedGames(int requiredRed, int requiredGreen, int requiredBlue);
 
-	// PART TWO FUNCTIONS
+	// PART TWO FUNCTION
 	int getPowers();
 
 };
