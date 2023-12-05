@@ -31,8 +31,6 @@ int main() {
         }
 
         file.close(); // Close the file after reading
-
-        
     }
     else {
         std::cerr << "Unable to open the file." << std::endl;
@@ -42,6 +40,5 @@ int main() {
     game->printAll();
     cout << "The total winning numbers in the game stack is :" << game->countMatchingWinningNumbers();
     cout << "The total amount of scratch cards you end up with is : " << game->getCardInstances();
-
-	return 0;
+    return 0;
 }
