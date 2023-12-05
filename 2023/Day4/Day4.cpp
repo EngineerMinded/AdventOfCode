@@ -8,7 +8,6 @@
 // EARNED SECOND GOLD STAR               //
 ///////////////////////////////////////////
 
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -18,7 +17,6 @@ using namespace std;
 
 Game* game;
 int main() {
-	
 	game = new Game();
     ifstream file("day4.data"); // Replace "example.txt" with your file name
 
