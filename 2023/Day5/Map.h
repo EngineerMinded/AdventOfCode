@@ -15,12 +15,11 @@ public:
 
     Map();
     void addMapData(string);
-    long getLocationNumber(long);
+    long long getLocationNumber(long long);
     void addMap(string);
     void addData(string);
-    long getDataNumber(long);
+    long long getDataNumber(long long);
     void printData();
     void printMap();
 
 };
-

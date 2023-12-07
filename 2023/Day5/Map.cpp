@@ -57,39 +57,30 @@ void Map::printMap() {
         next->printMap();
     }
 }
-long Map::getLocationNumber(long search) {
+long long Map::getLocationNumber(long long search) {
     if (data != NULL) {
         search = data->getDataNumber(search);
     }
     if (next != NULL) {
+        cout << "Number Now :" << search << endl;
         return next->getLocationNumber(search);
     }
     else {
+        cout << "Final Number :" << search << endl;
         return search;
     }
 }
 
-long Map::getDataNumber(long search) {
-  
-    long  destinationRangeStart = 0, sourceRangeStart = 0, rangeLength = 0;
-    istringstream iss(name);
-    long num; int count = 1;
+long long Map::getDataNumber(long long search) {
 
-    // extract data from string;
-    while (iss >> num) {
-        if (count == 3) {
-            rangeLength = num;
-        }
-        else if (count == 2) {
-            sourceRangeStart = num;
-            count = 3;
-        }
-        else {
-            destinationRangeStart = num;
-            count = 2;
-        }
-    }
-    //cout << destinationRangeStart << " " << sourceRangeStart << " " << rangeLength;
+    long long  destinationRangeStart = 0, sourceRangeStart = 0, rangeLength = 0;
+    stringstream iss(name);
+    long long num; int count = 1;
+
+    iss >> destinationRangeStart >> sourceRangeStart >> rangeLength;
+    
+    //cout << endl << "name :" << name << endl;
+    //cout << endl << destinationRangeStart << " " << sourceRangeStart << " " << rangeLength << endl;
     if ((search >= sourceRangeStart) && (search <= sourceRangeStart + rangeLength)) {
         return search - sourceRangeStart + destinationRangeStart;
     }
