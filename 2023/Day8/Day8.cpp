@@ -18,6 +18,11 @@ string directions;
 int partOne();
 int partTwo();
 bool allEndsIn(vector<string>, char);
+long long gcd(long long , long long);
+long long lcm(long long, long long);
+long long lcmOfVector(const vector<long long>&);
+
+
 
 int main(){
     map = new Map();
@@ -67,10 +72,19 @@ int partOne() {
 }
 
 int partTwo() {
+    vector<string> numerals = map->getValueEndingIn(numerals,'A');
+    vector<long long> smallCalculations;
+    for (string a : numerals) {
+        long long m = 0;
+        while (a[2] != 'Z') {
+            a = map->find(a, directions, (int) m);
+            m++;
+        }
+        cout << endl << m;
+        smallCalculations.push_back(m);
+    }
 
-    // NOT COMPLETED
-
-    return 1;
+    return lcmOfVector(smallCalculations);
 }
 
 bool allEndsIn(vector<string> thisStuff, char letter) {
@@ -80,4 +94,28 @@ bool allEndsIn(vector<string> thisStuff, char letter) {
         }
     }
     return true;
+}
+
+long long lcmOfVector(const vector<long long>& nums) {
+    if (nums.empty()) {
+        return 0;
+    }
+
+    long long result = nums[0];
+    for (size_t i = 1; i < nums.size(); ++i) {
+        result = lcm(result, nums[i]);
+    }
+
+    return result;
+}
+
+long long lcm(long long a, long long b) {
+    return (a * b) / gcd(a, b);
+}
+
+long long gcd(long long a, long long b) {
+    if (b == 0) {
+        return a;
+    }
+    return gcd(b, a % b);
 }
