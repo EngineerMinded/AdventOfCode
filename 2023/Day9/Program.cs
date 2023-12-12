@@ -6,7 +6,6 @@
 // FIRST STAR ACHIEVED : YEA C SHARP                      // 
 ////////////////////////////////////////////////////////////
 
-
 using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
@@ -26,7 +25,6 @@ class Oasis
         Console.WriteLine("Answer: " + answer);
         return answer;
     }
-
     public int sequence(int[] newValues , bool isPartOne)
     {   
         if (allEqual(newValues))
@@ -48,8 +46,7 @@ class Oasis
             else
             {
                 return newValues[0]  - sequence(nextValues, isPartOne);
-            }
-             
+            }            
         }
     }
     bool allEqual(int[] list)
@@ -63,7 +60,6 @@ class Oasis
         }
         return true;
     }
-
     void print(int[] printMe)
     {
         for (int i = 0; i < printMe.Length; i++)
@@ -78,8 +74,6 @@ class Program
 {
     static void Main(string[] args)
     {
-
-
         try
         {
             string filePath = "puzzle.data";
@@ -107,5 +101,4 @@ class Program
             Console.WriteLine("An error occurred: " + ex.Message);
         }
     }
-
 }
