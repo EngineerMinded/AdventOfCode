@@ -77,7 +77,6 @@ class Program
         try
         {
             string filePath = "puzzle.data";
-
             if (File.Exists(filePath))
             {
                 string fileContents = File.ReadAllText(filePath);
@@ -92,8 +91,7 @@ class Program
                 Console.WriteLine("The total for part two is: " + secondTotal + " .\n");
             }
             else
-            {
-                Console.WriteLine("File does not exist.");
+            {             Console.WriteLine("File does not exist.");
             }
         }
         catch (Exception ex)
