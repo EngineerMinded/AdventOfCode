@@ -212,6 +212,8 @@ class Program
         }
         return returnThis;
     }
+
+    // WORKS FOR THE EXAMPLES BUT NOT FOR THE PRACTICAL //
     static char[,] parsePart2(char[,] map)
     {
         
