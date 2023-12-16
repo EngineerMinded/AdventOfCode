@@ -7,18 +7,13 @@
 ////////////////////////////////////////////////////////
 
 using Day10;
-using System;
 using System.Collections.Specialized;
-using System.IO;
-using System.IO.IsolatedStorage;
-using System.IO.Pipes;
-using System.Numerics;
-using System.Runtime.InteropServices;
 
 class Program
 {
     static Trail trail;
     static char[,] map;
+    static Trail t1, t2;
 
     static void Main(string[] args)
     {
@@ -30,12 +25,7 @@ class Program
         startX = getS.Item1;
         startY = getS.Item2;
         Console.WriteLine("\nPart One : ->" + partOne(startX, startY));
-        Console.WriteLine("\nPart Two : ->" + partTwo(map));
-
-
-        
-
-        
+        Console.WriteLine("\nPart Two : ->" + partTwo(map, t1, t2));
 
     }
 
@@ -98,13 +88,12 @@ class Program
                 }
                 
             }
-            Console.WriteLine();
         }
         return (x, y);
     }
 
     static int partOne( int x, int y) {
-        Trail t1, t2;
+        //Trail t1, t2;
         (int, int) startTrail1 = (x, y), startTrail2 = (x, y);
         // find starting points 
         if (x > 0)
@@ -173,99 +162,48 @@ class Program
         t2.add(startTrail2.Item1, startTrail2.Item2);
         do
         {
-            Console.WriteLine();
+            //Console.WriteLine();
             t1.getNextDirection(map);
             t2.getNextDirection(map);
-            //Console.WriteLine(t1.getLastX() + "," + t1.getLastY() + " , " + t2.getLastX() + "," + t2.getLastY());
         } while (!((t1.getLastX() == t2.getLastX()) && (t1.getLastY() == t2.getLastY()))) ;
-            t1.printAll();
-        Console.WriteLine();
-        t2.printAll();
+        //t1.printAll();
+        //Console.WriteLine();
+        //t2.printAll();
 
         return t1.getHighestValue();
     }
 
-    static int partTwo(char[,] map)
+    static int partTwo(char[,] map, Trail t1, Trail t2)
     {
-        for (int x = 0; x < map.GetLength(0); x++)
-        {
-            for (int y = 0; y < map.GetLength(1); y++)
-            {
-                if (map[x,y] == '.')
-                {
-                    map[x, y] = 'I';
-                }
-            }
-        }
         int returnThis = 0;
-        map = parsePart2(map);
-        printMap(map);
+        char lastCharacter = '?';
         for (int x = 0; x < map.GetLength(0); x++)
         {
+            bool outside = true;
             for (int y = 0; y < map.GetLength(1); y++)
             {
-                if (map[x, y] == 'I')
+                if (t1.exists(x,y) || t2.exists(x,y))
                 {
-                    returnThis++;
+                    switch (map[x,y])
+                    {
+                        case '|': { outside = !outside; break; }
+                        case 'F': { lastCharacter = map[x,y]; break; }
+                        case 'L': { lastCharacter= map[x,y]; break; }
+                        case '-': { /*NOTHING*/ break; }
+                        case '7': { if (lastCharacter == 'L') { outside = !outside; } break; }
+                        case 'J': { if (lastCharacter == 'F') { outside = !outside; } break; }
+                        default: { if (outside) { map[x, y] = 'O'; } else { map[x, y] = 'I'; returnThis++; } break; }
+                    }
+                }
+                else
+                {
+                    if (outside) { map[x, y] = 'O'; } else { map[x, y] = 'I'; returnThis++; }
                 }
             }
         }
+        printMap(map);
         return returnThis;
     }
-    static char[,] parsePart2(char[,] map)
-    {
-        
-        for (int x = 0; x < map.GetLength(0); x++)
-        {
-            char turnInto = 'O';
-            for (int y = 0; y < map.GetLength(1); y++)
-            {
-                if (map[x,y] == 'I')
-                {
-                    map[x,y] = turnInto;
-                }
-                if (map[x,y] == '|' )
-                {
-                    if (turnInto == 'O')
-                    {
-                        turnInto = 'I';
-                    }
-                    else
-                    {
-                        turnInto = 'O';
-                    }
-                }
-            }
-            
-        }
-        for (int y = 0; y < map.GetLength(1); y++)
-        {
-            char turnInto = 'O';
-            for (int x = 0; x < map.GetLength(0); x++)
-            {
-                if (map[x, y] == 'I')
-                {
-                    map[x, y] = turnInto;
-                }
-                if (map[x, y] == '-')
-                {
-                    if (turnInto == 'O')
-                    {
-                        turnInto = 'I';
-                    }
-                    else
-                    {
-                        turnInto = 'O';
-                    }
-                }
-            }
-
-        }
-
-        return map;
-    }
-
-
     static void printMap(char[,]map)
     {
         for (int x = 0; x < map.GetLength(0); x++)
