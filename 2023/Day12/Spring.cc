@@ -67,7 +67,7 @@ void Spring::print() {
 }
 // PROBLEM: SAMPLE ANSWER IS OFF BY ONE CALCULATIONS ARE NOT CORRECT
 int Spring::getValue () {
-    cout << endl << "new Data <<" << metaData << endl;
+    //cout << endl << "new Data <<" << metaData << endl;
     int count = 0;
     int address = 0, currentNumber = 0;
     for (int i = 0; i < metaData.length() ; i++ ) {
@@ -78,6 +78,7 @@ int Spring::getValue () {
                 if (address < values.size()) {
                     if ( currentNumber != values[address]) {
                         count = 0;
+                        cout << "new Data <<" << metaData << " NO" << endl;
                         if (next != NULL) {
                             return count + next->getValue();
                         }
@@ -86,6 +87,7 @@ int Spring::getValue () {
                         currentNumber = 0; address++;
                     }
                 } else {
+                    cout << endl << "new Data <<" << metaData << " NO" << endl;
                     count = 0;
                     if (next != NULL) {
                         return  count + next->getValue();
@@ -107,17 +109,21 @@ int Spring::getValue () {
             return count;
         } else if (metaData[i] = ' ') {
             if (metaData[i - 1] == '#') {
-                if (currentNumber == values[address]) {
+                if (address == values.size() -1  && currentNumber == values[address]) {
+                    cout << endl << "new Data <<" << metaData << " OK" << endl;
                     count = 1;
                 } else {
+                    cout << endl << "new Data <<" << metaData << " NO" << endl;
                     count = 0;
                 }
             } else {
-                if (address != values.size()) {
-                    count = 0;
+                if (address == values.size()) {
+                    cout << endl << "new Data <<" << metaData << " OK" << endl;
+                    count = 1;
                 }
                 else {
-                    count = 1;
+                    cout << endl << "new Data <<" << metaData << " NO" << endl;
+                    count = 0;
                 }
             }
             if (next != NULL) {
@@ -126,7 +132,6 @@ int Spring::getValue () {
             return count;
         }
     }
-    cout << "Empty!";
     if (next != NULL) {
         return next->getValue();
     }
