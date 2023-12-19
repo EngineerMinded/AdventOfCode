@@ -11,19 +11,19 @@ using namespace std;
 
 Spring::Spring() {
 	metaData == "";
+    data == "";
     next = NULL;
+    count = -1;
 }
 
 void Spring::add(string rawData) {
     if (metaData == "") {
         metaData = rawData;
         string numberData;
-        string data;
         divideData(rawData, data, numberData);
         values = getNumbers(numberData);
         next = new Spring();
         count = 0;
-        //cout << "added: -->" << metaData << endl;
     }
     else {
         next->add(rawData);
@@ -35,6 +35,12 @@ void Spring::divideData(const string& input, string& firstPart, string& secondPa
     ss >> firstPart >> secondPart;
 }
 
+void Spring::getCounts() {
+    cout <<"\n" << count;
+    if (next != NULL) {
+        next->getCounts();
+    }
+}
 vector<int> Spring::getNumbers(string& input) {
     vector<int> numbers;
     string currentNumber;
@@ -61,14 +67,21 @@ void Spring::print() {
     for (int a : values) {
         cout << a << " ";
     }
+
     if (next != NULL) {
         next->print();
     }
 }
-// PROBLEM: SAMPLE ANSWER IS OFF BY ONE CALCULATIONS ARE NOT CORRECT
-int Spring::getValue () {
-    //cout << endl << "new Data <<" << metaData << endl;
-    int count = 0;
+
+
+
+long long Spring::getValue (bool dynamic) {
+    int firstValue = 0; int lastValue =0;
+    if (values.size() > 0) {
+        firstValue = values[0]; lastValue = values[values.size() - 1];
+    }
+    
+    long long count = 0;
     int address = 0, currentNumber = 0;
     for (int i = 0; i < metaData.length() ; i++ ) {
         if (metaData[i] == '#') {
@@ -80,19 +93,19 @@ int Spring::getValue () {
                         count = 0;
                         cout << "new Data <<" << metaData << " NO" << endl;
                         if (next != NULL) {
-                            return count + next->getValue();
+                            count = count + next->getValue(dynamic);
                         }
-                        return count;
+                        return dynamicCalculation(dynamic,count,firstValue, lastValue,data);
                     } else {
                         currentNumber = 0; address++;
                     }
                 } else {
                     cout << endl << "new Data <<" << metaData << " NO" << endl;
-                    count = 0;
+                    count = 0;  
                     if (next != NULL) {
-                        return  count + next->getValue();
+                        count =  count + next->getValue(dynamic);
                     }
-                    return count;
+                    return dynamicCalculation(dynamic,count,firstValue, lastValue,data);
                 }
             }
         } else if (metaData[i] == '?') {
@@ -102,11 +115,11 @@ int Spring::getValue () {
             s1.add(subMetaData);
             subMetaData[i] ='#'; 
             s1.add(subMetaData);
-            count = count +  s1.getValue();
+            count = count +  s1.getValue(false);
             if (next != NULL ) {
-                return count + next->getValue();
+                count = count + next->getValue(dynamic);
             }
-            return count;
+            return dynamicCalculation(dynamic,count,firstValue, lastValue,data);
         } else if (metaData[i] = ' ') {
             if (metaData[i - 1] == '#') {
                 if (address == values.size() -1  && currentNumber == values[address]) {
@@ -127,13 +140,32 @@ int Spring::getValue () {
                 }
             }
             if (next != NULL) {
-                return count + next->getValue();
+                count = count + next->getValue(dynamic);
             }
-            return count;
+            return dynamicCalculation(dynamic,count,firstValue, lastValue,data);
         }
     }
     if (next != NULL) {
-        return next->getValue();
+        return next->getValue(true);
     }
-    return 0;
+    return dynamicCalculation(dynamic,count,firstValue, lastValue,metaData);
+}
+// DYNAMIC CALCULATION NEEDS TO BE FIGURED OUT
+long long Spring::dynamicCalculation (bool dynamic, long long count, int firstValue, int lastValue, string data) {
+    if (dynamic) {
+        if ((firstValue == 1 && data[data.length() - 1] != '#') || (lastValue == 1 && data[0] != '#' )) {
+            count = count + (count * 4);
+        }
+/*
+        if (data[0] == '#') {
+            count = count + (count * 4);
+        }
+
+        if (data[data.length() - 1] == '#') {
+            count = count + (count * 4);
+        }
+*/
+    }
+ 
+    return count;
 }

@@ -12,6 +12,7 @@ class Spring {
 
 private: 
 	string metaData;
+	string data;
 	int count;
 	string listOfNumbers;
 	Spring* next;
@@ -24,7 +25,9 @@ public:
 	void divideData(const string&, string&, string&);
 	vector<int> getNumbers(string&);
 	void print();
-	int getValue();
+	long long getValue(bool);
+	void getCounts();
+	long long dynamicCalculation(bool, long long, int, int , string);
 };
 
 #endif
