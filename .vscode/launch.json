@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Codebase/AdventOfCode/Day1",
-      "program": "c:/Codebase/AdventOfCode/Day1/build/Debug/outDebug",
+      "cwd": "c:/Users/wamj2/OneDrive/Documents/GitHub/AdventOfCode/2024/Day1",
+      "program": "c:/Users/wamj2/OneDrive/Documents/GitHub/AdventOfCode/2024/Day1/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

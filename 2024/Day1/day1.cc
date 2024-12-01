@@ -10,7 +10,7 @@
 
 using namespace std;
 
-pair<vector<double>,  vector<double>> readFileToArrays(const  string& filename) {
+pair<vector<double>, vector<double>> readFileToArrays(const string& filename) {
      ifstream file(filename);
      vector<double> column1, column2;
 
@@ -64,12 +64,9 @@ int partTwo(vector<double>c1, vector<double>c2) {
 }
 
 int main() {
-     string filename = "data.txt";
-
-    auto [column1, column2] = readFileToArrays(filename);
-
-    cout << endl << "Part One: " << partOne(column1, column2);
-    cout << endl << "Part Two  " << partTwo(column1, column2) << endl;
-
+    string filename = "data.txt";
+    pair<vector<double>,vector<double>> theTwoColumns = readFileToArrays(filename);
+    cout << endl << "Part One: " << partOne(theTwoColumns.first, theTwoColumns.second);
+    cout << endl << "Part Two  " << partTwo(theTwoColumns.first, theTwoColumns.second) << endl;
     return 0;
 }
