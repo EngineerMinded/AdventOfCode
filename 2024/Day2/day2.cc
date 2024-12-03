@@ -7,14 +7,12 @@
 #include <sstream>
 #include <vector>
 #include <string>
-
 using namespace std;
 
 vector<vector<int>> readFileToVectors(const string&);
 bool isSafe(vector<int>, int);
 int findAnswer(vector<vector<int>>, int);
 bool Dampener(vector<int>,int);
-
 
 int main() {
     // Test the function with a sample file
@@ -30,15 +28,12 @@ int main() {
 vector<vector<int>> readFileToVectors(const string& filename) {
     vector<vector<int>> result;
     ifstream file(filename);
-    
     // Check if file is open
     if (!file.is_open()) {
         cerr << "Error opening file." << endl;
         return result;  // Return empty result if the file can't be opened
     }
-
     string line;
-    
     // Read file line by line
     while (getline(file, line)) {
         stringstream ss(line);
@@ -53,7 +48,6 @@ vector<vector<int>> readFileToVectors(const string& filename) {
         // Add the vector of numbers to the result
         result.push_back(lineNumbers);
     }
-
     file.close();
     return result;
 }
@@ -67,7 +61,6 @@ int findAnswer (vector<vector<int>> numericData, int partNumber) {
     }         
     return answer;
 }
-
 
 bool isSafe(vector<int> nums, int partNumber) {
     if (nums.size() < 2) {
@@ -91,7 +84,6 @@ bool isSafe(vector<int> nums, int partNumber) {
                 return false;  
             }
         }
-
         if (diff < 0) {
             isIncreasing = false;  
         }
@@ -107,7 +99,6 @@ bool isSafe(vector<int> nums, int partNumber) {
             return false;  
         }
     }
-
     // Return true if the sequence is either strictly increasing or strictly decreasing
     return  isIncreasing || isDecreasing;
 }
@@ -116,5 +107,3 @@ bool Dampener(vector<int> original, int atNumber){
     original.erase(original.begin() + atNumber);
     return isSafe(original,1);
 }
-
-
