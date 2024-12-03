@@ -15,8 +15,7 @@ int findAnswer(vector<vector<int>>, int);
 bool Dampener(vector<int>,int);
 
 int main() {
-    // Test the function with a sample file
-    string filename = "day2.txt";  // Change this to your file's path
+    string filename = "day2.txt"; 
     vector<vector<int>> numbers = readFileToVectors(filename);
     
     cout << endl << "Part One: " << findAnswer(numbers,1);
