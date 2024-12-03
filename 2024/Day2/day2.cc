@@ -74,7 +74,8 @@ bool isSafe(vector<int> nums, int partNumber) {
         if (diff == 0 || diff > 3 || diff < -3) {
             if (partNumber == 1) {
                 return false;            
-            } else {
+            } 
+            else {
                 for (int x = 0; x < nums.size(); x++) {
                     if (Dampener(nums,x)) {
                         return true;
