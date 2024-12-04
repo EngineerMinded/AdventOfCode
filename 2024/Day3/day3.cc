@@ -9,7 +9,6 @@
 #include <ctype.h>
 using namespace std;
 
-
 vector<char> readFileToVector(const string& );
 int evaluateStatement(vector<char>, int);
 int solve(vector<char>, bool);
