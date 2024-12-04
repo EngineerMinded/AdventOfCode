@@ -61,6 +61,7 @@ int evaluateStatement(vector<char> charList, int i) {
                             i++;
                         }
                         if (i < limit && charList[i] == ')') {
+                            // this is a valid statement. return the product of both numbers.
                             return m1 * m2;
                         }
                     }
@@ -68,6 +69,7 @@ int evaluateStatement(vector<char> charList, int i) {
             }
         }
     }
+    // The statement failed. return nothing.
     return 0;
 }
 
@@ -81,8 +83,10 @@ bool evaluateSwitchCommand(vector<char> charList, int s, bool previousValue) {
     for (int i = s + 4; i < s + 7; i++) {
         isThisDont = isThisDont + charList[i];
     }
-    if (isThisDo == "do()" ) return true;
+    // if is valid statement, return true or false.
+    if (isThisDo == "do()" ) return true;        
     if (isThisDont == "don't()") return false;
+    // is not a do or don't statment, return the original answer unchanged.
     return previousValue;
 }
 
