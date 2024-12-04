@@ -16,7 +16,7 @@ int solve(vector<char>, bool);
 bool evaluateSwitchCommand(vector<char> , int, bool);
 
 int main() {
-    string filename = "day3.txt"; // Replace with your file name.
+    string filename = "day3.txt"; 
     vector<char> content = readFileToVector(filename);
 
     cout << "Part One: " << solve(content, false) << endl;
@@ -88,7 +88,7 @@ bool evaluateSwitchCommand(vector<char> charList, int s, bool previousValue) {
 
 vector<char> readFileToVector(const string& filename) {
     vector<char> charVector;
-    ifstream file(filename, ios::binary); // Open in binary mode to read all characters, including non-text ones.
+    ifstream file(filename, ios::binary); 
 
     if (!file) {
         cerr << "Error: Could not open the file " << filename << endl;
