@@ -99,7 +99,7 @@ bool isXMAS_lr(char** arr, int row, int col, int rowCount, int colCount) {
 }
 
 bool isXMAS_rl(char** arr, int row, int col, int rowCount, int colCount) {
-    // Check if "XMAS" can fit horizontally at position (row, col)
+    // Check if "XMAS" can fit horizontally at position backwarss (row, col)
     if (col - 3 > -1) {
         return arr[row][col] == 'X' && arr[row][col - 1] == 'M' && arr[row][col - 2] == 'A' && arr[row][col - 3] == 'S';
     }
@@ -114,7 +114,7 @@ bool isXMAS_ud(char** arr, int row, int col, int rowCount, int colCount) {
     return false;
 }
 bool isXMAS_du(char** arr, int row, int col, int rowCount, int colCount) {
-    // Check if "XMAS" can fit vertically at position (row, col)
+    // Check if "XMAS" can fit vertically backwards at position (row, col)
     if (row - 3 > -1) {
         return arr[row][col] == 'X' && arr[row - 1][col] == 'M' && arr[row - 2][col] == 'A' && arr[row - 3][col] == 'S';
     }
@@ -130,7 +130,7 @@ bool isXMAS_uldr(char** arr, int row, int col, int rowCount, int colCount) {
 }
 
 bool isXMAS_urdl(char** arr, int row, int col, int rowCount, int colCount) {
-    // Check if "XMAS" can fit diagonally from top-left to bottom-right
+    // Check if "XMAS" can fit diagonally from top-right to bottom-left
     if (row + 3 < rowCount && col - 3 > -1) {
         return arr[row][col] == 'X' && arr[row + 1][col - 1] == 'M' && arr[row + 2][col - 2] == 'A' && arr[row + 3][col - 3] == 'S';
     }
@@ -144,7 +144,7 @@ bool isXMAS_dlur(char** arr, int row, int col, int rowCount, int colCount) {
     return false;
 }
 bool isXMAS_drul(char** arr, int row, int col, int rowCount, int colCount) {
-    // Check if "XMAS" can fit diagonally from bottom-left to top-right
+    // Check if "XMAS" can fit diagonally from bottom-right to top-left
     if (row - 3 > -1 && col - 3 > -1) {
         return arr[row][col] == 'X' && arr[row - 1][col - 1] == 'M' && arr[row - 2][col - 2] == 'A' && arr[row - 3][col - 3] == 'S';
     }
