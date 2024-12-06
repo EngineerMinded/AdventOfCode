@@ -16,7 +16,6 @@ bool followsRules(vector<pair<int,int>>, int, int);
 int getMiddleValue(const vector<int>&);
 vector<int>sortCorrectly(vector<int>, vector<pair<int,int>>);
 
-
 int main() {
     vector<pair<int,int>> rules;
     vector<vector<int>> update;
@@ -89,15 +88,10 @@ bool followsRules(vector<pair<int,int>> rules, int before, int after) {
 }
 
 int getMiddleValue(const vector<int>& numbers) {
-    // Check if the vector is empty
     if (numbers.empty()) {
         throw std::invalid_argument("The vector is empty.");
     }
-
-    // Calculate the middle index
     size_t middleIndex = numbers.size() / 2;
-
-    // Return the middle element
     return numbers[middleIndex];
 }
  
@@ -108,28 +102,18 @@ void getBothRuleNumbers(const std::string& input, int* before, int* after) {
     if (separator_pos == std::string::npos) {
         throw std::invalid_argument("Invalid input format. Expected 'number1|number2'.");
     }
-
-    // Extract substrings for the numbers
     std::string part1 = input.substr(0, separator_pos);
     std::string part2 = input.substr(separator_pos + 1);
-
-    // Convert the substrings to integers
     *before = std::stoi(part1);
     *after = std::stoi(part2);
-
 }
 
 vector<int> parseStringToIntVector(const std::string& input) {
     vector<int> result;
     stringstream ss(input);
     string item;
-
-    // Split the string by commas
     while (getline(ss, item, ',')) {
-        // Convert each substring to an integer and add to the vector
         result.push_back(std::stoi(item));
     }
-
     return result;
 }
-
