@@ -98,7 +98,6 @@ int getMiddleValue(const vector<int>& numbers) {
 void getBothRuleNumbers(const std::string& input, int* before, int* after) {
     static int result[2]; // Static array to return (C-style)
     size_t separator_pos = input.find('|');
-
     if (separator_pos == std::string::npos) {
         throw std::invalid_argument("Invalid input format. Expected 'number1|number2'.");
     }
