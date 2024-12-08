@@ -66,9 +66,7 @@ void getCombinations(vector<unsigned long long>& resultPointer, vector<unsigned 
     if (location == variables.size() - 1) {
         resultPointer.push_back(sofar + variables[location]);
         resultPointer.push_back(sofar * variables[location]);
-        if (part2) {
-            resultPointer.push_back(concatenate(sofar,variables[location]));
-        }
+        if (part2)  resultPointer.push_back(concatenate(sofar,variables[location]));
     }
     else {
         unsigned long long sofarMult = 0;
@@ -83,10 +81,7 @@ void getCombinations(vector<unsigned long long>& resultPointer, vector<unsigned 
         unsigned long long sofarConcatenate = concatenate(sofar,variables[location]);
         getCombinations(resultPointer, variables, location + 1, sofarMult, part2);
         getCombinations(resultPointer, variables, location + 1, sofarAdd, part2);
-        if (part2) {
-            getCombinations(resultPointer, variables, location + 1, sofarConcatenate, part2);
-        }
-
+        if (part2) getCombinations(resultPointer, variables, location + 1, sofarConcatenate, part2);
     }
 }
 
@@ -140,4 +135,3 @@ int main() {
     cout<< "Part Two: " << partTwo << endl;
     return 0;
 }
-
