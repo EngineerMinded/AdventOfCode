@@ -1,3 +1,9 @@
+// Wayne Mack
+// Advent of Code
+// Day 8
+
+
+#include <iostream>
 #include <fstream>
 #include <vector>
 #include <string>
@@ -5,36 +11,56 @@
 
 using namespace std;
 
-static int partOneCount = 0;
+static int partOneCount = 0, partTwoCount = 0;
+static vector<pair<int, int>> foundAntiNodes;
 
-void findComplimentaries(char** grid, char charToLookfor, int origX, int origY, int xMax, int yMax) {
+bool antiNodeExists(int x, int y) {
+    for (pair<int, int> i : foundAntiNodes) {
+        if (x == i.first && y==i.second) {
+            return true;        
+        }
+    }
+    return false;
+}
+
+void findComplimentaries(char** grid, char charToLookfor, int origX, int origY, int xMax, int yMax, bool ispart2) {
     for (int x = 0; x < xMax ; x++) {
         for (int y = 0; y < yMax; y++) {
            if (grid[x][y] == charToLookfor && (x != origX) && (y != origY) ) {
                 int xDiff = x - origX;
                 int yDiff = y - origY;
                 if ((x + xDiff < xMax  && x + xDiff > -1) && (y + yDiff < yMax && y + yDiff > -1) && (xDiff != 0 && yDiff != 0)) {
-                    if (grid [x + xDiff][y + yDiff] != '#') partOneCount++;
-                    cout << x + xDiff << " " << y + yDiff << " " << charToLookfor ;
+                    if (!antiNodeExists(x + xDiff, y + yDiff)) {
+                        partOneCount++;
+                        foundAntiNodes.push_back(make_pair(x + xDiff, y + yDiff));
+                    }
                     if (grid[x + xDiff][y + yDiff] == '.' || grid[x + xDiff][y + yDiff] == '#') {
                         grid[x + xDiff][y + yDiff] = '#';
-                        cout << endl;
+                        if (ispart2) {
+                            xDiff = xDiff + xDiff; yDiff = yDiff + xDiff;
+                            while ((x + xDiff < xMax  && x + xDiff > -1) && (y + yDiff < yMax && y + yDiff > -1)) {
+                                if (!antiNodeExists(x + xDiff, y + yDiff)) {
+                                    partOneCount++;
+                                    foundAntiNodes.push_back(make_pair(x + xDiff, y + yDiff));
+                                }
+                                if (grid[x + xDiff][y + yDiff] == '.' || grid[x + xDiff][y + yDiff] == '#') {
+                                        grid[x + xDiff][y + yDiff] = '#';
+                                }
+                                xDiff = xDiff + xDiff; yDiff = yDiff + yDiff;                
+                            }
+                        }
                     }
-                    else {
-                        cout << "Overlaps :" << grid[x + xDiff][y + yDiff] << endl;
-                    }
-                }
-                
+                }    
            }
         }
     }
 }
 
-void part1 (char** grid, int xMax, int yMax) {
+void solveSequence (char** grid, int xMax, int yMax, bool isPart2) {
     for (int x = 0; x < xMax; x++) {
         for (int y = 0; y < yMax; y++) {
             if (grid[x][y] != '.' && grid[x][y] != '#') {
-                findComplimentaries(grid, grid[x][y], x, y, xMax, yMax);
+                findComplimentaries(grid, grid[x][y], x, y, xMax, yMax, isPart2);
             }
         }
     }
@@ -89,7 +115,7 @@ char** readFileTo2DArray(const std::string& filename, int& rows, int& cols) {
 
 
 int main() {
-    std::string filename = "day8.txt"; // Specify your filename here
+    std::string filename = "example.txt"; // Specify your filename here
     int rows, cols;
     
     // Read the file contents into a 2D array
@@ -111,7 +137,7 @@ int main() {
         rows = strlen(fileContents[0]);  
         //cout << rows << " " << cols << endl;
 
-        part1(fileContents, rows, cols);
+        solveSequence(fileContents, rows, cols, false);
 
         std::cout << "Revised array:" << std::endl;
         for (int i = 0; i < rows; ++i) {
@@ -119,6 +145,18 @@ int main() {
         }
 
         cout << "Part One: " << partOneCount;
+        fileContents = readFileTo2DArray(filename, rows, cols);
+        foundAntiNodes.clear();
+        partOneCount = 0;
+        solveSequence(fileContents, rows, cols, true);
+
+        std::cout << "Revised array:" << std::endl;
+        for (int i = 0; i < rows; ++i) {
+            std::cout << fileContents[i] << std::endl;
+        }
+
+        cout << "Part Two:" << partOneCount;
+        
 
         
     }
