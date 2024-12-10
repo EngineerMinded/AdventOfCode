@@ -2,6 +2,8 @@
     Advent Of Code
     Day 9          '''
 
+# BOTH STARS : Yes this is brutal as hell and will take forever to tally!
+
 ''' BOTH STARS: BE PAITENT, IT TAKES 25 MINUTES TO GET AN ANSWER '''
 
 def getCheckSumArray (origNumbers):
@@ -24,7 +26,7 @@ def allPartsAreFilled(testThis):
     for x in testThis:
         if x == '.':
             dotcount +=1
-    #print ("Dot Count :" + str(dotcount) + " (PAITENCE GRASSHOPPER!!!!!)")
+    print ("Remaining Part 1 :" + str(dotcount) + " (GO GRAB A LUNCH!!!!!)")
     return dotcount == 0
 
 def fillInAllDots(returnThis):
@@ -61,7 +63,6 @@ def part2Sequence(returnThis):
         for num in array:
             if find == str(num):
                 returnThis+= 1
-        print ("The number" + str(find) + " has " + str(returnThis))
         return returnThis
 
     def fillNumbersWhereYouCan(returnThis, numberToFill, size):
@@ -84,11 +85,13 @@ def part2Sequence(returnThis):
                 elif returnThis[i] == str(numberToFill) and Accomplished:
                         returnThis [i] = "."
                 elif returnThis[i] == str(numberToFill) and not Accomplished:
-                        return returnThis)
+                        return returnThis
+        #print (returnThis)
         return returnThis
 
     highestNumber = findHighestNumber(returnThis)
     for i in range(int(highestNumber), -1, -1):
+        print ("Remaining numbers for part 2 - PAITENCE GRASSHOPPER! :" + str(i))
         returnThis = fillNumbersWhereYouCan(returnThis.copy(),i,howManyOfThisNumber(str(i),returnThis))
     return returnThis
 
@@ -113,15 +116,28 @@ def read_file_to_char_array(file_name):
         print(f"Error: Could not read the file {file_name}.")
         return []
 
-file_name = 'day9.txt'  
+# Example usage
+file_name = 'day9.txt'  # Replace with the path to your file
 char_array = read_file_to_char_array(file_name)
 
+if char_array:
+    print(char_array)  # Print the character array
 
 removeThis = char_array.pop()
 
 checkSumData = getCheckSumArray(char_array)
 
+if checkSumData:    
+    print(checkSumData)
 
+
+postCheckSumData = fillInAllDots(checkSumData)
+
+
+if postCheckSumData:
+    print (postCheckSumData)
+
+print ("Part One:" + str(tallyAnswer(postCheckSumData)))
 
 checkSumData = getCheckSumArray(char_array)
 
@@ -132,6 +148,5 @@ charNewArray = makeEntireArrayCharArray(checkSumData)
 print (charNewArray)
 
 part2Data = part2Sequence(charNewArray)
-
 
 print ("Part Two:" + str(tallyAnswer(part2Data)))
