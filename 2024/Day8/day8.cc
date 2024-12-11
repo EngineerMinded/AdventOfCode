@@ -24,6 +24,12 @@ bool antiNodeExists(int x, int y) {
 }
 
 void findComplimentaries(char** grid, char charToLookfor, int origX, int origY, int xMax, int yMax, bool ispart2) {
+    if (ispart2) {
+        if (!antiNodeExists(origX,origY)) {
+            partOneCount++;
+            foundAntiNodes.push_back(make_pair(origX, origY));
+        }
+    }
     for (int x = 0; x < xMax ; x++) {
         for (int y = 0; y < yMax; y++) {
            if (grid[x][y] == charToLookfor && (x != origX) && (y != origY) ) {
@@ -36,24 +42,24 @@ void findComplimentaries(char** grid, char charToLookfor, int origX, int origY, 
                     }
                     if (grid[x + xDiff][y + yDiff] == '.' || grid[x + xDiff][y + yDiff] == '#') {
                         grid[x + xDiff][y + yDiff] = '#';
-                        if (ispart2) {
-                            xDiff = xDiff + xDiff; yDiff = yDiff + xDiff;
-                            while ((x + xDiff < xMax  && x + xDiff > -1) && (y + yDiff < yMax && y + yDiff > -1)) {
-                                if (!antiNodeExists(x + xDiff, y + yDiff)) {
-                                    partOneCount++;
-                                    foundAntiNodes.push_back(make_pair(x + xDiff, y + yDiff));
-                                }
-                                if (grid[x + xDiff][y + yDiff] == '.' || grid[x + xDiff][y + yDiff] == '#') {
-                                        grid[x + xDiff][y + yDiff] = '#';
-                                }
-                                xDiff = xDiff + xDiff; yDiff = yDiff + yDiff;                
+                    }
+                    if (ispart2) {
+                        int xDiffExt = xDiff + (xDiff + x); int yDiffExt = yDiff + (yDiff + y);
+                        while ((xDiffExt < xMax  && xDiffExt > -1) && (yDiffExt < yMax && yDiffExt > -1)) {
+                            if (!antiNodeExists(xDiffExt, yDiffExt)) {
+                                partOneCount++;
+                                foundAntiNodes.push_back(make_pair(xDiffExt, yDiffExt));
                             }
+                            if (grid[xDiffExt][yDiffExt] == '.' || grid[xDiffExt][yDiffExt] == '#') {
+                                grid[xDiffExt][yDiffExt] = '#';
+                            }
+                            xDiffExt = xDiffExt + xDiff ; yDiffExt = yDiffExt + yDiff;                
                         }
                     }
-                }    
-           }
+                }
+            }
         }
-    }
+    }   
 }
 
 void solveSequence (char** grid, int xMax, int yMax, bool isPart2) {
@@ -66,9 +72,6 @@ void solveSequence (char** grid, int xMax, int yMax, bool isPart2) {
     }
 
 }
-
-
-
 
 // Function to read the file and return its contents in a 2D character array
 char** readFileTo2DArray(const std::string& filename, int& rows, int& cols) {
@@ -113,9 +116,8 @@ char** readFileTo2DArray(const std::string& filename, int& rows, int& cols) {
     return arr;
 }
 
-
 int main() {
-    std::string filename = "example.txt"; // Specify your filename here
+    std::string filename = "day8.txt"; // Specify your filename here
     int rows, cols;
     
     // Read the file contents into a 2D array
@@ -130,8 +132,6 @@ int main() {
             }
             cout << endl;
         }
-
-        
 
         cols = strlen(fileContents[0]);
         rows = strlen(fileContents[0]);  
@@ -157,9 +157,6 @@ int main() {
 
         cout << "Part Two:" << partOneCount;
         
-
-        
     }
-
     return 0;
 }
