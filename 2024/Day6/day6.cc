@@ -2,7 +2,7 @@
     Advent Of Code
     Day 6          */
 
-// FIRST STAR ACHIEVED: LET'S GO FOR THE SECOND
+// FIRST STAR ACHIEVED: FINALLY GOT THE SECOND
 
 #include <iostream>
 #include <fstream>
@@ -34,15 +34,16 @@ class Guard {
     }
     void moveSequence (Direction& thisDirection, char** thisMap, int& thisX, int& thisY, bool& thisFinished, int& thisSpacesTravelled , bool& thisSequenceLoops, int& loopNumber) {
         thisSequenceLoops = false;
-        int targetLoopNumber = 100;
+        int targetLoopNumber = 10;
         if (thisDirection == WEST) {
                 if (thisY > 0){
                     if (thisMap[thisX][thisY - 1] == '#') {
-                        thisMap[thisX][thisY] = '+';
+                        if (thisMap[thisX][thisY] != '^')thisMap[thisX][thisY] = '+';
                         thisDirection = NORTH;
                     }
                     else {
-                        if (thisMap[thisX][thisY] == '+' || thisMap[thisX][thisY] == 'X') {
+                        y--;
+                        if (thisMap[thisX][thisY] == '+' || thisMap[thisX][thisY] == 'X' || thisMap[thisX][thisY] == '^') {
                             loopNumber++;
                             if (loopNumber >= targetLoopNumber) {
                                 thisSequenceLoops = true;
@@ -51,10 +52,9 @@ class Guard {
                         else {
                             loopNumber = 0;
                         }
-                        y--;
-                        if (thisMap[thisX][thisY] != 'X' && thisMap[x][thisY] != '+') {
+                        if (thisMap[thisX][thisY] != 'X' && thisMap[thisX][thisY] != '+') {
                             thisSpacesTravelled++;
-                            thisMap[thisX][thisY] = 'X';
+                            if (thisMap[thisX][thisY] != '^')thisMap[thisX][thisY] = 'X';
                         }
                     } 
                 }
@@ -65,11 +65,13 @@ class Guard {
             else if (thisDirection == SOUTH) {
                 if (x < xMax - 1){
                     if (thisMap[thisX + 1][thisY] == '#') {
+                        if (thisMap[thisX][thisY] != '^')thisMap[thisX][thisY] = '+';
                         thisMap[thisX][thisY] = '+';
                         thisDirection = WEST;
                     }
                     else {
-                        if (thisMap[thisX][thisY] == '+' || thisMap[thisX][thisY] == 'X') {
+                        x++;
+                        if (thisMap[thisX][thisY] == '+' || thisMap[thisX][thisY] == 'X' || thisMap[thisX][thisY] == '^') {
                             loopNumber++;
                             if (loopNumber >= targetLoopNumber) {
                                 thisSequenceLoops = true;
@@ -78,10 +80,9 @@ class Guard {
                         else {
                             loopNumber = 0;
                         }
-                        x++;
                         if (thisMap[thisX][thisY] != 'X' && thisMap[thisX][thisY] != '+') {
                             thisSpacesTravelled++;
-                            thisMap[thisX][thisY] = 'X';
+                            if (thisMap[thisX][thisY] != '^')thisMap[thisX][thisY] = 'X';
                         }
                     } 
                 }
@@ -92,11 +93,12 @@ class Guard {
             else if (thisDirection == EAST) {
                 if (thisY < yMax - 1){
                     if (thisMap[thisX][thisY + 1] == '#') {
-                        thisMap[thisX][thisY] = '+';
+                        if (thisMap[thisX][thisY] != '^')thisMap[thisX][thisY] = '+';
                         thisDirection = SOUTH;
                     }
                     else {
-                        if (thisMap[thisX][thisY] == '+' || thisMap[thisX][thisY] == 'X') {
+                        y++;
+                        if (thisMap[thisX][thisY] == '+' || thisMap[thisX][thisY] == 'X' || thisMap[thisX][thisY] == '^') {
                             loopNumber++;
                             if (loopNumber >= targetLoopNumber) {
                                 thisSequenceLoops = true;
@@ -105,10 +107,9 @@ class Guard {
                         else {
                             loopNumber = 0;
                         }
-                        y++;
                         if (thisMap[thisX][thisY] != 'X' && thisMap[thisX][thisY] != '+') {
                             thisSpacesTravelled++;
-                            thisMap[thisX][thisY] = 'X';
+                            if (thisMap[thisX][thisY] != '^')thisMap[thisX][thisY] = 'X';
                         }
                     } 
                 }
@@ -119,12 +120,13 @@ class Guard {
             else if (thisDirection == NORTH) {
                 if (x > 0){
                     if (thisMap[thisX - 1][thisY] == '#') {
-                        thisMap[thisX][thisY] = '+';
+                        if (thisMap[thisX][thisY] != '^')thisMap[thisX][thisY] = '+';
                         thisDirection = EAST;
                     }
 
                     else {
-                        if (thisMap[thisX][thisY] == '+' || thisMap[thisX][thisY] == 'X') {
+                        x--;
+                        if (thisMap[thisX][thisY] == '+' || thisMap[thisX][thisY] == 'X' || thisMap[thisX][thisY] == '^') {
                             loopNumber++;
                             if (loopNumber >= targetLoopNumber) {
                                 thisSequenceLoops = true;
@@ -133,11 +135,10 @@ class Guard {
                         else {
                             loopNumber = 0;
                         }
-                        x--;
                         
                         if (thisMap[thisX][thisY] != 'X' && thisMap[thisX][thisY] != '+') {
                             thisSpacesTravelled++;
-                            thisMap[thisX][thisY] = 'X';
+                            if (thisMap[thisX][thisY] != '^')thisMap[thisX][thisY] = 'X';
                         }
                     } 
                 }
@@ -184,23 +185,28 @@ class Guard {
             // Move sequence above
             thisSequenceLoops = false;
             int dumbLoopNumber = 0; // This is used later, not now
+            int putNewX = x, putNewY = y;
             moveSequence (direction, map, x, y, finished, spacesTravelled, thisSequenceLoops, dumbLoopNumber);
             if (isPartTwo) {
                 clearXs(map);
                 thisSequenceLoops = false;
                 int loopX = x, loopY = y,  loopNumber = 0;
-                Direction loopdirection = loopDirection(direction);
+                Direction loopdirection = direction;
+                char previousMark = map[putNewX][putNewY];
+                map[putNewX][putNewY] = '#';
                 bool loopFinished = false;
+                int loopspacesTravelled = 0;
                 while (!loopFinished && !thisSequenceLoops) {
-                    moveSequence(loopdirection,map,loopX,loopY,loopFinished,spacesTravelled,thisSequenceLoops, loopNumber);
-                    //cout << "Found Loop" << loopNumber << endl;
+                    moveSequence(loopdirection,map,loopX,loopY,loopFinished,loopspacesTravelled,thisSequenceLoops, loopNumber);
                 }
-                
                 if (thisSequenceLoops) {
                     foundLoop++;
                }
+               map[putNewX][putNewY] = previousMark;
                clearXs(map);
+               cout << "Finished :"<< finished << endl;
             }
+            
         }
         cout << "Moves : " << moves;
     }
