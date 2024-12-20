@@ -7,30 +7,47 @@
 #include <sstream>
 #include <vector>
 #include <string>
+#include<tuple>
+#define BIGNUM unsigned long long
 using namespace std;
 
 static vector<vector<int>> readFileToVectors(const string&);
+static vector<pair<BIGNUM, vector<pair<unsigned long,int>>>> knownLengths;
 
-int countDigit(unsigned long long);
-void partOneProcedure(unsigned long long& , unsigned long long , int );
+int countDigit(BIGNUM);
+void partOneProcedure(BIGNUM& , BIGNUM , int );
 vector<vector<int>> readFileToVectors(const string&);
-void splitInHalf(unsigned long long, unsigned long long&, unsigned long long&);
+void splitInHalf(BIGNUM, BIGNUM&, BIGNUM&);
+BIGNUM spaceMemory (pair<BIGNUM, vector<pair<unsigned long,int>>>);
+void addNewMemory(pair<BIGNUM, vector<pair<unsigned long,int>>>, BIGNUM, BIGNUM, int);
+vector<vector<BIGNUM>> cache;
+
+int getCache(int depth, int value) {
+    for (vector<BIGNUM> info : cache) {
+        if (info[0] == depth && info[1] == value ) {
+            return info[2];
+        }
+    }
+    return -1;
+}
 
 int main() {
     string filename = "day11.txt"; 
     vector<vector<int>> numbers = readFileToVectors(filename);
-    unsigned long long partOne = 0;
+    BIGNUM partOne = 0;
     int phases = 75;
-    
+    int countOf = 0;
     for (int a : numbers[0]) {
-        cout << a << endl;
+        countOf++;
+        cout << countOf <<" of " << numbers[0].size() << endl;
+
         partOneProcedure(partOne,a,phases);
     }
     cout << "Part One: " << partOne << endl;
     return 0;
 }
 
-int countDigit(unsigned long long n) {
+int countDigit(BIGNUM n) {
       // Base case
     if (n == 0)
         return 1;
@@ -49,7 +66,7 @@ int countDigit(unsigned long long n) {
     return count;
 }
 
- void splitInHalf(unsigned long long number, unsigned long long& firstHalf, unsigned long long& secondHalf) {
+ void splitInHalf(BIGNUM number, BIGNUM& firstHalf, BIGNUM& secondHalf) {
      int orig = number;
      firstHalf = 0; secondHalf = 0;
      int multiplier = 1;
@@ -65,16 +82,23 @@ int countDigit(unsigned long long n) {
     //cout << "Split:" << orig << " " << firstHalf << " " << secondHalf << endl;
 }
 
-void partOneProcedure(unsigned long long& partOneValue, unsigned long long value, int depth) {
-    cout << "depth :" <<  depth << endl;
+void partOneProcedure(BIGNUM& partOneValue, BIGNUM value, int depth) {
+    int initialDifference = partOneValue;
+    //cout << "depth :" <<  depth << endl;
     if (depth == 0) {
         partOneValue = partOneValue + 1;
     }
+    else if (getCache(depth, value) != -1) {
+        partOneValue += getCache(depth, value);
+        cout << "USE -------------------------------------------------" << getCache(depth, value) << endl;
+        return;
+    }
+
     else if (value == 0) {
         partOneProcedure(partOneValue, 1, depth - 1);
     }
     else if (countDigit(value) % 2 == 0) {
-        unsigned long long first = 0; unsigned long long second = 0;
+        BIGNUM first = 0; BIGNUM second = 0;
         splitInHalf(value, first,second);
         partOneProcedure(partOneValue, first, depth - 1);
         partOneProcedure(partOneValue, second, depth - 1);
@@ -83,6 +107,12 @@ void partOneProcedure(unsigned long long& partOneValue, unsigned long long value
         partOneProcedure(partOneValue,value * 2024, depth - 1);
 
     }
+    vector<BIGNUM> pushThis;
+    pushThis.push_back(depth);
+    pushThis.push_back(value);
+    pushThis.push_back(partOneValue - initialDifference);
+    cache.push_back(pushThis);
+    cout << "Add : " << depth << " " << value << " " << partOneValue - initialDifference << endl;
 }
 
 vector<vector<int>> readFileToVectors(const string& filename) {
