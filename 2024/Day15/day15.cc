@@ -24,8 +24,8 @@ DATA getData( DATA metadata, bool trueForMapDataFalseForInstructionalData) {
 		} 
 		else if ((!trueForMapDataFalseForInstructionalData) && ((find(lines.begin(), lines.end(), 'v') != lines.end()) ||
 		                                                        (find(lines.begin(), lines.end(), '^') != lines.end()) ||
-																(find(lines.begin(), lines.end(), '<') != lines.end()) ||
-																(find(lines.begin(), lines.end(), '>') != lines.end()))) {
+									(find(lines.begin(), lines.end(), '<') != lines.end()) ||
+									(find(lines.begin(), lines.end(), '>') != lines.end()))) {
 			map.push_back(lines);
 		} 
 	}
