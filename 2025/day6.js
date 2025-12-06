@@ -1,6 +1,6 @@
 // Wayne Mack
 // Advent Of Code
-// Day 6 - BOTH STARS
+// Day 6
 
 /* NOTE: Run this using Node.js */
 let fileName = "2025Day6.txt";
@@ -15,6 +15,7 @@ const arrays = rows.map((row, index) => {
   const tokens = row.trim().split(/\s+/);
   // Try to parse as numbers if all tokens look numeric
   const allNumeric = tokens.every(token => !isNaN(token));
+
   if (allNumeric) {
     return tokens;
   } else {
@@ -40,11 +41,7 @@ function transpose(array) {
     return transposed;
 }
 
-<<<<<<< HEAD
 function computeSegment(data){   
-=======
-function computeSegment(data){    
->>>>>>> d8527f2710621cb58531036c1b8789cdf466b97b
     let size = data.length;
     let returnThis = 0;
     if (data[size - 1] == '+') {
@@ -77,16 +74,6 @@ function solve(data){
     return total;
 }
 
-<<<<<<< HEAD
-=======
-function computePart2(data) {
-    let lastItem = data.pop();
-    console.log(data);
-    data.push(lastItem);
-    return data;
-}
-
->>>>>>> d8527f2710621cb58531036c1b8789cdf466b97b
 let transposedArray = transpose(charArray);
 console.log ("Part One: ",solve(arrays));
 
@@ -124,9 +111,4 @@ transposedArray.forEach((line) => {
 
 total2 += subtotal2;
 subtotal2 = 0;
-<<<<<<< HEAD
 console.log("Part Two: " + total2);
-=======
-
-console.log("Part Two: " + total2);
->>>>>>> d8527f2710621cb58531036c1b8789cdf466b97b
