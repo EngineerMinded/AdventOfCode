@@ -1,6 +1,6 @@
 // Wayne Mack
 // Advent Of Code
-// Day 6
+// Day 6 - BOTH STARS
 
 /* NOTE: Run this using Node.js */
 let fileName = "2025Day6.txt";
