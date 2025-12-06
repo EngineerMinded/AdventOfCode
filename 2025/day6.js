@@ -4,23 +4,17 @@
 
 /* NOTE: Run this using Node.js */
 let fileName = "2025Day6.txt";
-
-
 const fs = require('fs');
 
 // Read the file contents (assuming UTF-8 encoding)
 const data = fs.readFileSync(fileName, 'utf8');
-
 // Split into rows
 const rows = data.trim().split('\n');
-
 // Create an array to hold all row arrays
 const arrays = rows.map((row, index) => {
   const tokens = row.trim().split(/\s+/);
-
   // Try to parse as numbers if all tokens look numeric
   const allNumeric = tokens.every(token => !isNaN(token));
-
   if (allNumeric) {
     return tokens;
   } else {
@@ -29,9 +23,7 @@ const arrays = rows.map((row, index) => {
 });
 
 const data2 = fs.readFileSync(fileName, 'utf8');
-
 const lines = data2.split('\n');
-
 let charArray = lines.map(line => line.split(''));
 
 function transpose(array) {
@@ -48,8 +40,7 @@ function transpose(array) {
     return transposed;
 }
 
-function computeSegment(data){
-    
+function computeSegment(data){    
     let size = data.length;
     let returnThis = 0;
     if (data[size - 1] == '+') {
@@ -82,7 +73,6 @@ function solve(data){
     return total;
 }
 
-
 function computePart2(data) {
     let lastItem = data.pop();
     console.log(data);
@@ -91,9 +81,6 @@ function computePart2(data) {
 }
 
 let transposedArray = transpose(charArray);
-
-
-
 console.log ("Part One: ",solve(arrays));
 
 // part two
