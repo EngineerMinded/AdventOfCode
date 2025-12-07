@@ -2,18 +2,11 @@
    Wayne Mack
    Advent Of Code
    Day 7
-
    RUNS WITH NODE.js
-
 */
 
 const fs = require('fs');
 
-/**
- * Reads a text file and creates a 2D character array.
- * @param {string} filename - Path to the text file
- * @returns {string[][]} - Two-dimensional array of characters
- */
 function createCharArray(filename) {
   // Read file contents
   const data = fs.readFileSync(filename, 'utf8');
@@ -63,37 +56,20 @@ function part2(data) {
 
     function beamSegment(column, row) {
         // Base case: beam has reached beyond the last column
-        if (column >= COLUMNS) {
-            return 1;
-        }
-
+        if (column >= COLUMNS) return 1;
         let paths = 0;
         const cell = data[column][row];
-
         if (cell === '^') {
             // Move diagonally up-right
-            if (row > 0) {
-                paths += beamSegment(column + 1, row - 1);
-            }
+            if (row > 0) paths += beamSegment(column + 1, row - 1);
             // Move diagonally down-right
-            if (row < ROWS - 1) {
-                paths += beamSegment(column + 1, row + 1);
-            }
-        } else {
-            // Default: continue straight
-            paths += beamSegment(column + 1, row);
-        }
-
+            if (row < ROWS - 1)  paths += beamSegment(column + 1, row + 1);
+            else  paths += beamSegment(column + 1, row);
         return paths;
     }
 
     // Start beams wherever there's an 'S' in the first column
-    for (let row = 0; row < ROWS; row++) {
-        if (data[0][row] === 'S') {
-            totalPaths += beamSegment(0, row);
-        }
-    }
-
+    for (let row = 0; row < ROWS; row++) if (data[0][row] === 'S') totalPaths += beamSegment(0, row);
     return totalPaths;
 }
 
@@ -115,20 +91,12 @@ function part2Revised (data){
     
     function checkPath(numberGrid,data,column,row) {
         if (data[column][row] == '|' || data[column][row] == 'S') {
-            if (column < COLUMNS) {
-                numberGrid[column][row] = numberGrid[column + 1][row];
-            }
-             else {
-                numberGrid[column][row] = 1;
-            }
-
+            if (column < COLUMNS) numberGrid[column][row] = numberGrid[column + 1][row];
+            else numberGrid[column][row] = 1;
         }
     }
     function checkFork(numberGrid,data,column,row) { 
-          if (data[column][row] == '^') {
-            
-             numberGrid[column][row] = numberGrid[column+ 1][row - 1]  + numberGrid[column + 1][row + 1];
-        }
+          if (data[column][row] == '^') numberGrid[column][row] = numberGrid[column+ 1][row - 1]  + numberGrid[column + 1][row + 1];
     }
     for (let x = COLUMNS; x > -1; x--) {
         for (let y = ROWS; y >= 0; y--) {
@@ -138,13 +106,9 @@ function part2Revised (data){
     }
     returnThis = 0;
     for (let z = 0; z < ROWS; z++) {
-        if (returnThis < numberGrid[0][z]) {
-            returnThis = numberGrid[0][z];
-        }
+        if (returnThis < numberGrid[0][z]) returnThis = numberGrid[0][z];
     }
     return returnThis;
 }
-
-
 console.log("Part One: ", part1(arr));
 console.log("Part Two: ", part2Revised(arr));
