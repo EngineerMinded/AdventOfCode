@@ -19,7 +19,6 @@ function createCharArray(filename) {
   return charArray;
 }
 
-// Example usage:
 const arr = createCharArray('2025Day7.txt');
 
 function part1(data) {
