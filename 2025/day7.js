@@ -54,6 +54,7 @@ function part1(data) {
 }
 /********************************************************
  * THIS IS NOT EFFICENT FOR BIG PUZZLES                 *
+ * IT WILL TAKE FOREVER. GOTTA FIND ANOTHER WAY!        *
  ********************************************************/
 function part2(data) {
     const ROWS = data[0].length;   // number of rows in each column
@@ -97,6 +98,9 @@ function part2(data) {
 }
 
 function part2Revised (data){
+    /******************************************
+     * Ah Ha, Bottom up approach works better *
+     ******************************************/
     let COLUMNS = data.length - 1;
     let ROWS    = data[0].length - 1;
     // Generate a numeric grid to hold number of paths
