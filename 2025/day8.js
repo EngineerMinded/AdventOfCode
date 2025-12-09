@@ -85,7 +85,6 @@ function dataPart2( inputData) {
     return curpoint1.x * curpoint2.x;
 }
 
-
 function mergeArraysWithCommonValues(twoDArray) {
   let merged = [...twoDArray]; // copy input
 
@@ -116,7 +115,6 @@ function mergeArraysWithCommonValues(twoDArray) {
 
   return merged;
 }
-
 
 function addToCircuit(circuit1,circuit2,circuitData) {
     circuitData = mergeArraysWithCommonValues(circuitData);
@@ -156,7 +154,6 @@ circuitCounts.sort((a, b) => b - a);
 for (let u = 0; u < countTheseNumbers; u++) {
     answerPart1 *= circuitCounts[u];
 }
-console.log(circuitCounts);
 let Part2 = dataPart2(xyzArray);
 console.log("Part 1 :", answerPart1);
 console.log("Part 2:" ,Part2);
